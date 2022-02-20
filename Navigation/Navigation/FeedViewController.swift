@@ -7,13 +7,13 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .cyan
+        self.view.backgroundColor = color1
         self.title = "Feed"
         
         let button = UIButton(frame: CGRect(x: 50, y: 100, width: 200, height: 50))
         button.setTitle("Go Post View", for: .normal)
-        button.backgroundColor = .red
-        button.setTitleColor(.white, for: .normal)
+        button.backgroundColor = color4
+        button.setTitleColor(color1, for: .normal)
         button.addTarget(self, action: #selector(showPost), for: .touchUpInside)
         self.view.addSubview(button)
     }
