@@ -1,7 +1,9 @@
 import UIKit
 
 class ProfileViewController: UIViewController {
-
+    
+    let label2 = UILabel()
+      
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -9,17 +11,16 @@ class ProfileViewController: UIViewController {
         self.title = "Profile"
         
         let profileHView = ProfileHeaderView()
-        profileHView.backgroundColor = color1
         self.view.addSubview(profileHView)
         
     }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        //let myViews = view.subviews.filter{$0 is ProfileHeaderView}
-        let myViews = view.subviews.first{$0 is ProfileHeaderView}
-        myViews?.frame = self.view.frame
-        //self.view.subviews.first().frame = self.view.frame
+        if let profHViews = view.subviews.first(where: {$0 is ProfileHeaderView}) as? ProfileHeaderView {
+            profHViews.frame = self.view.frame
+        }
+ 
     }
     
 }
