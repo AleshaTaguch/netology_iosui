@@ -1,8 +1,3 @@
-//
-//  AppDelegate.swift
-//  Navigation
-//
-
 import UIKit
 
 @main
