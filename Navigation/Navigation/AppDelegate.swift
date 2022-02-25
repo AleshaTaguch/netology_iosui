@@ -5,25 +5,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
+    let statTBController = UITabBarController()
+    
+    let feedNavController = UINavigationController()
+    let feedViewController = FeedViewController()
+    
+    let profileNavController = UINavigationController()
+    let profileViewController = ProfileViewController()
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        let statTBController = UITabBarController()
-
-        let feedNavController = UINavigationController()
-        let feedTabImage = UIImage(named: "FeedImage")
-        feedNavController.tabBarItem = UITabBarItem(title: "Feed", image: feedTabImage, tag: 0)
-        
-        let feedViewController = FeedViewController()
+        feedNavController.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house.fill"), tag: 0)
+        feedNavController.tabBarItem.selectedImage = UIImage(systemName: "house")
         feedNavController.setViewControllers([feedViewController], animated: true)
         
-        let profileNavController = UINavigationController()
-        let profileTabImage = UIImage(named: "ProfileImage")
-        profileNavController.tabBarItem = UITabBarItem(title: "Profile", image: profileTabImage, tag: 1)
-
-        let profileViewController = ProfileViewController()
+        profileNavController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.fill"), tag: 0)
+        profileNavController.tabBarItem.selectedImage = UIImage(systemName: "persone")
         profileNavController.setViewControllers([profileViewController], animated: true)
 
         statTBController.viewControllers = [feedNavController,profileNavController]
