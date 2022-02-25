@@ -1,18 +1,33 @@
 import UIKit
 
 class InfoViewController: UIViewController {
+    
+    let button = UIButton()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .yellow
+        self.view.backgroundColor = UIColor(red: 225.0/255.0, green: 215.0/255.0, blue: 200.0/255.0, alpha: 1)
         self.title = "Info"
         
-        let button = UIButton(frame: CGRect(x: 50, y: 100, width: 200, height: 50))
         button.setTitle("Go Alert", for: .normal)
-        button.backgroundColor = .red
+        button.backgroundColor = UIColor(red: 85.0/255.0, green: 85.0/255.0, blue: 85.0/255.0, alpha: 1)
         button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 4
+        button.layer.masksToBounds = false
+        button.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button.layer.shadowRadius = CGFloat(4)
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.7
         button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
         self.view.addSubview(button)
+        
+        button.translatesAutoresizingMaskIntoConstraints = false
+        [
+            button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            button.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6, constant: 0),
+            button.heightAnchor.constraint(equalToConstant: 40)
+        ].forEach({$0.isActive = true})
         
     }
 

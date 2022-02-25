@@ -22,8 +22,6 @@ class ProfileHeaderView: UIView {
         
         self.backgroundColor = .lightGray
         
-        //self.translatesAutoresizingMaskIntoConstraints = false
-        
         avatarImageView.image = UIImage(named: "UserImage")
         avatarImageView.frame = CGRect(x: 16, y: 16, width: 130, height: 130) //16-56
         avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width / 2
