@@ -13,7 +13,7 @@ class ProfileViewController: UIViewController {
         
         self.view.addSubview(profileHView)
         
-        newButtonAtTheBottom.frame = CGRect(x: 1, y: 1, width: 350, height: 50)
+        //newButtonAtTheBottom.frame = CGRect(x: 1, y: 1, width: 350, height: 50)
         newButtonAtTheBottom.setTitle("New Button At The Bottom", for: .normal)
         newButtonAtTheBottom.backgroundColor = UIColor(red:0x00/255.0, green: 122.0/255.0, blue: 0xFF/255.0, alpha: 1)
         newButtonAtTheBottom.setTitleColor(.white, for: .normal)
@@ -37,6 +37,15 @@ class ProfileViewController: UIViewController {
         newButtonAtTheBottom.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
                                                      constant: 0).isActive = true
         newButtonAtTheBottom.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+    }
+    
+    override func viewDidAppear (_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        navigationController?.navigationBar.isHidden = true
+        navigationController?.pushViewController(LoginViewController(), animated: animated)
+        
         
     }
    
