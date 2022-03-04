@@ -1,10 +1,3 @@
-//
-//  ProfileHeaderView.swift
-//  Navigation
-//
-//  Created by Убрир on 20.02.2022.
-//
-
 import UIKit
 
 class ProfileHeaderView: UIView {
@@ -27,15 +20,16 @@ class ProfileHeaderView: UIView {
         
         super.init(frame: frame)
         
-        backgroundColor = .lightGray
+        self.backgroundColor = .lightGray
         
         avatarImageView.image = UIImage(named: "UserImage")
-        avatarImageView.frame = CGRect(x: 16, y: 56, width: 130, height: 130)
+        avatarImageView.frame = CGRect(x: 16, y: 16, width: 130, height: 130) //16-56
         avatarImageView.layer.cornerRadius = avatarImageView.frame.size.width / 2
         avatarImageView.layer.masksToBounds = true
         avatarImageView.layer.borderWidth = 3
         avatarImageView.layer.borderColor = UIColor.white.cgColor
         avatarImageView.contentMode = .scaleAspectFill
+        avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(avatarImageView)
         
         setStatusButton.frame = CGRect(x: 16, y: 200, width: 350, height: 50)
@@ -49,6 +43,7 @@ class ProfileHeaderView: UIView {
         setStatusButton.layer.shadowColor = UIColor.black.cgColor
         setStatusButton.layer.shadowOpacity = 0.7
         setStatusButton.addTarget(self, action: #selector(setStatusButtonPressed), for: .touchUpInside)
+        setStatusButton.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(setStatusButton)
         
         fullNameLabel.frame = CGRect(x: avatarImageView.frame.origin.x * 2 + avatarImageView.frame.size.width,
@@ -57,10 +52,10 @@ class ProfileHeaderView: UIView {
                                      height: 20)
         fullNameLabel.text = "Очень Добрый Кот"
         fullNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        
+        fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(fullNameLabel)
         
-
+        
         statusLabel.frame = CGRect(x: avatarImageView.frame.origin.x * 2 + avatarImageView.frame.size.width,
                                    y: setStatusButton.frame.origin.y - 34 - 20,
                                    width: 200,
@@ -68,8 +63,7 @@ class ProfileHeaderView: UIView {
         statusLabel.text = "Waiting for something"
         statusLabel.font = UIFont.systemFont(ofSize: 14)
         statusLabel.textColor = .gray
-        //statusLabel.backgroundColor = .cyan
-           
+        statusLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(statusLabel)
         
         statusTextField.frame = CGRect(x: 16, y: 400, width: 350, height: 40)
@@ -82,7 +76,35 @@ class ProfileHeaderView: UIView {
         statusTextField.textColor = .black
         statusTextField.addTarget(self, action:  #selector(statusTextChanged), for: .editingChanged)
         statusTextField.placeholder = "Введите новый статус"
+        statusTextField.borderStyle = .bezel
+        statusTextField.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(statusTextField)
+        
+        // добавляем констренты
+        avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16).isActive = true
+        avatarImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
+        avatarImageView.widthAnchor.constraint(equalToConstant: 130).isActive = true
+        avatarImageView.heightAnchor.constraint(equalToConstant: 130).isActive = true
+        
+        setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 16).isActive = true
+        setStatusButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16).isActive = true
+        setStatusButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        setStatusButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+        fullNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 27).isActive = true
+        fullNameLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 16).isActive = true
+        fullNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        fullNameLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        
+        statusLabel.bottomAnchor.constraint(equalTo: setStatusButton.topAnchor, constant: -34 - 16).isActive = true
+        statusLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 16).isActive = true
+        statusLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        statusLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        
+        statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 3).isActive = true
+        statusTextField.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 16).isActive = true
+        statusTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16).isActive = true
+        statusTextField.heightAnchor.constraint(equalToConstant: 40).isActive = true
         
     }
     
@@ -113,47 +135,6 @@ class ProfileHeaderView: UIView {
             self.statusText = nil
         }
     }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-
-        if let superView = superview {
-            avatarImageView.frame.origin.x = superView.safeAreaLayoutGuide.layoutFrame.origin.x + 16
-            avatarImageView.frame.origin.y = superView.safeAreaLayoutGuide.layoutFrame.origin.y + 16
-            let sizeAvatar = (min(self.frame.size.width, self.frame.size.height)  / 3) - 16
-            avatarImageView.frame.size.width = sizeAvatar
-            avatarImageView.frame.size.height = sizeAvatar
-            avatarImageView.layer.cornerRadius = sizeAvatar / 2
-           
-            setStatusButton.frame.origin.x = superView.safeAreaLayoutGuide.layoutFrame.origin.x + 16
-            setStatusButton.frame.origin.y = avatarImageView.frame.origin.y + avatarImageView.frame.height + 16
-            setStatusButton.frame.size.width = superView.safeAreaLayoutGuide.layoutFrame.width - 32
-            
-            fullNameLabel.frame.origin.x = avatarImageView.frame.origin.x +
-                                           avatarImageView.frame.size.width + 16
-            fullNameLabel.frame.origin.y = superView.safeAreaLayoutGuide.layoutFrame.origin.y + 27
-            fullNameLabel.frame.size.width = superView.safeAreaLayoutGuide.layoutFrame.width -
-                (fullNameLabel.frame.origin.x - superView.safeAreaLayoutGuide.layoutFrame.origin.x) - 16
-            
-            statusLabel.frame.origin.x = fullNameLabel.frame.origin.x
-            statusLabel.frame.origin.y = setStatusButton.frame.origin.y - 34 - statusLabel.frame.size.height
-            statusLabel.frame.size.width = superView.safeAreaLayoutGuide.layoutFrame.width -
-                (statusLabel.frame.origin.x - superView.safeAreaLayoutGuide.layoutFrame.origin.x) - 16
-            
-            //  Внимание !!
-            //  Изменение размещение элементов для задачи со звездочнкой
-            
-            statusTextField.frame.origin.x = statusLabel.frame.origin.x
-            statusTextField.frame.origin.y = statusLabel.frame.origin.y + statusLabel.frame.size.height + 16
-            statusTextField.frame.size.width = statusLabel.frame.size.width
-            
-            setStatusButton.frame.origin.y = statusTextField.frame.origin.y +
-                                             statusTextField.frame.size.height + 16
-        }
-            
-
-    }
-    
     
     /*
     // Only override draw() if you perform custom drawing.

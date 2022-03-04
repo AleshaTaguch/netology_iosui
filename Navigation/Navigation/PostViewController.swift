@@ -7,7 +7,7 @@ class PostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .red
+        self.view.backgroundColor = UIColor(red: 195.0/255.0, green: 176.0/255.0, blue: 145.0/255.0, alpha: 1)
         if let titleText = post?.title  {
             self.title = titleText
         } else {
@@ -20,7 +20,7 @@ class PostViewController: UIViewController {
     
     @objc func showInfo () {
         let infoViewController = InfoViewController()
-        present(infoViewController, animated: false, completion: nil)
+        present(infoViewController, animated: true, completion: nil)
     }
     
     

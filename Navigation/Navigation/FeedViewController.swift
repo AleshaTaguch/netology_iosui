@@ -3,25 +3,57 @@ import UIKit
 class FeedViewController: UIViewController {
     
     var currentPost: Post?
-
+    let button1 = UIButton()
+    let button2 = UIButton()
+    let buttonsSteckView = UIStackView()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .lightGray
         self.title = "Feed"
+
+        //button1.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
+        button1.setTitle("Go Post View 1", for: .normal)
+        button1.backgroundColor = .gray
+        button1.setTitleColor(.white, for: .normal)
+        button1.layer.cornerRadius = 4
+        button1.layer.masksToBounds = false
+        button1.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button1.layer.shadowRadius = CGFloat(4)
+        button1.layer.shadowColor = UIColor.black.cgColor
+        button1.layer.shadowOpacity = 0.7
+        button1.addTarget(self, action: #selector(showPost), for: .touchUpInside)
         
-        let button = UIButton(frame: CGRect(x: 50, y: 100, width: 200, height: 50))
-        button.setTitle("Go Post View", for: .normal)
-        button.backgroundColor = .gray
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 4
-        button.layer.masksToBounds = false
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.layer.shadowRadius = CGFloat(4)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOpacity = 0.7
-        button.addTarget(self, action: #selector(showPost), for: .touchUpInside)
-        self.view.addSubview(button)
+        //button2.frame  = CGRect(x: 0, y: 0, width: 200, height: 50)
+        button2.setTitle("Go Post View 2", for: .normal)
+        button2.backgroundColor = .gray
+        button2.setTitleColor(.white, for: .normal)
+        button2.layer.cornerRadius = 4
+        button2.layer.masksToBounds = false
+        button2.layer.shadowOffset = CGSize(width: 4, height: 4)
+        button2.layer.shadowRadius = CGFloat(4)
+        button2.layer.shadowColor = UIColor.black.cgColor
+        button2.layer.shadowOpacity = 0.7
+        button2.addTarget(self, action: #selector(showPost), for: .touchUpInside)
+        
+        buttonsSteckView.addArrangedSubview(button1)
+        buttonsSteckView.addArrangedSubview(button2) 
+        buttonsSteckView.frame = CGRect(x: 50, y: 50, width: 400, height: 100)
+        buttonsSteckView.axis = .vertical
+        buttonsSteckView.spacing = 10
+        buttonsSteckView.distribution = .fillEqually
+       
+        self.view.addSubview(buttonsSteckView)
+        
+        buttonsSteckView.translatesAutoresizingMaskIntoConstraints = false
+        [
+            buttonsSteckView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            buttonsSteckView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            buttonsSteckView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6, constant: 0),
+            buttonsSteckView.heightAnchor.constraint(equalToConstant: 90)
+        ].forEach({$0.isActive = true})
+        
     }
          
     @objc func showPost() {
@@ -31,14 +63,5 @@ class FeedViewController: UIViewController {
         navigationController?.pushViewController(postViewController, animated: true)
 
     }
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
-        let myButton = self.view.subviews.first{$0 is UIButton}
-        myButton?.center = view.center
-
-    }
-    
 
 }
