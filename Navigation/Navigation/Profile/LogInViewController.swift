@@ -2,16 +2,16 @@ import UIKit
 
 class LoginViewController: UIViewController {
      
-    let scrollView: UIScrollView = {
+     let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.toAutoLayout()
         return scrollView
     }()
     
     let contentView: LoginHeaderView = {
         let contentView = LoginHeaderView()
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.toAutoLayout()
         return contentView
     }()
 
@@ -19,79 +19,76 @@ class LoginViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
-        self.title = "LogIn"
-        
-        scrollView.contentSize = CGSize(width: self.view.safeAreaLayoutGuide.layoutFrame.width
-                                       ,height: self.view.safeAreaLayoutGuide.layoutFrame.height )
         
         self.view.addSubview(scrollView)
         scrollView.addSubview(contentView)
 
         activateConstraints()
         
+        // прячем клавиатуру
+        let tapGestureeRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapToHideKeyboard))
+        view.addGestureRecognizer(tapGestureeRecognizer)
         
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tap))
-        view.addGestureRecognizer(tapGesture)
+        contentView.loginButton.addTarget(self, action: #selector(pressButtonLogin), for: .touchUpInside)
         
-        // подписаться на уведомления
-        let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(kbdShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        nc.addObserver(self, selector: #selector(kbdHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
-        contentView.pwdTextField.resignFirstResponder()
-        contentView.loginTextField.resignFirstResponder()
-        
-        /*
-        let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(
-            self,
-            selector:  #selector(kbdShow),
-            name: UIResponder.keyboardWillShowNotification,
-            object: nil)
-         */
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // подписаться на уведомления
-        let nc = NotificationCenter.default
-        nc.addObserver(self, selector: #selector(kbdShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        nc.addObserver(self, selector: #selector(kbdHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(showKeyboard), name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(hideKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
-
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        scrollView.contentSize = CGSize(width: self.view.safeAreaLayoutGuide.layoutFrame.size.width
+                                       ,height: self.contentView.loginButton.frame.origin.y +
+                                                self.contentView.loginButton.frame.size.height )
+        
+        
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         // отписаться от уведомлений
-        let nc = NotificationCenter.default
-        nc.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        nc.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCenter.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
-
-
 
 
 // MARK: Extensions
 
 extension LoginViewController {
-    
-    @objc private func kbdShow(notification: NSNotification) {
-     if let kbdSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-     scrollView.contentInset.bottom = kbdSize.height
-     scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: kbdSize.height, right: 0)
-     }
-    }
-    @objc private func kbdHide(notification: NSNotification) {
-     scrollView.contentInset.bottom = .zero
-     scrollView.verticalScrollIndicatorInsets = .zero
+
+    @objc private func showKeyboard(notification: NSNotification) {
+        if let keyboardRectValue = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            scrollView.contentInset.bottom = keyboardRectValue.height
+            scrollView.verticalScrollIndicatorInsets = UIEdgeInsets(top: 0, left: 0, bottom: keyboardRectValue.height, right: 0)
+        }
     }
     
-    @objc func tap() {
-        contentView.pwdTextField.resignFirstResponder()
-        contentView.loginTextField.resignFirstResponder()
+    @objc private func hideKeyboard(notification: NSNotification) {
+        scrollView.contentInset.bottom = .zero
+        scrollView.verticalScrollIndicatorInsets = .zero
     }
     
+    @objc private func tapToHideKeyboard() {
+        contentView.endEditing(false)
+    }
+    
+    @objc func pressButtonLogin() {
+        navigationController?.popViewController(animated: true)
+    }
+}
+
+extension LoginViewController {
     private func activateConstraints () {
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),

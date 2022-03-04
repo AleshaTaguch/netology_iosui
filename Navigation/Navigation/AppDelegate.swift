@@ -12,9 +12,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let profileNavController = UINavigationController()
     let profileViewController = ProfileViewController()
-    
-    //let loginViewController = LogInViewController()
-    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         

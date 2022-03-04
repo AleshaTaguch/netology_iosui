@@ -5,7 +5,7 @@ class LoginHeaderView: UIView {
     let logoImageView: UIImageView = {
         let logoImageView = UIImageView()
         logoImageView.image = UIImage(named: Constants.LoginView.Logo.imageName)
-        logoImageView.translatesAutoresizingMaskIntoConstraints = false
+        logoImageView.toAutoLayout()
         return logoImageView
     }()
     
@@ -22,7 +22,7 @@ class LoginHeaderView: UIView {
         loginTextField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.BlankView.width, height: Constants.BlankView.height))
         loginTextField.leftViewMode = .always
         loginTextField.rightViewMode = .always
-        loginTextField.translatesAutoresizingMaskIntoConstraints = false
+        loginTextField.toAutoLayout()
         return loginTextField
     }()
 
@@ -41,7 +41,7 @@ class LoginHeaderView: UIView {
         pwdTextField.leftViewMode = .always
         pwdTextField.rightViewMode = .always
         pwdTextField.isSecureTextEntry = true
-        pwdTextField.translatesAutoresizingMaskIntoConstraints = false
+        pwdTextField.toAutoLayout()
         return pwdTextField
     }()
     
@@ -54,16 +54,16 @@ class LoginHeaderView: UIView {
         stackView.layer.masksToBounds = true
         stackView.layer.borderWidth = Constants.LoginView.StackField.borderWidth
         stackView.layer.borderColor = UIColor.lightGray.cgColor
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.clipsToBounds = true
+        stackView.toAutoLayout()
         return stackView
     }()
     
     let loginButton: UIButton = {
         let loginButton = UIButton()
-        loginButton.layer.cornerRadius = 10
+        loginButton.layer.cornerRadius = Constants.LoginView.LoginButton.cornerRadius
         loginButton.layer.masksToBounds = true
-        if let pixel = UIImage(named: "blue_pixel") {
+        if let pixel = UIImage(named: Constants.LoginView.LoginButton.backgraundImageName) {
             loginButton.setBackgroundImage(pixel.alpha(1), for: .normal)
             loginButton.setBackgroundImage(pixel.alpha(0.8), for: .selected)
             loginButton.setBackgroundImage(pixel.alpha(0.8), for: .highlighted)
@@ -71,18 +71,17 @@ class LoginHeaderView: UIView {
         } else {
             loginButton.backgroundColor = .darkGray
         }
-        loginButton.setTitle("Log In", for: .normal)
-        loginButton.titleLabel?.font =  UIFont.systemFont(ofSize: 18)
+        loginButton.setTitle(Constants.LoginView.LoginButton.titleText, for: .normal)
+        loginButton.titleLabel?.font =  UIFont.systemFont(ofSize: Constants.LoginView.LoginButton.fontSize)
         loginButton.setTitleColor(.white, for: .normal)
-        //loginButton.addTarget(self, action:  #selector(statusTextChanged), for: .editingChanged)
-        loginButton.translatesAutoresizingMaskIntoConstraints = false
+        loginButton.toAutoLayout()
         return loginButton
     }()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .white
+        self.backgroundColor = .white
         
         stackView.addArrangedSubviews(loginTextField, pwdTextField)
         self.addSubviews(logoImageView, stackView, loginButton)
@@ -93,13 +92,12 @@ class LoginHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-
 }
 
 // MARK: Extensions
 
 extension LoginHeaderView {
+    
     private func activateConstraints () {
         NSLayoutConstraint.activate([
         logoImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.LoginView.Logo.topMargin),
@@ -115,10 +113,10 @@ extension LoginHeaderView {
         loginTextField.heightAnchor.constraint(equalToConstant: Constants.LoginView.TextField.height),
         pwdTextField.heightAnchor.constraint(equalToConstant: Constants.LoginView.TextField.height),
         
-        loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 16),
-        loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-        loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-        loginButton.heightAnchor.constraint(equalToConstant: 50),
+        loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: Constants.LoginView.LoginButton.topMargin),
+        loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.LoginView.LoginButton.leftMargin),
+        loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.LoginView.LoginButton.leftMargin),
+        loginButton.heightAnchor.constraint(equalToConstant: Constants.LoginView.LoginButton.height),
         loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
         
         ])

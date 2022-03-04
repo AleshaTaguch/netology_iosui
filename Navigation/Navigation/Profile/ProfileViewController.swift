@@ -2,18 +2,16 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    let profileHView = ProfileHeaderView()
-    let newButtonAtTheBottom = UIButton()
+    var isShowLoginView: Bool = false
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        self.view.backgroundColor = .lightGray
-        self.title = "Profile"
-        
-        self.view.addSubview(profileHView)
-        
-        //newButtonAtTheBottom.frame = CGRect(x: 1, y: 1, width: 350, height: 50)
+    let profileHeaderView: ProfileHeaderView = {
+        let profileHeaderView = ProfileHeaderView()
+        profileHeaderView.toAutoLayout()
+        return profileHeaderView
+    }()
+    
+    let newButtonAtTheBottom: UIButton = {
+        let newButtonAtTheBottom  = UIButton()
         newButtonAtTheBottom.setTitle("New Button At The Bottom", for: .normal)
         newButtonAtTheBottom.backgroundColor = UIColor(red:0x00/255.0, green: 122.0/255.0, blue: 0xFF/255.0, alpha: 1)
         newButtonAtTheBottom.setTitleColor(.white, for: .normal)
@@ -23,31 +21,50 @@ class ProfileViewController: UIViewController {
         newButtonAtTheBottom.layer.shadowRadius = CGFloat(4)
         newButtonAtTheBottom.layer.shadowColor = UIColor.black.cgColor
         newButtonAtTheBottom.layer.shadowOpacity = 0.7
-        self.view.addSubview(newButtonAtTheBottom)
+        newButtonAtTheBottom.toAutoLayout()
+        return newButtonAtTheBottom
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        self.view.backgroundColor = .lightGray
+        self.title = "Profile"
         
-        profileHView.translatesAutoresizingMaskIntoConstraints = false
-        profileHView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 0).isActive = true
-        profileHView.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
-        profileHView.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
-        profileHView.heightAnchor.constraint(equalToConstant: 220).isActive = true
+        self.view.addSubviews(profileHeaderView,newButtonAtTheBottom)
+        activateConstraints()
         
-        newButtonAtTheBottom.translatesAutoresizingMaskIntoConstraints = false
-        newButtonAtTheBottom.leftAnchor.constraint(equalTo: self.view.leftAnchor, constant: 0).isActive = true
-        newButtonAtTheBottom.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: 0).isActive = true
-        newButtonAtTheBottom.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor,
-                                                     constant: 0).isActive = true
-        newButtonAtTheBottom.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        isShowLoginView = true
         
     }
     
     override func viewDidAppear (_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        navigationController?.navigationBar.isHidden = true
-        navigationController?.pushViewController(LoginViewController(), animated: animated)
-        
+        if isShowLoginView {
+            navigationController?.navigationBar.isHidden = true
+            navigationController?.pushViewController(LoginViewController(), animated: animated)
+            isShowLoginView = !isShowLoginView
+        }
         
     }
    
 }
+
+extension ProfileViewController {
+    private func activateConstraints () {
+        NSLayoutConstraint.activate([
+            profileHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            profileHeaderView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            profileHeaderView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 220),
+            
+            newButtonAtTheBottom.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+            newButtonAtTheBottom.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+            newButtonAtTheBottom.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            newButtonAtTheBottom.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+}
+
 

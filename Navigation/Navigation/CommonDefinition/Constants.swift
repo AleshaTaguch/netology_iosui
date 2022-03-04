@@ -7,6 +7,9 @@ struct Post {
 
 struct Constants {
     struct LoginView {
+        struct StackView {
+            static let height: CGFloat = 510
+        }
         struct Logo {
             static let imageName: String = "Logo"
             static let topMargin: CGFloat = 120.0
@@ -29,7 +32,16 @@ struct Constants {
             static let height: CGFloat = 50
             static let nameTintColor: String = "accentColor"
         }
-        
+        struct LoginButton {
+            static let cornerRadius: CGFloat = 10
+            static let backgraundImageName: String = "blue_pixel"
+            static let titleText: String = "Login"
+            static let fontSize: CGFloat = 16
+            static let height: CGFloat = 50
+            static let topMargin: CGFloat = 16.0
+            static let leftMargin: CGFloat = 16.0
+            static let rigthMargin: CGFloat = 16.0
+        }
     }
     struct BlankView {
         static let width: CGFloat = 10
@@ -38,32 +50,5 @@ struct Constants {
     
 }
 
-public extension UIView {
 
-    func addSubviews(_ subviews: UIView...) {
-        subviews.forEach { addSubview($0) }
-    }
-
-}
-
-public extension UIStackView {
-
-    func addArrangedSubviews(_ subviews: UIView...) {
-        subviews.forEach { addArrangedSubview($0) }
-    }
-
-}
-
-/// UIImage alpha https://stackoverflow.com/questions/28517866/how-to-set-the-alpha-of-an-uiimage-in-swift-programmatically
-
-public extension UIImage {
-
-    func alpha(_ value:CGFloat) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, false, scale)
-        draw(at: CGPoint.zero, blendMode: .normal, alpha: value)
-        let newImage = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return newImage!
-    }
-}
  
