@@ -1,11 +1,13 @@
 import UIKit
 
-class ProfileHeaderView: UIView {
+class ProfileHeaderView: UITableViewHeaderFooterView {
+    
+    static let classIdentifier: String = "ProfileHeaderView"
     
     let avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
         avatarImageView.image = UIImage(named: "UserImage")
-        avatarImageView.layer.cornerRadius = 65
+        avatarImageView.layer.cornerRadius = Constants.ProfileView.AvatarImage.size / 2
         avatarImageView.layer.masksToBounds = true
         avatarImageView.layer.borderWidth = 3
         avatarImageView.layer.borderColor = UIColor.white.cgColor
@@ -67,12 +69,12 @@ class ProfileHeaderView: UIView {
     
     private var statusText: String?
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
    
-        self.backgroundColor = .systemGray6
-        self.addSubviews(avatarImageView,setStatusButton,fullNameLabel,statusLabel,statusTextField)
-
+        self.contentView.backgroundColor = .systemGray6
+        self.contentView.addSubviews(avatarImageView,setStatusButton,fullNameLabel,statusLabel,statusTextField)
         activateConstraints()
         
     }
@@ -114,30 +116,32 @@ extension ProfileHeaderView {
     
     private func activateConstraints () {
         NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-            avatarImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 130),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 130),
+            avatarImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Constants.ProfileView.AvatarImage.topMargin),
+            avatarImageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: Constants.ProfileView.AvatarImage.leftMargin),
+            avatarImageView.widthAnchor.constraint(equalToConstant: Constants.ProfileView.AvatarImage.size),
+            avatarImageView.heightAnchor.constraint(equalToConstant: Constants.ProfileView.AvatarImage.size),
             
-            setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 16),
-            setStatusButton.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-            setStatusButton.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            setStatusButton.heightAnchor.constraint(equalToConstant: 50),
+            setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: Constants.ProfileView.StatusButton.topMargin),
+            setStatusButton.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: Constants.ProfileView.StatusButton.leftMargin),
+            setStatusButton.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.ProfileView.StatusButton.rightMargin),
+            setStatusButton.heightAnchor.constraint(equalToConstant: Constants.ProfileView.StatusButton.height),
+            setStatusButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Constants.ProfileView.StatusButton.buttomMargin),
                         
-            fullNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 27),
-            fullNameLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 16),
-            fullNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            fullNameLabel.heightAnchor.constraint(equalToConstant: 25),
+            fullNameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Constants.ProfileView.FullName.topMargin),
+            fullNameLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: Constants.ProfileView.FullName.leftMargin),
+            fullNameLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.ProfileView.FullName.rightMargin),
+            fullNameLabel.heightAnchor.constraint(equalToConstant: Constants.ProfileView.FullName.height),
             
-            statusLabel.bottomAnchor.constraint(equalTo: setStatusButton.topAnchor, constant: -34 - 16),
-            statusLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 16),
-            statusLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            statusLabel.heightAnchor.constraint(equalToConstant: 20),
+            statusLabel.bottomAnchor.constraint(equalTo: setStatusButton.topAnchor, constant: -Constants.ProfileView.StatusLabel.buttomMargin
+                                               ),
+            statusLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: Constants.ProfileView.StatusLabel.leftMargin),
+            statusLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.ProfileView.StatusLabel.rightMargin),
+            statusLabel.heightAnchor.constraint(equalToConstant: Constants.ProfileView.StatusLabel.height),
             
-            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: 3),
-            statusTextField.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 16),
-            statusTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            statusTextField.heightAnchor.constraint(equalToConstant: 40)
+            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: Constants.ProfileView.StatusField.topMargin),
+            statusTextField.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: Constants.ProfileView.StatusField.leftMargin),
+            statusTextField.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.ProfileView.StatusField.rightMargin),
+            statusTextField.heightAnchor.constraint(equalToConstant: Constants.ProfileView.StatusField.height)
         ])
     }
 

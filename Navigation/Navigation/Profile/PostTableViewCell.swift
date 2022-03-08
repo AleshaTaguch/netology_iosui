@@ -1,17 +1,12 @@
-//
-//  PostTableViewCell.swift
-//  Navigation
-//
-//  Created by tertyshniy on 08.03.2022.
-//
-
 import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
+    static let classIdentifier: String = "PostTableViewCell"
+    
     let postTitleLabel: UILabel = {
         let postTitleLabel = UILabel()
-        postTitleLabel.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        postTitleLabel.font = UIFont.systemFont(ofSize: Constants.PostViewCell.fortSizeHeader, weight: .bold)
         postTitleLabel.textColor = .black
         postTitleLabel.numberOfLines = 2
         postTitleLabel.toAutoLayout()
@@ -28,7 +23,7 @@ class PostTableViewCell: UITableViewCell {
     
     let postDescriptionLabel: UILabel = {
         let postDescriptionLabel = UILabel()
-        postDescriptionLabel.font = UIFont.systemFont(ofSize: 14, weight: .regular)
+        postDescriptionLabel.font = UIFont.systemFont(ofSize: Constants.PostViewCell.fortSizeBody, weight: .regular)
         postDescriptionLabel.textColor = .black
         postDescriptionLabel.numberOfLines = 0
         postDescriptionLabel.toAutoLayout()
@@ -37,7 +32,7 @@ class PostTableViewCell: UITableViewCell {
     
     let postLikesLabel: UILabel = {
         let postLikesLabel = UILabel()
-        postLikesLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        postLikesLabel.font = UIFont.systemFont(ofSize: Constants.PostViewCell.fortSizeFoter, weight: .regular)
         postLikesLabel.textColor = .black
         postLikesLabel.toAutoLayout()
         return postLikesLabel
@@ -45,7 +40,7 @@ class PostTableViewCell: UITableViewCell {
     
     let postViewsLabel: UILabel = {
         let postViewsLabel = UILabel()
-        postViewsLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        postViewsLabel.font = UIFont.systemFont(ofSize: Constants.PostViewCell.fortSizeFoter, weight: .regular)
         postViewsLabel.textColor = .black
         postViewsLabel.toAutoLayout()
         return postViewsLabel
@@ -54,21 +49,15 @@ class PostTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        
-    
-        //self.addSubviews(postTitleLabel,postImageView,postDescriptionLabel,postLikesLabel,postViewsLabel)
-        
         contentView.addSubviews(postTitleLabel,
                                 postImageView,
                                 postDescriptionLabel,
                                 postLikesLabel,
                                 postViewsLabel)
-        //backgroundColor = .cyan
-        //contentView.backgroundColor = .blue
+
         self.toAutoLayout()
         activateConstraints()
-        
-        
+    
     }
     
     required init?(coder: NSCoder) {
@@ -86,8 +75,16 @@ class PostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
+}
+
+extension PostTableViewCell {
+    
+    public func setCellFromDataSet(_ post: Post) {
+        self.postTitleLabel.text = post.title
+        self.postImageView.image = UIImage(named: post.image)
+        self.postDescriptionLabel.text = post.description
+        self.postLikesLabel.text = "Likes: \(post.likes)"
+        self.postViewsLabel.text = "Views: \(post.views)"
     }
 
 }
@@ -96,28 +93,26 @@ extension PostTableViewCell {
     
     private func activateConstraints () {
         NSLayoutConstraint.activate([
-            postTitleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 16),
-            postTitleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
-            postTitleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
+            postTitleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Constants.PostViewCell.allMargin),
+            postTitleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constants.PostViewCell.allMargin),
+            postTitleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Constants.PostViewCell.allMargin),
             
-            postImageView.topAnchor.constraint(equalTo: postTitleLabel.bottomAnchor, constant: 16),
+            postImageView.topAnchor.constraint(equalTo: postTitleLabel.bottomAnchor, constant: Constants.PostViewCell.allMargin),
             postImageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
             postImageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
             postImageView.widthAnchor.constraint(equalTo: self.contentView.widthAnchor),
             postImageView.heightAnchor.constraint(equalTo: self.contentView.widthAnchor),
             
-            postDescriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: 16),
-            postDescriptionLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
+            postDescriptionLabel.topAnchor.constraint(equalTo: postImageView.bottomAnchor, constant: Constants.PostViewCell.allMargin),
+            postDescriptionLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constants.PostViewCell.allMargin),
             postDescriptionLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
-            postDescriptionLabel.bottomAnchor.constraint(equalTo: postLikesLabel.topAnchor, constant: -16),
+            postDescriptionLabel.bottomAnchor.constraint(equalTo: postLikesLabel.topAnchor, constant: -Constants.PostViewCell.allMargin),
             
-            postLikesLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 16),
-            postLikesLabel.heightAnchor.constraint(equalToConstant: 20),
-            postLikesLabel.bottomAnchor.constraint(equalTo:  self.contentView.bottomAnchor, constant: -16),
+            postLikesLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constants.PostViewCell.allMargin),
+            postLikesLabel.bottomAnchor.constraint(equalTo:  self.contentView.bottomAnchor, constant: -Constants.PostViewCell.allMargin),
             
-            postViewsLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -16),
-            postViewsLabel.heightAnchor.constraint(equalToConstant: 20),
-            postViewsLabel.bottomAnchor.constraint(equalTo:  self.contentView.bottomAnchor, constant: -16)
+            postViewsLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Constants.PostViewCell.allMargin),
+            postViewsLabel.bottomAnchor.constraint(equalTo:  self.contentView.bottomAnchor, constant: -Constants.PostViewCell.allMargin)
 
         ])
     }

@@ -75,6 +75,16 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		59642B4327D7F9CF00875F09 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+				652E085727BD53A5007A1526 /* FeedViewController.swift */,
+				652E085527BD529A007A1526 /* PostViewController.swift */,
+				652E085D27BD8077007A1526 /* InfoViewController.swift */,
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
 		6528865027BC1053005A379F = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +104,7 @@
 		6528865B27BC1053005A379F /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
+				59642B4327D7F9CF00875F09 /* Feed */,
 				59642B4227D7463300875F09 /* Login */,
 				652BCC5E27C2618D003841E3 /* Profile */,
 				59642B3A27D15AD100875F09 /* CommonDefinition */,
@@ -103,9 +114,6 @@
 				6528866527BC105C005A379F /* Assets.xcassets */,
 				6528866727BC105C005A379F /* LaunchScreen.storyboard */,
 				6528866A27BC105C005A379F /* Info.plist */,
-				652E085727BD53A5007A1526 /* FeedViewController.swift */,
-				652E085527BD529A007A1526 /* PostViewController.swift */,
-				652E085D27BD8077007A1526 /* InfoViewController.swift */,
 			);
 			path = Navigation;
 			sourceTree = "<group>";

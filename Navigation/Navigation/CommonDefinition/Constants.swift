@@ -46,6 +46,46 @@ let sourcePostsArray: [Post] =
 
 
 struct Constants {
+    struct ProfileView {
+        struct AvatarImage {
+            static let topMargin: CGFloat = 16
+            static let leftMargin: CGFloat = 16
+            static let size: CGFloat = 130.0
+        }
+        struct StatusButton {
+            static let topMargin: CGFloat = 16
+            static let leftMargin: CGFloat = 16
+            static let rightMargin: CGFloat = 16
+            static let buttomMargin: CGFloat = 16
+            static let height: CGFloat = 50
+        }
+        struct FullName {
+            static let topMargin: CGFloat = 27
+            static let leftMargin: CGFloat = 16
+            static let rightMargin: CGFloat = 16
+            static let buttomMargin: CGFloat = 16
+            static let height: CGFloat = 25
+        }
+        struct StatusLabel {
+            static let leftMargin: CGFloat = 16
+            static let rightMargin: CGFloat = 16
+            static let buttomMargin: CGFloat = 50
+            static let height: CGFloat = 25
+        }
+        struct StatusField {
+            static let topMargin: CGFloat = 3
+            static let leftMargin: CGFloat = 16
+            static let rightMargin: CGFloat = 16
+            static let height: CGFloat = 40
+        }
+
+    }
+    struct PostViewCell {
+        static let fortSizeHeader: CGFloat = 20
+        static let fortSizeBody: CGFloat = 14
+        static let fortSizeFoter: CGFloat = 16
+        static let allMargin: CGFloat = 16.0
+    }
     struct LoginView {
         struct StackView {
             static let height: CGFloat = 510
