@@ -32,3 +32,13 @@ public extension UIImage {
         return newImage!
     }
 }
+
+public extension UITextField {
+
+    func setLeftRigthTextMargin() {
+        leftView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.BlankView.width, height: Constants.BlankView.height))
+        rightView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.BlankView.width, height: Constants.BlankView.height))
+        leftViewMode = .always
+        rightViewMode = .always
+    }
+}

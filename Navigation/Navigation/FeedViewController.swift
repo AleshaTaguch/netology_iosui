@@ -10,12 +10,12 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .lightGray
+        self.view.backgroundColor = .white
         self.title = "Feed"
 
         //button1.frame = CGRect(x: 0, y: 0, width: 200, height: 50)
         button1.setTitle("Go Post View 1", for: .normal)
-        button1.backgroundColor = .gray
+        button1.backgroundColor = .lightGray
         button1.setTitleColor(.white, for: .normal)
         button1.layer.cornerRadius = 4
         button1.layer.masksToBounds = false
@@ -27,7 +27,7 @@ class FeedViewController: UIViewController {
         
         //button2.frame  = CGRect(x: 0, y: 0, width: 200, height: 50)
         button2.setTitle("Go Post View 2", for: .normal)
-        button2.backgroundColor = .gray
+        button2.backgroundColor = .lightGray
         button2.setTitleColor(.white, for: .normal)
         button2.layer.cornerRadius = 4
         button2.layer.masksToBounds = false
@@ -57,7 +57,7 @@ class FeedViewController: UIViewController {
     }
          
     @objc func showPost() {
-        currentPost = Post(title: "Post 12345")
+        currentPost = Post(title: "Post 12345", author: "?", description: "?", image: "?", likes: 0, views: 0)
         let postViewController = PostViewController()
         postViewController.post = currentPost
         navigationController?.pushViewController(postViewController, animated: true)

@@ -1,6 +1,8 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    public var isLogined: Bool = false
      
      let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -18,6 +20,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.isLogined = false
         self.view.backgroundColor = .white
         
         self.view.addSubview(scrollView)
@@ -97,7 +100,7 @@ extension LoginViewController {
             scrollView.centerXAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.centerXAnchor),
     
             contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
-            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            contentView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor)
         ])
     }
 }
