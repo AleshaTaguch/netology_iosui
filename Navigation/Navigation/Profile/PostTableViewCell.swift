@@ -54,7 +54,7 @@ class PostTableViewCell: UITableViewCell {
                                 postDescriptionLabel,
                                 postLikesLabel,
                                 postViewsLabel)
-
+        
         self.toAutoLayout()
         activateConstraints()
     
