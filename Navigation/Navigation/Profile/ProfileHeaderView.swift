@@ -76,7 +76,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         self.contentView.backgroundColor = .systemGray6
         self.contentView.addSubviews(avatarImageView,setStatusButton,fullNameLabel,statusLabel,statusTextField)
         activateConstraints()
-        
+                
     }
     
     required init?(coder: NSCoder) {

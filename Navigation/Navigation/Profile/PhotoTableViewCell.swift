@@ -3,13 +3,15 @@ import UIKit
 class PhotoTableViewCell: UITableViewCell {
     
     static let classIdentifier: String = "PhotoTableViewCell"
+    static let tapNotificationName: String = "tagImageTapped"
+    
+    let photoArray: [String] = sourcePhotoArray
     
     let stackView : UIStackView = {
         let photoStackView = UIStackView()
         photoStackView.axis = .horizontal
-        photoStackView.spacing = 8
+        photoStackView.spacing = Constants.PhotosTable.interitemSpacing
         photoStackView.distribution = .fillEqually
-        //photoStackView.backgroundColor = .magenta
         photoStackView.toAutoLayout()
         return photoStackView
     }()
@@ -24,35 +26,32 @@ class PhotoTableViewCell: UITableViewCell {
     }()
     
     let titleImage: UIImageView = {
-        let photoImageView = UIImageView()
-        photoImageView.image = UIImage(systemName: "arrow.right")
-        photoImageView.tintColor = .black
-        photoImageView.toAutoLayout()
-        return photoImageView
+        let titleImage = UIImageView()
+        titleImage.image = UIImage(systemName: "arrow.right")
+        titleImage.tintColor = .black
+        titleImage.toAutoLayout()
+        return titleImage
     }()
 
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        
-        
-        for num in 1...4 {
+        for index in 0...Constants.PhotosTable.countPhotos-1 {
             let imageView = UIImageView()
-            imageView.image = UIImage(named: "foto2-\(num)")
+            imageView.image = UIImage(named: photoArray[index])
             imageView.layer.cornerRadius = 6
             imageView.layer.masksToBounds = true
-            //imageView.layer.borderWidth = 0.5
-            //imageView.layer.borderColor = UIColor.black.cgColor
-            imageView.contentMode = .scaleToFill // .scaleAspectFit
-            imageView.backgroundColor = .red
-            
+            imageView.contentMode = .scaleAspectFill
             stackView.addArrangedSubview(imageView)
-            //imageView.toAutoLayout()
         }
-
+        
+        
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        titleImage.isUserInteractionEnabled = true
+        titleImage.addGestureRecognizer(tapGestureRecognizer)
+        
         contentView.addSubviews(titleLabel,titleImage,stackView)
-        self.toAutoLayout()
         
         activateConstraints()
     
@@ -75,26 +74,40 @@ class PhotoTableViewCell: UITableViewCell {
 
 }
 
+
+extension PhotoTableViewCell {
+    
+    @objc func imageTapped() {
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.post(name: Notification.Name(PhotoTableViewCell.tapNotificationName), object: nil)
+        
+    }
+    
+}
+
 extension PhotoTableViewCell {
     
     private func activateConstraints () {
         NSLayoutConstraint.activate([
-            titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: 12),
-            titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 12),
+            titleLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Constants.PhotosTable.topMargin),
+            titleLabel.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constants.PhotosTable.leftMargin),
             
             titleImage.centerYAnchor.constraint(equalTo: titleLabel.centerYAnchor),
-            titleImage.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -12),
-            //titleLabel.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -12),
-            //titleLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -12),
+            titleImage.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Constants.PhotosTable.rightMargin),
             titleImage.widthAnchor.constraint(equalTo: titleLabel.heightAnchor),
             titleImage.heightAnchor.constraint(equalTo: titleLabel.heightAnchor),
             
+            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: Constants.PhotosTable.topMargin),
+            stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: Constants.PhotosTable.leftMargin),
+            stackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -Constants.PhotosTable.rightMargin),
+            stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Constants.PhotosTable.buttomMargin),
+            stackView.heightAnchor.constraint(equalTo: self.contentView.widthAnchor,
+                                              multiplier: 1.0 / CGFloat(Constants.PhotosTable.countPhotos),
+                                              constant: -(Constants.PhotosTable.interitemSpacing * CGFloat(Constants.PhotosTable.countPhotos-1))                         
+                                             )
             
-            stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
-            stackView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 12),
-            stackView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -12),
-            stackView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -12),
-            stackView.heightAnchor.constraint(equalTo: self.contentView.widthAnchor, multiplier: 0.25, constant: -12-12+8)
         ])
     }
 }
+
+

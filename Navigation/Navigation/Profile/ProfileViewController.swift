@@ -21,17 +21,26 @@ class ProfileViewController: UIViewController {
         
         isNeedShowLoginView = true
         
+        // подписаться на уведомления
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(showViewCollection), name: NSNotification.Name(PhotoTableViewCell.tapNotificationName), object: nil)
+
     }
        
     override func viewDidAppear (_ animated: Bool) {
         super.viewDidAppear(animated)
-
+        
+        navigationController?.navigationBar.isHidden = true
         if isNeedShowLoginView {
-            navigationController?.navigationBar.isHidden = true
-            navigationController?.pushViewController(LoginViewController(), animated: animated)
+            navigationController?.pushViewController( LoginViewController(), animated: animated)
             isNeedShowLoginView = false
         }
+        
+    }    
     
+    @objc private func showViewCollection(notification: NSNotification) {
+        navigationController?.navigationBar.isHidden = false
+        navigationController?.pushViewController(PhotosViewController(), animated: true)
     }
     
 }

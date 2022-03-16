@@ -1,51 +1,24 @@
 import UIKit
 
-struct Post {
-    var title: String
-    var author: String
-    var description: String
-    var image: String
-    var likes: Int
-    var views: Int
-}
-
-let sourcePostsArray: [Post] =
-    [Post(title: "1. Композиция в фотографии - это построение и последовательность изобразительных",
-          author: "Петя",
-          description: "Композиция в фотографии — это построение и последовательность изобразительных приемов, реализующих художественную идею. Можно сказать, что композиция это соотношение и взаиморасположение частей.",
-          image: "photo1",
-          likes: 10,
-          views: 100),
-     Post(title: "2. Линейная перспектива",
-          author: "Вася",
-          description: "Линейная перспектива: параллельные линии стремятся сойтись в одной точке, предметы и объекты имеющие одинаковый размер, кажутся нам тем меньше чем дальше они от нас находятся.",
-          image: "photo2",
-          likes: 20,
-          views: 200),
-     Post(title: "3. Тональная перспектива",
-          author: "Миша",
-          description: "Первые определения тональной (многие говорят «воздушная») перспективы дал Леонардо да Винчи: «Вещи на расстоянии кажутся тебе двусмысленными и сомнительными; делай и ты их с такой же расплывчатостью, иначе они в твоей картине покажутся на одинаковом расстоянии…..",
-          image: "photo3",
-          likes: 30,
-          views: 300),
-     Post(title: "4. Ракурс съемки",
-          author: "Коля",
-          description: "Немаловажно для передачи пространства на фотографии является наличие разных планов объектов съемки. Большинство снимков можно разделить на три плана: передний, средний и задний.",
-          image: "photo4",
-          likes: 25,
-          views: 250),
-     Post(title: "5. Точка съемки",
-          author: "Вика",
-          description: "При съемке очень важен выбор точки съемки. Если предположить, что свет падает на предмет съемки, то при разных поворотах объект окажется или более узнаваемым, или будет выявлена его фактура. Фактически точка съемки определяет предмет и его свойства.",
-          image: "photo5",
-          likes: 15,
-          views: 150)
-    ]
-
-//var isLogined: Bool = false
-
-
 struct Constants {
+    struct PhotosTable {
+        static let topMargin: CGFloat = 12
+        static let leftMargin: CGFloat = 12
+        static let rightMargin: CGFloat = 12
+        static let buttomMargin: CGFloat = 12
+        static let interitemSpacing: CGFloat = 8
+        static let countPhotos: Int = 4
+    }
+    struct PhotosCollection {
+        static let topMargin: CGFloat = 8
+        static let leftMargin: CGFloat = 8
+        static let rightMargin: CGFloat = 8
+        static let buttomMargin: CGFloat = 8
+        static let lineSpacing: CGFloat = 8
+        static let interitemSpacing: CGFloat = 8
+        static let countColumns: Int = 3
+        
+    }
     struct ProfileView {
         struct AvatarImage {
             static let topMargin: CGFloat = 16

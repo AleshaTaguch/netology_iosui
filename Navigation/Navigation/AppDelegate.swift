@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         profileNavController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 0)
         profileNavController.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
-        profileNavController.setViewControllers([profileViewController], animated: true)      
+        profileNavController.setViewControllers([profileViewController], animated: true)
 
         statTBController.viewControllers = [feedNavController,profileNavController]
         statTBController.tabBar.backgroundColor = .systemGray6

@@ -17,6 +17,7 @@ class ProfileTableHeaderView: UIView {
         tableView.estimatedRowHeight = 100
         tableView.backgroundColor = .systemGray6
         tableView.toAutoLayout()
+        
         return tableView
     }()
     
@@ -44,7 +45,7 @@ class ProfileTableHeaderView: UIView {
 
 }
 
-extension ProfileTableHeaderView: UITableViewDataSource ,UITableViewDelegate{
+extension ProfileTableHeaderView: UITableViewDataSource ,UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
@@ -83,8 +84,10 @@ extension ProfileTableHeaderView: UITableViewDataSource ,UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return CGFloat.leastNormalMagnitude
     }
-
+      
 }
+
+
 
 extension ProfileTableHeaderView {
     

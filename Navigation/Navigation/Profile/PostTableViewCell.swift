@@ -55,7 +55,6 @@ class PostTableViewCell: UITableViewCell {
                                 postLikesLabel,
                                 postViewsLabel)
         
-        self.toAutoLayout()
         activateConstraints()
     
     }
@@ -73,6 +72,11 @@ class PostTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("+++ touchesBegan",String(describing: self) )
+        next?.touchesBegan(touches, with: event)
     }
     
 }
