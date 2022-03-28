@@ -3,6 +3,7 @@ import UIKit
 class PhotosViewController: UIViewController{
     
     let photoArray: [String] = sourcePhotoArray
+    
 
     lazy var layuot: UICollectionViewFlowLayout = {
         let layuot = UICollectionViewFlowLayout()
@@ -35,19 +36,18 @@ class PhotosViewController: UIViewController{
         self.view.addSubviews(collectionView)
         
         activateConstraints()
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        navigationController?.navigationBar.isHidden = false
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
 }
 
 extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {

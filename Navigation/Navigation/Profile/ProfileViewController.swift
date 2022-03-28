@@ -2,13 +2,14 @@ import UIKit
 
 class ProfileViewController: UIViewController {
     
-    var isNeedShowLoginView: Bool = true
-
     let profileTableHeaderView: ProfileTableHeaderView = {
         let profileTableHeaderView = ProfileTableHeaderView()
         profileTableHeaderView.toAutoLayout()
         return profileTableHeaderView
     }()
+    
+    var fullScreenAvatarView: ProfileFullScreenAvatarView?
+    var fullScreenAvatarViewConstraints: [NSLayoutConstraint?] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,30 +20,69 @@ class ProfileViewController: UIViewController {
         self.view.addSubviews(profileTableHeaderView)
         activateConstraints()
         
-        isNeedShowLoginView = true
-        
-        // подписаться на уведомления
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(showViewCollection), name: NSNotification.Name(PhotoTableViewCell.tapNotificationName), object: nil)
-
+        // подписаться на уведомления для показа фото галереи
+        notificationCenter.addObserver(self, selector: #selector(showPhotosViewCollection), name: NSNotification.Name(PhotoTableViewCell.tapNotificationName), object: nil)
+        
+        // подписаться на уведомления для показа аватар на весь экран
+        notificationCenter.addObserver(self, selector: #selector(showAvatarView), name: NSNotification.Name(ProfileFullScreenAvatarView.tapShowAvatar), object: nil)
+        
+        // подписаться на уведомления для показа аватар на весь экран
+        notificationCenter.addObserver(self, selector: #selector(hiddenAvatarView), name: NSNotification.Name(ProfileFullScreenAvatarView.tapHiddenAvatar), object: nil)
     }
        
     override func viewDidAppear (_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        navigationController?.navigationBar.isHidden = true
-        if isNeedShowLoginView {
-            navigationController?.pushViewController( LoginViewController(), animated: animated)
-            isNeedShowLoginView = false
-        }
-        
-    }    
+    }
     
-    @objc private func showViewCollection(notification: NSNotification) {
-        navigationController?.navigationBar.isHidden = false
+}
+
+extension ProfileViewController {
+    
+    @objc private func showPhotosViewCollection(notification: NSNotification) {
+        navigationController?.setNavigationBarHidden(false, animated: true)
         navigationController?.pushViewController(PhotosViewController(), animated: true)
     }
     
+    @objc private func showAvatarView(notification: NSNotification) {
+        print("showAvatarView.....")
+        
+        guard let userInfoView = notification.userInfo?["fullScreenAvatarView"] as? ProfileFullScreenAvatarView else {
+           return
+        }
+        
+        fullScreenAvatarView = userInfoView
+        
+        fullScreenAvatarView?.isHidden = false
+        fullScreenAvatarViewConstraints = [
+            fullScreenAvatarView?.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            fullScreenAvatarView?.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
+            fullScreenAvatarView?.widthAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.widthAnchor),
+            fullScreenAvatarView?.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor)]
+        
+        NSLayoutConstraint.activate(fullScreenAvatarViewConstraints.compactMap({$0}))
+        
+        UIView.animate(withDuration: 0.5,
+                       animations: {
+            self.fullScreenAvatarView?.avatarImageView.layer.cornerRadius = 0
+            self.view.layoutIfNeeded() },
+                       completion: {_ in  UIView.animate(withDuration: 0.3)
+                                                         {self.fullScreenAvatarView?.closeImage.alpha = 1 }
+                                    } )
+        
+    }
+    
+    @objc private func hiddenAvatarView(notification: NSNotification) {
+        print("hiddenAvatarView.....")
+        UIView.animate(withDuration: 0.3,
+                       animations: { self.fullScreenAvatarView?.closeImage.alpha = 0 },
+                       completion: {_ in  UIView.animate(withDuration: 0.5,
+                                                         animations: {NSLayoutConstraint.deactivate(self.fullScreenAvatarViewConstraints.compactMap({$0}))
+                                                                      self.fullScreenAvatarView?.avatarImageView.layer.cornerRadius = Constants.ProfileView.AvatarImage.size / 2
+                                                                      self.view.layoutIfNeeded()},
+                                                         completion: { _ in self.fullScreenAvatarView?.isHidden = true})
+                                    } )
+    }
 }
 
 extension ProfileViewController {
@@ -51,9 +91,10 @@ extension ProfileViewController {
             profileTableHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             profileTableHeaderView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
             profileTableHeaderView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            profileTableHeaderView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
-        ])
+            profileTableHeaderView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+      ])
     }
+
 }
 
 

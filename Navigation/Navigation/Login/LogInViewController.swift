@@ -28,10 +28,11 @@ class LoginViewController: UIViewController {
 
         activateConstraints()
         
-        // прячем клавиатуру
+        // прячем клавиатуру если тапаем по вьюшке, а не по полю ввода
         let tapGestureeRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapToHideKeyboard))
         view.addGestureRecognizer(tapGestureeRecognizer)
         
+        contentView.loginButton.isUserInteractionEnabled = true
         contentView.loginButton.addTarget(self, action: #selector(pressButtonLogin), for: .touchUpInside)
         
     }
@@ -87,7 +88,9 @@ extension LoginViewController {
     }
     
     @objc func pressButtonLogin() {
-        navigationController?.popViewController(animated: true)
+        let profileViewController = ProfileViewController()
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setViewControllers([profileViewController], animated: true)
     }
 }
 

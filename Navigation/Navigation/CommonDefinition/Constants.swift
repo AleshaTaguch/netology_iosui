@@ -23,7 +23,7 @@ struct Constants {
         struct AvatarImage {
             static let topMargin: CGFloat = 16
             static let leftMargin: CGFloat = 16
-            static let size: CGFloat = 130.0
+            static let size: CGFloat = 130.0  //130+16+16+50+16=180+48=228
         }
         struct StatusButton {
             static let topMargin: CGFloat = 16

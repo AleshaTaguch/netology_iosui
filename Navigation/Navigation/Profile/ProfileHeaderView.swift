@@ -3,6 +3,8 @@ import UIKit
 class ProfileHeaderView: UITableViewHeaderFooterView {
     
     static let classIdentifier: String = "ProfileHeaderView"
+   
+    private var statusText: String?
     
     let avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
@@ -15,7 +17,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         avatarImageView.toAutoLayout()
         return avatarImageView
     }()
-    
     
     let fullNameLabel: UILabel = {
         let fullNameLabel = UILabel()
@@ -34,7 +35,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return statusLabel
     }()
      
-    let statusTextField: UITextField = {
+    lazy var statusTextField: UITextField = {
         let statusTextField = UITextField()
         statusTextField.layer.cornerRadius = 12
         statusTextField.layer.masksToBounds = true
@@ -50,9 +51,9 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return statusTextField
     }()
     
-    let setStatusButton: UIButton = {
+    lazy var setStatusButton: UIButton = {
         let setStatusButton = UIButton()
-        setStatusButton.frame = CGRect(x: 16, y: 200, width: 350, height: 50)
+        //setStatusButton.frame = CGRect(x: 16, y: 200, width: 350, height: 50)
         setStatusButton.setTitle("Set status", for: .normal)
         setStatusButton.backgroundColor = UIColor(red:0x00/255.0, green: 122.0/255.0, blue: 0xFF/255.0, alpha: 1)
         setStatusButton.setTitleColor(.white, for: .normal)
@@ -67,16 +68,31 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
         return setStatusButton
     }()
     
-    private var statusText: String?
+    lazy var fullScreenAvatarView: ProfileFullScreenAvatarView = {
+        let fullScreenAvatarView = ProfileFullScreenAvatarView()
+        fullScreenAvatarView.toAutoLayout()
+        fullScreenAvatarView.isHidden = true
+        return fullScreenAvatarView
+    }()
     
     
     override init(reuseIdentifier: String?) {
         super.init(reuseIdentifier: reuseIdentifier)
    
         self.contentView.backgroundColor = .systemGray6
-        self.contentView.addSubviews(avatarImageView,setStatusButton,fullNameLabel,statusLabel,statusTextField)
+        self.contentView.addSubviews(avatarImageView,
+                                     setStatusButton,
+                                     fullNameLabel,
+                                     statusLabel,
+                                     statusTextField,
+                                     fullScreenAvatarView)
         activateConstraints()
-                
+        
+        // Регистрация нажатия на аватар для показа аватара на весь экран
+        let tapAvatarGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapedAvatarImageView(_:)))
+        avatarImageView.isUserInteractionEnabled = true
+        avatarImageView.addGestureRecognizer(tapAvatarGestureRecognizer)
+        
     }
     
     required init?(coder: NSCoder) {
@@ -87,6 +103,15 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
 
 extension ProfileHeaderView {
     
+    @objc func tapedAvatarImageView(_ recognizer: UITapGestureRecognizer) {
+        
+        let userInfoNatification: [String : Any] = ["fullScreenAvatarView":fullScreenAvatarView]
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.post(name: Notification.Name(ProfileFullScreenAvatarView.tapShowAvatar),
+                                object: nil,
+                                userInfo: userInfoNatification)
+    }
+        
     @objc func setStatusButtonPressed() {
         var statusText: String
         if let status =  statusLabel.text {
@@ -120,7 +145,7 @@ extension ProfileHeaderView {
             avatarImageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: Constants.ProfileView.AvatarImage.leftMargin),
             avatarImageView.widthAnchor.constraint(equalToConstant: Constants.ProfileView.AvatarImage.size),
             avatarImageView.heightAnchor.constraint(equalToConstant: Constants.ProfileView.AvatarImage.size),
-            
+
             setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: Constants.ProfileView.StatusButton.topMargin),
             setStatusButton.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: Constants.ProfileView.StatusButton.leftMargin),
             setStatusButton.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.ProfileView.StatusButton.rightMargin),
@@ -141,8 +166,14 @@ extension ProfileHeaderView {
             statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: Constants.ProfileView.StatusField.topMargin),
             statusTextField.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: Constants.ProfileView.StatusField.leftMargin),
             statusTextField.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.ProfileView.StatusField.rightMargin),
-            statusTextField.heightAnchor.constraint(equalToConstant: Constants.ProfileView.StatusField.height)
+            statusTextField.heightAnchor.constraint(equalToConstant: Constants.ProfileView.StatusField.height),
+            
+            fullScreenAvatarView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            fullScreenAvatarView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
+            fullScreenAvatarView.widthAnchor.constraint(equalToConstant: Constants.ProfileView.AvatarImage.size + Constants.ProfileView.AvatarImage.leftMargin * 2),
+            fullScreenAvatarView.heightAnchor.constraint(equalToConstant: Constants.ProfileView.AvatarImage.size + Constants.ProfileView.AvatarImage.topMargin * 2)
         ])
+        
     }
 
 }

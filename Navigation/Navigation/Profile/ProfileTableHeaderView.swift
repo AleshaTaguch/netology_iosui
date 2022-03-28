@@ -10,7 +10,7 @@ class ProfileTableHeaderView: UIView {
         tableView.separatorInset = .zero
         tableView.separatorStyle = .singleLine
         tableView.sectionHeaderHeight = UITableView.automaticDimension
-        tableView.estimatedSectionHeaderHeight = 100
+        tableView.estimatedSectionHeaderHeight = 228
         tableView.sectionFooterHeight = 0
         tableView.estimatedSectionFooterHeight = 0 
         tableView.rowHeight = UITableView.automaticDimension
@@ -86,8 +86,6 @@ extension ProfileTableHeaderView: UITableViewDataSource ,UITableViewDelegate {
     }
       
 }
-
-
 
 extension ProfileTableHeaderView {
     

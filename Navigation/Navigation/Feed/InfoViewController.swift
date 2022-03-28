@@ -2,13 +2,8 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-    let button = UIButton()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.view.backgroundColor = UIColor(red: 225.0/255.0, green: 215.0/255.0, blue: 200.0/255.0, alpha: 1)
-        self.title = "Info"
-        
+    lazy var button: UIButton = {
+        let button = UIButton()
         button.setTitle("Go Alert", for: .normal)
         button.backgroundColor = UIColor(red: 85.0/255.0, green: 85.0/255.0, blue: 85.0/255.0, alpha: 1)
         button.setTitleColor(.white, for: .normal)
@@ -19,17 +14,22 @@ class InfoViewController: UIViewController {
         button.layer.shadowColor = UIColor.black.cgColor
         button.layer.shadowOpacity = 0.7
         button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
-        self.view.addSubview(button)
+        button.toAutoLayout()
+        return button
+    }()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.view.backgroundColor = UIColor(red: 225.0/255.0, green: 215.0/255.0, blue: 200.0/255.0, alpha: 1)
+        self.title = "Info"
         
-        button.translatesAutoresizingMaskIntoConstraints = false
-        [
-            button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
-            button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-            button.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6, constant: 0),
-            button.heightAnchor.constraint(equalToConstant: 40)
-        ].forEach({$0.isActive = true})
+        self.view.addSubview(button)
+        activateConstraints()
         
     }
+}
+
+extension InfoViewController {
 
     @objc func showAlert() {
         let alertViewController = UIAlertController(title: "Title Alert", message: "Very long message", preferredStyle: .alert)
@@ -52,3 +52,15 @@ class InfoViewController: UIViewController {
     }
     
 }
+
+extension InfoViewController {
+    private func activateConstraints () {
+        NSLayoutConstraint.activate([
+            button.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+            button.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            button.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.6, constant: 0),
+            button.heightAnchor.constraint(equalToConstant: 40)
+        ])
+    }
+}
+
