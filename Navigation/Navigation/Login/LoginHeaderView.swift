@@ -18,10 +18,7 @@ class LoginHeaderView: UIView {
         loginTextField.placeholder = Constants.LoginView.TextField.loginPlaceholderText
         loginTextField.layer.borderWidth = Constants.LoginView.TextField.borderWidth
         loginTextField.layer.borderColor = UIColor.lightGray.cgColor
-        loginTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.BlankView.width, height: Constants.BlankView.height))
-        loginTextField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.BlankView.width, height: Constants.BlankView.height))
-        loginTextField.leftViewMode = .always
-        loginTextField.rightViewMode = .always
+        loginTextField.setLeftRigthTextMargin()
         loginTextField.toAutoLayout()
         return loginTextField
     }()
@@ -36,11 +33,8 @@ class LoginHeaderView: UIView {
         pwdTextField.placeholder = Constants.LoginView.TextField.pwdPlaceholderText
         pwdTextField.layer.borderWidth = Constants.LoginView.TextField.borderWidth
         pwdTextField.layer.borderColor = UIColor.lightGray.cgColor
-        pwdTextField.leftView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.BlankView.width, height: Constants.BlankView.height))
-        pwdTextField.rightView = UIView(frame: CGRect(x: 0, y: 0, width: Constants.BlankView.width, height: Constants.BlankView.height))
-        pwdTextField.leftViewMode = .always
-        pwdTextField.rightViewMode = .always
         pwdTextField.isSecureTextEntry = true
+        pwdTextField.setLeftRigthTextMargin()
         pwdTextField.toAutoLayout()
         return pwdTextField
     }()
@@ -100,25 +94,24 @@ extension LoginHeaderView {
     
     private func activateConstraints () {
         NSLayoutConstraint.activate([
-        logoImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.LoginView.Logo.topMargin),
-        logoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-        logoImageView.widthAnchor.constraint(equalToConstant: Constants.LoginView.Logo.width),
-        logoImageView.heightAnchor.constraint(equalToConstant: Constants.LoginView.Logo.height),
-     
-        stackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: Constants.LoginView.StackField.topMargin),
-        stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.LoginView.StackField.leftMargin),
-        stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.LoginView.StackField.rigthMargin),
-        stackView.heightAnchor.constraint(equalToConstant: Constants.LoginView.StackField.height),
-        
-        loginTextField.heightAnchor.constraint(equalToConstant: Constants.LoginView.TextField.height),
-        pwdTextField.heightAnchor.constraint(equalToConstant: Constants.LoginView.TextField.height),
-        
-        loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: Constants.LoginView.LoginButton.topMargin),
-        loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.LoginView.LoginButton.leftMargin),
-        loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.LoginView.LoginButton.leftMargin),
-        loginButton.heightAnchor.constraint(equalToConstant: Constants.LoginView.LoginButton.height),
-        loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-        
+            logoImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.LoginView.Logo.topMargin),
+            logoImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            logoImageView.widthAnchor.constraint(equalToConstant: Constants.LoginView.Logo.width),
+            logoImageView.heightAnchor.constraint(equalToConstant: Constants.LoginView.Logo.height),
+         
+            stackView.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: Constants.LoginView.StackField.topMargin),
+            stackView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.LoginView.StackField.leftMargin),
+            stackView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.LoginView.StackField.rigthMargin),
+            stackView.heightAnchor.constraint(equalToConstant: Constants.LoginView.StackField.height),
+            
+            loginTextField.heightAnchor.constraint(equalToConstant: Constants.LoginView.TextField.height),
+            pwdTextField.heightAnchor.constraint(equalToConstant: Constants.LoginView.TextField.height),
+            
+            loginButton.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: Constants.LoginView.LoginButton.topMargin),
+            loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.LoginView.LoginButton.leftMargin),
+            loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.LoginView.LoginButton.leftMargin),
+            loginButton.heightAnchor.constraint(equalToConstant: Constants.LoginView.LoginButton.height),
+            loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
 }

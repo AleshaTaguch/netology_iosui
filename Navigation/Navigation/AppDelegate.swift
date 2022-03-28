@@ -26,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         profileNavController.setViewControllers([profileViewController], animated: true)      
 
         statTBController.viewControllers = [feedNavController,profileNavController]
+        statTBController.tabBar.backgroundColor = .systemGray6
+        statTBController.tabBar.layer.borderWidth = 0.5
+        statTBController.tabBar.layer.borderColor = UIColor.lightGray.cgColor
+    
         
         window?.rootViewController = statTBController
         
