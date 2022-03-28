@@ -12,19 +12,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     let profileNavController = UINavigationController()
     let profileViewController = ProfileViewController()
-    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         window = UIWindow(frame: UIScreen.main.bounds)
         
-        feedNavController.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house.fill"), tag: 0)
-        feedNavController.tabBarItem.selectedImage = UIImage(systemName: "house")
+        feedNavController.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house"), tag: 0)
+        feedNavController.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
         feedNavController.setViewControllers([feedViewController], animated: true)
         
-        profileNavController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.fill"), tag: 0)
-        profileNavController.tabBarItem.selectedImage = UIImage(systemName: "persone")
-        profileNavController.setViewControllers([profileViewController], animated: true)
+        profileNavController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 0)
+        profileNavController.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
+        profileNavController.setViewControllers([profileViewController], animated: true)      
 
         statTBController.viewControllers = [feedNavController,profileNavController]
         

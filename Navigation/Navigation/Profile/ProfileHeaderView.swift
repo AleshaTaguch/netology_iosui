@@ -51,7 +51,7 @@ class ProfileHeaderView: UIView {
                                      width: 200,
                                      height: 20)
         fullNameLabel.text = "Очень Добрый Кот"
-        fullNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
+        fullNameLabel.font = UIFont.boldSystemFont(ofSize: 34)
         fullNameLabel.translatesAutoresizingMaskIntoConstraints = false
         self.addSubview(fullNameLabel)
         
