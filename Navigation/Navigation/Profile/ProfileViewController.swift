@@ -13,10 +13,9 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        self.view.backgroundColor = .systemGray6
-        self.title = "Profile"
         
+        self.view.backgroundColor = .systemGray6
+
         self.view.addSubviews(profileTableHeaderView)
         activateConstraints()
         
@@ -53,7 +52,9 @@ extension ProfileViewController {
         
         fullScreenAvatarView = userInfoView
         
+        profileTableHeaderView.tableView.isScrollEnabled = false
         fullScreenAvatarView?.isHidden = false
+        fullScreenAvatarView?.isUserInteractionEnabled = true
         fullScreenAvatarViewConstraints = [
             fullScreenAvatarView?.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
             fullScreenAvatarView?.leftAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leftAnchor),
@@ -80,7 +81,10 @@ extension ProfileViewController {
                                                          animations: {NSLayoutConstraint.deactivate(self.fullScreenAvatarViewConstraints.compactMap({$0}))
                                                                       self.fullScreenAvatarView?.avatarImageView.layer.cornerRadius = Constants.ProfileView.AvatarImage.size / 2
                                                                       self.view.layoutIfNeeded()},
-                                                         completion: { _ in self.fullScreenAvatarView?.isHidden = true})
+                                                         completion: { _ in self.fullScreenAvatarView?.isHidden = true
+                           self.profileTableHeaderView.tableView.isScrollEnabled = true
+
+                       })
                                     } )
     }
 }

@@ -2,7 +2,7 @@ import UIKit
 
 class LoginViewController: UIViewController {
     
-    public var isLogined: Bool = false
+    //public var isLogined: Bool = false
      
      let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.isLogined = false
+        //self.isLogined = false
         self.view.backgroundColor = .white
         
         self.view.addSubview(scrollView)
