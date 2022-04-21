@@ -74,11 +74,6 @@ class PostTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("+++ touchesBegan",String(describing: self) )
-        next?.touchesBegan(touches, with: event)
-    }
-    
 }
 
 extension PostTableViewCell {

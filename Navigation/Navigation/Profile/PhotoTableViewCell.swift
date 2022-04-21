@@ -3,7 +3,7 @@ import UIKit
 class PhotoTableViewCell: UITableViewCell {
     
     static let classIdentifier: String = "PhotoTableViewCell"
-    static let tapNotificationName: String = "tagImageTapped"
+    static let tapNotificationName: String = "tapImageTapped"
     
     let photoArray: [String] = sourcePhotoArray
     
@@ -46,15 +46,14 @@ class PhotoTableViewCell: UITableViewCell {
             stackView.addArrangedSubview(imageView)
         }
         
-        
-        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(_:)))
+        //tapGestureRecognizer.delegate = ProfileViewController.self
         titleImage.isUserInteractionEnabled = true
         titleImage.addGestureRecognizer(tapGestureRecognizer)
         
         contentView.addSubviews(titleLabel,titleImage,stackView)
         
         activateConstraints()
-    
     }
     
     required init?(coder: NSCoder) {
@@ -77,10 +76,9 @@ class PhotoTableViewCell: UITableViewCell {
 
 extension PhotoTableViewCell {
     
-    @objc func imageTapped() {
+    @objc func imageTapped(_ recognizer: UITapGestureRecognizer) {
         let notificationCenter = NotificationCenter.default
         notificationCenter.post(name: Notification.Name(PhotoTableViewCell.tapNotificationName), object: nil)
-        
     }
     
 }

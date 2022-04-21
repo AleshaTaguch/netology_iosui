@@ -5,32 +5,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    let statTBController = UITabBarController()
-    
-    let feedNavController = UINavigationController()
-    let feedViewController = FeedViewController()
-    
-    let profileNavController = UINavigationController()
-    let profileViewController = ProfileViewController()
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        window = UIWindow(frame: UIScreen.main.bounds)
-        
+    let feedNavController: UINavigationController = {
+        let feedNavController = UINavigationController()
         feedNavController.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house"), tag: 0)
         feedNavController.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
-        feedNavController.setViewControllers([feedViewController], animated: true)
-        
+        feedNavController.setViewControllers([FeedViewController()], animated: true)
+        return feedNavController
+    }()
+    
+    let profileNavController: UINavigationController = {
+        let profileNavController = UINavigationController()
         profileNavController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 0)
         profileNavController.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
-        profileNavController.setViewControllers([profileViewController], animated: true)
+        profileNavController.setViewControllers([LoginViewController()], animated: true)
+        return profileNavController
+    }()
 
-        statTBController.viewControllers = [feedNavController,profileNavController]
+    
+    lazy var statTBController: UITabBarController = {
+        let statTBController = UITabBarController()
+        statTBController.viewControllers = [self.feedNavController,self.profileNavController]
         statTBController.tabBar.backgroundColor = .systemGray6
         statTBController.tabBar.layer.borderWidth = 0.5
         statTBController.tabBar.layer.borderColor = UIColor.lightGray.cgColor
+        return statTBController
+    }()
     
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        window = UIWindow(frame: UIScreen.main.bounds)
+
         window?.rootViewController = statTBController
         
         window?.makeKeyAndVisible()
