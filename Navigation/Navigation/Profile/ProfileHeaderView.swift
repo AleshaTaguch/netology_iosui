@@ -105,8 +105,6 @@ extension ProfileHeaderView {
     
     @objc func tapedAvatarImageView(_ recognizer: UITapGestureRecognizer) {
         
-        print("======================== tapedAvatarImageView")
-        
         let userInfoNatification: [String : Any] = ["fullScreenAvatarView":fullScreenAvatarView]
         let notificationCenter = NotificationCenter.default
         notificationCenter.post(name: Notification.Name(ProfileFullScreenAvatarView.tapShowAvatar),
