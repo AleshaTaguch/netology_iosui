@@ -15,6 +15,9 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = .systemGray6
+        #if DEBUG
+        self.view.backgroundColor = .red
+        #endif
 
         self.view.addSubviews(profileTableHeaderView)
         activateConstraints()
