@@ -81,7 +81,7 @@ extension PostTableViewCell {
     
     public func setCellFromDataSet(_ post: Post) {
         self.postTitleLabel.text = post.title
-        self.postImageView.image = UIImage(named: post.image)
+        self.postImageView.image = post.imageWithFilter // UIImage(named: post.image)
         self.postDescriptionLabel.text = post.description
         self.postLikesLabel.text = "Likes: \(post.likes)"
         self.postViewsLabel.text = "Views: \(post.views)"
