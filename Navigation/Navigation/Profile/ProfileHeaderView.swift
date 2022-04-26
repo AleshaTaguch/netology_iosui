@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class ProfileHeaderView: UITableViewHeaderFooterView {
     
@@ -140,6 +141,49 @@ extension ProfileHeaderView {
 extension ProfileHeaderView {
     
     private func activateConstraints () {
+        
+        avatarImageView.snp.makeConstraints {make in
+            make.top.equalToSuperview().inset(Constants.ProfileView.AvatarImage.topMargin)
+            make.left.equalToSuperview().inset(Constants.ProfileView.AvatarImage.leftMargin)
+            make.width.height.equalTo(Constants.ProfileView.AvatarImage.size)
+        }
+        
+        setStatusButton.snp.makeConstraints {make in
+            make.top.equalTo(avatarImageView.snp.bottom).offset(Constants.ProfileView.StatusButton.topMargin)
+            make.left.equalToSuperview().inset(Constants.ProfileView.StatusButton.leftMargin)
+            make.right.equalToSuperview().inset(Constants.ProfileView.StatusButton.rightMargin)
+            make.height.equalTo(Constants.ProfileView.StatusButton.height)
+            make.bottom.equalToSuperview().inset(Constants.ProfileView.StatusButton.buttomMargin)
+        }
+        
+        fullNameLabel.snp.makeConstraints {make in
+            make.top.equalToSuperview().inset(Constants.ProfileView.FullName.topMargin)
+            make.left.equalTo(avatarImageView.snp.right).offset(Constants.ProfileView.FullName.leftMargin)
+            make.right.equalToSuperview().inset(Constants.ProfileView.FullName.leftMargin)
+            make.height.equalTo(Constants.ProfileView.FullName.height)
+        }
+        
+        statusLabel.snp.makeConstraints { make in
+            make.bottom.equalTo(setStatusButton.snp.top).offset(-Constants.ProfileView.StatusLabel.buttomMargin)
+            make.left.equalTo(avatarImageView.snp.right).offset(Constants.ProfileView.StatusLabel.leftMargin)
+            make.right.equalToSuperview().inset(Constants.ProfileView.StatusLabel.rightMargin)
+            make.height.equalTo(Constants.ProfileView.StatusLabel.height)
+        }
+        
+        statusTextField.snp.makeConstraints { make in
+            make.top.equalTo(statusLabel.snp.bottom).offset(Constants.ProfileView.StatusField.topMargin)
+            make.left.equalTo(avatarImageView.snp.right).offset(Constants.ProfileView.StatusField.leftMargin)
+            make.right.equalToSuperview().inset(Constants.ProfileView.StatusField.rightMargin)
+            make.height.equalTo(Constants.ProfileView.StatusField.height)
+        }
+
+        fullScreenAvatarView.snp.makeConstraints { make in
+            make.top.left.equalToSuperview()
+            make.height.width.equalTo(Constants.ProfileView.AvatarImage.size +
+                                      Constants.ProfileView.AvatarImage.leftMargin * 2)
+        }
+
+        /*
         NSLayoutConstraint.activate([
             avatarImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Constants.ProfileView.AvatarImage.topMargin),
             avatarImageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: Constants.ProfileView.AvatarImage.leftMargin),
@@ -172,7 +216,9 @@ extension ProfileHeaderView {
             fullScreenAvatarView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
             fullScreenAvatarView.widthAnchor.constraint(equalToConstant: Constants.ProfileView.AvatarImage.size + Constants.ProfileView.AvatarImage.leftMargin * 2),
             fullScreenAvatarView.heightAnchor.constraint(equalToConstant: Constants.ProfileView.AvatarImage.size + Constants.ProfileView.AvatarImage.topMargin * 2)
+            
         ])
+        */
         
     }
 

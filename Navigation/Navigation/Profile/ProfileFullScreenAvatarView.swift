@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileFullScreenAvatarView: UIView {
     
@@ -73,6 +74,21 @@ extension ProfileFullScreenAvatarView {
 extension ProfileFullScreenAvatarView {
     
     private func activateConstraints() {
+  
+        avatarImageView.snp.makeConstraints {make in
+            make.center.equalToSuperview()
+            make.width.equalTo(self.snp.width).inset(Constants.ProfileView.AvatarImage.leftMargin)
+            make.height.equalTo(self.snp.width).inset(Constants.ProfileView.AvatarImage.topMargin)
+        }
+        
+        closeImage.snp.makeConstraints {make in
+            make.top.equalTo(self.safeAreaLayoutGuide).inset(Constants.ProfileView.AvatarImage.topMargin)
+            make.trailing.equalToSuperview().inset(Constants.ProfileView.AvatarImage.leftMargin)
+            make.width.equalTo(self.snp.width).multipliedBy(0.1)
+            make.height.equalTo(self.snp.width).multipliedBy(0.1)
+        }
+
+        /*
         NSLayoutConstraint.activate([
             avatarImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             avatarImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
@@ -83,8 +99,8 @@ extension ProfileFullScreenAvatarView {
             closeImage.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -Constants.ProfileView.AvatarImage.leftMargin),
             closeImage.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.1),
             closeImage.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.1)
-            
         ])
+        */
     }
 }
 
