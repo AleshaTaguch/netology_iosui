@@ -33,6 +33,10 @@ protocol UserService {
     func getUserObjectbyName(_ name: String) -> User?
 }
 
+protocol UserServiceDeligate: AnyObject {
+    func getUserObject() -> User?
+}
+
 
 class CurrentUserService: UserService {
     
