@@ -6,8 +6,7 @@ class ProfileViewController: UIViewController {
     lazy var profileTableHeaderView: ProfileTableHeaderView = {
         let profileTableHeaderView = ProfileTableHeaderView()
         profileTableHeaderView.toAutoLayout()
-        profileTableHeaderView.userService = self.userService
-        profileTableHeaderView.userName = self.userName
+        profileTableHeaderView.userServiceDeligate = self
         return profileTableHeaderView
     }()
     
@@ -118,17 +117,14 @@ extension ProfileViewController {
             make.left.right.bottom.equalTo(self.view)
         }
         
-        /*
-        NSLayoutConstraint.activate([
-             profileTableHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-             profileTableHeaderView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-             profileTableHeaderView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-             profileTableHeaderView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-        ])
-        */
-        
     }
 
 }
 
-
+extension ProfileViewController: UserServiceDeligate {
+    func getUserObject() -> User? {
+        return userService.getUserObjectbyName(userName)
+    }
+    
+    
+}
