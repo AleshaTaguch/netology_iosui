@@ -4,7 +4,10 @@ import StorageService
 class ProfileTableHeaderView: UIView {
     
     let postsArray: [Post] = sourcePostsArray
-
+    
+    var userService: UserService?
+    var userName: String?
+    
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.isScrollEnabled = true
@@ -76,6 +79,10 @@ extension ProfileTableHeaderView: UITableViewDataSource ,UITableViewDelegate {
         
         if section == 0 {
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.classIdentifier) as! ProfileHeaderView
+            if let valueUserName = userName,
+                let valueUser = userService?.getUserObjectbyName(valueUserName) {
+                header.setProfileFromUser(valueUser)
+            }
             return header
         } else {
             return nil

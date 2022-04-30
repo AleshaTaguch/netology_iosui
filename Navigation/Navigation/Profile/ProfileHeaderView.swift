@@ -9,7 +9,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     let avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
-        avatarImageView.image = UIImage(named: "UserImage")
+        //avatarImageView.image = UIImage(named: "UserImage")
         avatarImageView.layer.cornerRadius = Constants.ProfileView.AvatarImage.size / 2
         avatarImageView.layer.masksToBounds = true
         avatarImageView.layer.borderWidth = 3
@@ -21,7 +21,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     let fullNameLabel: UILabel = {
         let fullNameLabel = UILabel()
-        fullNameLabel.text = "Arthur Fellig (Weegee)"
+        //fullNameLabel.text = "Arthur Fellig (Weegee)"
         fullNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
         fullNameLabel.toAutoLayout()
         return fullNameLabel
@@ -29,7 +29,7 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     let statusLabel: UILabel = {
         let statusLabel = UILabel()
-        statusLabel.text = "Waiting for something"
+        //statusLabel.text = "Waiting for something"
         statusLabel.font = UIFont.systemFont(ofSize: 14)
         statusLabel.textColor = .gray
         statusLabel.toAutoLayout()
@@ -135,6 +135,16 @@ extension ProfileHeaderView {
         } else {
             self.statusText = nil
         }
+    }
+    
+}
+
+extension ProfileHeaderView {
+    
+    public func setProfileFromUser(_ user: User) {
+        avatarImageView.image = user.avatarImage
+        fullNameLabel.text = user.fullName
+        statusLabel.text = user.status.rawValue
     }
 }
 

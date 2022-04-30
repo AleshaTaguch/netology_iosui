@@ -3,14 +3,29 @@ import SnapKit
 
 class ProfileViewController: UIViewController {
     
-    let profileTableHeaderView: ProfileTableHeaderView = {
+    lazy var profileTableHeaderView: ProfileTableHeaderView = {
         let profileTableHeaderView = ProfileTableHeaderView()
         profileTableHeaderView.toAutoLayout()
+        profileTableHeaderView.userService = self.userService
+        profileTableHeaderView.userName = self.userName
         return profileTableHeaderView
     }()
     
     var fullScreenAvatarView: ProfileFullScreenAvatarView?
     var fullScreenAvatarViewConstraints: [NSLayoutConstraint?] = []
+    
+    var userService: UserService
+    var userName: String
+    
+    init(currentUser currentUserService: UserService, currentUserName: String) {
+        self.userService = currentUserService
+        self.userName = currentUserName
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +35,8 @@ class ProfileViewController: UIViewController {
         self.view.backgroundColor = .red
         #endif
 
+        print("userService = \(userService)")
+        print("userName = \(userName)")
         self.view.addSubviews(profileTableHeaderView)
         activateConstraints()
         

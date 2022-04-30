@@ -101,6 +101,18 @@ struct Constants {
         static let height: CGFloat = 10
     }
     
+    struct Users {
+        static let userReleace: User = User(name: "Authur",
+                                            password: "123",
+                                            fullName: "Arthur Fellig (Weegee)",
+                                            avatarImage: UIImage(named: "UserImage"),
+                                            status: .active)
+        static let userDebug: User = User(name: "Test",
+                                            password: "123",
+                                            fullName: "Test Testov (DEBUG)",
+                                            avatarImage: UIImage(named: "UserImageDebug"),
+                                            status: .active)
+    }
 }
 
 
