@@ -17,7 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let profileNavController = UINavigationController()
         profileNavController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 0)
         profileNavController.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
-        profileNavController.setViewControllers([LoginViewController()], animated: true)
+        let loginViewController = LoginViewController()
+        let loginInspector = LoginInspector()
+        loginViewController.loginCheckerDeligate = loginInspector
+        profileNavController.setViewControllers([loginViewController], animated: true)
         return profileNavController
     }()
 
