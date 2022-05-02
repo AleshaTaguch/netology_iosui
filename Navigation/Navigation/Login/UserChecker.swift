@@ -1,10 +1,3 @@
-//
-//  UserChecker.swift
-//  Navigation
-//
-//  Created by tertyshniy on 01.05.2022.
-//
-
 import Foundation
 
 
