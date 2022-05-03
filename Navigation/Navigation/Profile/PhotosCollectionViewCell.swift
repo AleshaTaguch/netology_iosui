@@ -29,8 +29,8 @@ class PhotosCollectionViewCell: UICollectionViewCell {
 
 extension PhotosCollectionViewCell {
     
-    public func setCellFromDataSet(_ namePhoto: String) {
-        self.imageView.image = UIImage(named: namePhoto)
+    public func setCellFromDataSet(_ imagePhoto: UIImage) {
+        self.imageView.image = imagePhoto
     }
 
 }

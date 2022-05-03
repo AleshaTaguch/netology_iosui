@@ -1,8 +1,11 @@
 import UIKit
+import iOSIntPackage
 
 class PhotosViewController: UIViewController{
     
-    let photoArray: [String] = sourcePhotoArray
+    var photoImageReciveArray: [UIImage] = []
+    
+    let imagePublisherFacade = ImagePublisherFacade()
     
 
     lazy var layuot: UICollectionViewFlowLayout = {
@@ -28,6 +31,10 @@ class PhotosViewController: UIViewController{
         return collectionView
     }()
     
+    override func loadView() {
+        super.loadView()
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +43,12 @@ class PhotosViewController: UIViewController{
         self.view.addSubviews(collectionView)
         
         activateConstraints()
+        
+        //подписываемся на получение сообщенй
+        imagePublisherFacade.subscribe(self)
+        //запускаем таймер с публикацией картинок
+        imagePublisherFacade.addImagesWithTimer(time: 0.1, repeat: 30, userImages: sourcePhotoImageArray )
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -46,6 +59,10 @@ class PhotosViewController: UIViewController{
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(true, animated: true)
+        
+        //отменяем подписку и чмстим масив паболишеров
+        imagePublisherFacade.removeSubscription(for: self)
+        imagePublisherFacade.rechargeImageLibrary()
     }
     
 }
@@ -53,7 +70,8 @@ class PhotosViewController: UIViewController{
 extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return photoArray.count
+        //return photoArray.count
+        return photoImageReciveArray.count
         
     }
     
@@ -62,7 +80,8 @@ extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDele
                                                             for: indexPath) as? PhotosCollectionViewCell else {
             return UICollectionViewCell()
         }
-        cell.setCellFromDataSet(photoArray[indexPath.row])
+        //cell.setCellFromDataSet(photoArray[indexPath.row])
+        cell.setCellFromDataSet(photoImageReciveArray[indexPath.row])
         return cell 
     }
     
@@ -87,3 +106,13 @@ extension PhotosViewController {
         ])
     }
 }
+
+//получение картинок от publisher-a
+extension PhotosViewController: ImageLibrarySubscriber {
+    func receive(images: [UIImage]) {
+        photoImageReciveArray = images
+        self.title = "Photo Gallary [\(photoImageReciveArray.count)]"
+        collectionView.reloadData()
+    }
+}
+

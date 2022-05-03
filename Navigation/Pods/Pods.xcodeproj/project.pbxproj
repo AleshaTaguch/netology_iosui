@@ -351,6 +351,8 @@
 				9BD86E1075506F6042BEB7555CC295AC /* PBXTargetDependency */,
 			);
 			name = "Pods-Navigation";
+			packageProductDependencies = (
+			);
 			productName = Pods_Navigation;
 			productReference = 5EF07FADF9F5ABC2ACFAAC8977009C07 /* Pods-Navigation */;
 			productType = "com.apple.product-type.framework";
@@ -409,6 +411,8 @@
 				en,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
+			packageReferences = (
+			);
 			productRefGroup = 1E6F4296BF449388C70EF6DAC57B8DE9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
