@@ -2,21 +2,8 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
-    lazy var button: UIButton = {
-        let button = UIButton()
-        button.setTitle("Go Alert", for: .normal)
-        button.backgroundColor = UIColor(red: 85.0/255.0, green: 85.0/255.0, blue: 85.0/255.0, alpha: 1)
-        button.setTitleColor(.white, for: .normal)
-        button.layer.cornerRadius = 4
-        button.layer.masksToBounds = false
-        button.layer.shadowOffset = CGSize(width: 4, height: 4)
-        button.layer.shadowRadius = CGFloat(4)
-        button.layer.shadowColor = UIColor.black.cgColor
-        button.layer.shadowOpacity = 0.7
-        button.addTarget(self, action: #selector(showAlert), for: .touchUpInside)
-        button.toAutoLayout()
-        return button
-    }()
+    
+    lazy var button: CustomButton = CustomButton(frame: .zero, title: "Go Alert") { self.showAlert() }
 
     override func viewDidLoad() {
         super.viewDidLoad()
