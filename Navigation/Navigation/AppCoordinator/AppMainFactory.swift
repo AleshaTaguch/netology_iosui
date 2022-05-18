@@ -30,7 +30,6 @@ final class AppMainFactory {
             navigationController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 0)
             navigationController.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
         }
-        //navigationController.setViewControllers([viewController], animated: true)
         return navigationController
     }
     

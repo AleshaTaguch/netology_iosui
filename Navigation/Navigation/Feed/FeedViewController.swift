@@ -4,6 +4,8 @@ import StorageService
 
 class FeedViewController: UIViewController {
     
+    var coordinatorDeligate: FeedCoordinatorProtocol?
+    
     let model: FeedModel = FeedModel()
     
     var currentPost: Post?
@@ -49,10 +51,9 @@ extension FeedViewController {
     
     @objc func showPost() {
         currentPost = Post(title: "Post 12345", author: "?", description: "?", image: "?", likes: 0, views: 0)
-        let postViewController = PostViewController()
-        postViewController.post = currentPost
-        navigationController?.pushViewController(postViewController, animated: true)
-
+        if let valueCorrentPost = currentPost, let cordinator = coordinatorDeligate {
+            cordinator.doEventHandle(with: .showPost(valueCorrentPost))
+        }
     }
     
 }
