@@ -44,7 +44,7 @@ final class AppMainFactory {
     
     private func makeModuleLogin() -> UIViewController  {
         let loginViewController = LoginViewController()
-        loginViewController.loginCheckerDeligate = myLoginFactory.share.makeLoginInpector()
+        loginViewController.loginCheckerDeligate = LoginFactory.share.makeLoginInpector()
         return loginViewController
     }
     

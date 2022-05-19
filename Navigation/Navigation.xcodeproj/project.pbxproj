@@ -220,14 +220,15 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
-		596F6BAD2829B8C500226BE9 /* AppCoordinator */ = {
+		596F6BAD2829B8C500226BE9 /* App */ = {
 			isa = PBXGroup;
 			children = (
 				596F6BB828301EAD00226BE9 /* AppCoordinatorProtocol.swift */,
 				596F6BAE2829BBEA00226BE9 /* AppCoordinator.swift */,
 				596F6BB3282C63A100226BE9 /* AppMainFactory.swift */,
+				6528865C27BC1053005A379F /* AppDelegate.swift */,
 			);
-			path = AppCoordinator;
+			path = App;
 			sourceTree = "<group>";
 		};
 		596F6BB5282DB0BF00226BE9 /* Coordinator */ = {
@@ -269,14 +270,13 @@
 		6528865B27BC1053005A379F /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				596F6BAD2829B8C500226BE9 /* AppCoordinator */,
+				596F6BAD2829B8C500226BE9 /* App */,
 				595FB24E2822DBFC00E4E328 /* User */,
 				59642B4327D7F9CF00875F09 /* Feed */,
 				59642B4227D7463300875F09 /* Login */,
 				652BCC5E27C2618D003841E3 /* Profile */,
 				595FB24F2822FA3800E4E328 /* CustomUI */,
 				59642B3A27D15AD100875F09 /* CommonDefinition */,
-				6528865C27BC1053005A379F /* AppDelegate.swift */,
 				6528865E27BC1053005A379F /* SceneDelegate.swift */,
 				6528866027BC1053005A379F /* ViewController.swift */,
 				6528866527BC105C005A379F /* Assets.xcassets */,

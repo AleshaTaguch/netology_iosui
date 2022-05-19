@@ -51,8 +51,8 @@ extension FeedViewController {
     
     @objc func showPost() {
         currentPost = Post(title: "Post 12345", author: "?", description: "?", image: "?", likes: 0, views: 0)
-        if let valueCorrentPost = currentPost, let cordinator = coordinatorDeligate {
-            cordinator.doEventHandle(with: .showPost(valueCorrentPost))
+        if let valueCorrentPost = currentPost, let coordinator = coordinatorDeligate {
+            coordinator.doEventHandle(with: .showPost(valueCorrentPost))
         }
     }
     
