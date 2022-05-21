@@ -24,10 +24,9 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     func start() {
         let loginViewController = LoginViewController()
         loginViewController.loginCheckerDeligate = LoginFactory.share.makeLoginInpector()
-        loginViewController.doEventWhenSuccess = {(UserService, userName) in
-            //if let self = self {
-                self.doEventSuccessLogin(currentUser: UserService,  currentUserName: userName)
-            //}
+        loginViewController.doEventWhenSuccess = { /*[weak self]*/ (UserService, userName) in
+            //guard let self = self else {return}
+            self.doEventSuccessLogin(currentUser: UserService,  currentUserName: userName)
         }
         
         navigationController?.setViewControllers([loginViewController], animated: true)

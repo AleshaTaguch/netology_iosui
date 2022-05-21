@@ -1,13 +1,13 @@
 import UIKit
 import SnapKit
 
-protocol FeedViewDeligate: AnyObject {
-    func checkWord(word: String) -> (isValid: Bool, resultText: String)
+protocol FeedViewDeligateProtocol: AnyObject {
+    var viewModel: FeedViewModel {get set}
 }
 
 class FeedView: UIView {
     
-   weak var deligate: FeedViewDeligate?
+   weak var deligate: FeedViewDeligateProtocol?
     
     private let textLabel: CustomLabel = {
         let textLabel = CustomLabel(defaultTextColor: .gray)
@@ -22,8 +22,22 @@ class FeedView: UIView {
     
     private lazy var button: CustomButton = CustomButton(frame: .zero, title: "Проверь текст") { self.tapButton() }
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    
+    init(deligate: FeedViewDeligateProtocol?) {
+        super.init(frame: .zero)
+        self.deligate = deligate
+        if let valueDeligate = deligate {
+            valueDeligate.viewModel.onEventCheckWord = { [weak self] (isValid, resultText) in
+                guard let self = self else {return}
+                if isValid {
+                    self.textLabel.status = .isValid
+                } else {
+                    self.textLabel.status = .isInvalid
+                }
+                self.textLabel.text = resultText
+                
+            }
+        }
         
         self.addSubviews(textLabel,textField,button)
         
@@ -40,19 +54,11 @@ class FeedView: UIView {
 extension FeedView {
     
     private func tapButton() {
-        print("tap")
-        
         guard let valueText = textField.text else { return }
         guard let valueDeligate = deligate else { return }
-        
-        let result = valueDeligate.checkWord(word: valueText)
-        if result.isValid {
-            textLabel.status = .isValid
-        } else {
-            textLabel.status = .isInvalid
-        }
-        textLabel.text = result.resultText
-        
+
+        valueDeligate.viewModel.doEventAction(type: .checkWord(valueText))
+
         return
     }
 

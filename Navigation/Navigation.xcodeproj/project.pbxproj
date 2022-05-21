@@ -37,6 +37,7 @@
 		596F6BB928301EAD00226BE9 /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BB828301EAD00226BE9 /* AppCoordinatorProtocol.swift */; };
 		596F6BBD2835804F00226BE9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BBC2835804F00226BE9 /* LoginCoordinator.swift */; };
 		59D7630D282727BE00F28FDA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D7630C282727BE00F28FDA /* CustomTextField.swift */; };
+		59E1554D2839858B00CCD78D /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E1554C2839858B00CCD78D /* FeedViewModel.swift */; };
 		6528865D27BC1053005A379F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6528865C27BC1053005A379F /* AppDelegate.swift */; };
 		6528865F27BC1053005A379F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6528865E27BC1053005A379F /* SceneDelegate.swift */; };
 		6528866127BC1053005A379F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6528866027BC1053005A379F /* ViewController.swift */; };
@@ -105,6 +106,7 @@
 		596F6BB828301EAD00226BE9 /* AppCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		596F6BBC2835804F00226BE9 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 		59D7630C282727BE00F28FDA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
+		59E1554C2839858B00CCD78D /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		6528865927BC1053005A379F /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6528865C27BC1053005A379F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6528865E27BC1053005A379F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -213,14 +215,15 @@
 				596F6BB5282DB0BF00226BE9 /* Coordinator */,
 				652E085727BD53A5007A1526 /* FeedViewController.swift */,
 				596F6BA92827E7C400226BE9 /* FeedView.swift */,
+				59E1554C2839858B00CCD78D /* FeedViewModel.swift */,
+				596F6BAB28283EBF00226BE9 /* FeedModel.swift */,
 				652E085527BD529A007A1526 /* PostViewController.swift */,
 				652E085D27BD8077007A1526 /* InfoViewController.swift */,
-				596F6BAB28283EBF00226BE9 /* FeedModel.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
 		};
-		596F6BAD2829B8C500226BE9 /* App */ = {
+		596F6BAD2829B8C500226BE9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
 				596F6BB828301EAD00226BE9 /* AppCoordinatorProtocol.swift */,
@@ -228,7 +231,7 @@
 				596F6BB3282C63A100226BE9 /* AppMainFactory.swift */,
 				6528865C27BC1053005A379F /* AppDelegate.swift */,
 			);
-			path = App;
+			path = Application;
 			sourceTree = "<group>";
 		};
 		596F6BB5282DB0BF00226BE9 /* Coordinator */ = {
@@ -270,7 +273,7 @@
 		6528865B27BC1053005A379F /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				596F6BAD2829B8C500226BE9 /* App */,
+				596F6BAD2829B8C500226BE9 /* Application */,
 				595FB24E2822DBFC00E4E328 /* User */,
 				59642B4327D7F9CF00875F09 /* Feed */,
 				59642B4227D7463300875F09 /* Login */,
@@ -519,6 +522,7 @@
 				596F6BB7282DB10000226BE9 /* FeedCoordinator.swift in Sources */,
 				652E085627BD529A007A1526 /* PostViewController.swift in Sources */,
 				652E085C27BD7929007A1526 /* Constants.swift in Sources */,
+				59E1554D2839858B00CCD78D /* FeedViewModel.swift in Sources */,
 				596F6BB928301EAD00226BE9 /* AppCoordinatorProtocol.swift in Sources */,
 				595FB236281E70EE00E4E328 /* UserChecker.swift in Sources */,
 				59642B4D27E26A1500875F09 /* Storage.swift in Sources */,

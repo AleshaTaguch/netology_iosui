@@ -2,11 +2,10 @@ import UIKit
 import SnapKit
 import StorageService
 
-class FeedViewController: UIViewController {
+final class FeedViewController: UIViewController, FeedViewDeligateProtocol {
     
     var coordinatorDeligate: FeedCoordinatorProtocol?
-    
-    let model: FeedModel = FeedModel()
+    var viewModel: FeedViewModel = FeedViewModel()
     
     var currentPost: Post?
     
@@ -25,8 +24,7 @@ class FeedViewController: UIViewController {
     }()
     
     lazy var addedFeedView: FeedView = {
-        let addedFeedView = FeedView(frame: .zero)
-        addedFeedView.deligate = self
+        let addedFeedView = FeedView(deligate: self)
         addedFeedView.toAutoLayout()
         return addedFeedView
     }()
@@ -55,16 +53,6 @@ extension FeedViewController {
             coordinator.doEventHandle(with: .showPost(valueCorrentPost))
         }
     }
-    
-}
-
-extension FeedViewController: FeedViewDeligate {
-    
-    func checkWord(word: String) -> (isValid: Bool, resultText: String) {
-        let modelCheck = model.check(word: word)
-        return modelCheck
-    }
-    
     
 }
 
