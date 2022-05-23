@@ -4,6 +4,9 @@ import UIKit
 final class AppCoordinator: AppCoordinatorProtocol {
     var appTabBarControler: UITabBarController?
     
+    var feedCoordinator: FeedCoordinatorProtocol?
+    var profileCoordinator: ProfileCoordinatorProtocol?
+    
     init(controller: UITabBarController?) {
         self.appTabBarControler = controller
     }
@@ -11,19 +14,22 @@ final class AppCoordinator: AppCoordinatorProtocol {
     func startApplication() {
         if let valueAppTabBarControler = appTabBarControler {
             
-            // создаем контрроллер
-            let feedNavController = AppMainFactory.share.makeAppNavigationController(tabBarItemType: .feed)
-            //создаем координатор и передаем в него контроллер
-            let feedCoordinator = FeedCoordinator(controller: feedNavController)
-            // стартуем координатор
-            feedCoordinator.start()
+            //создаем фабрику
+            let appTabBarFactory = AppTabBarFactory()
             
             // создаем контрроллер
-            let profileNavController = AppMainFactory.share.makeAppNavigationController(tabBarItemType: .profile)
+            let feedNavController = appTabBarFactory.makeAppNavigationController(tabBarItemType: .feed)
             //создаем координатор и передаем в него контроллер
-            let loginCoordinator = LoginCoordinator(controller: profileNavController)
+            feedCoordinator = FeedCoordinator(controller: feedNavController)
             // стартуем координатор
-            loginCoordinator.start()
+            feedCoordinator?.start()
+            
+            // создаем контрроллер
+            let profileNavController = appTabBarFactory.makeAppNavigationController(tabBarItemType: .profile)
+            //создаем координатор и передаем в него контроллер
+            profileCoordinator = ProfileCoordinator(controller: profileNavController)
+            // стартуем координатор
+            profileCoordinator?.start()
             
             valueAppTabBarControler.viewControllers = [feedNavController,profileNavController]
             

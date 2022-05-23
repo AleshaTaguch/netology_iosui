@@ -4,7 +4,7 @@ import StorageService
 
 final class FeedViewController: UIViewController, FeedViewDeligateProtocol {
     
-    var coordinatorDeligate: FeedCoordinatorProtocol?
+    weak var coordinatorDeligate: FeedCoordinatorProtocol?
     var viewModel: FeedViewModel = FeedViewModel()
     
     var currentPost: Post?

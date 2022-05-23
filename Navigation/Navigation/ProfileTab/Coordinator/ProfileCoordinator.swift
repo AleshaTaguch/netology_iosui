@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-protocol LoginCoordinatorProtocol: AnyObject {
+protocol ProfileCoordinatorProtocol: AnyObject {
     var navigationController: UINavigationController? {get set}
     func start()
 }
 
 
-final class LoginCoordinator: LoginCoordinatorProtocol {
+final class ProfileCoordinator: ProfileCoordinatorProtocol {
     weak var navigationController: UINavigationController?
     
     init(controller: UINavigationController?) {
@@ -24,8 +24,8 @@ final class LoginCoordinator: LoginCoordinatorProtocol {
     func start() {
         let loginViewController = LoginViewController()
         loginViewController.loginCheckerDeligate = LoginFactory.share.makeLoginInpector()
-        loginViewController.doEventWhenSuccess = { /*[weak self]*/ (UserService, userName) in
-            //guard let self = self else {return}
+        loginViewController.doEventWhenSuccess = { [weak self] (UserService, userName) in
+            guard let self = self else {return}
             self.doEventSuccessLogin(currentUser: UserService,  currentUserName: userName)
         }
         

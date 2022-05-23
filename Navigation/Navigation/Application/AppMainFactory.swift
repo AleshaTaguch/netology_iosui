@@ -1,35 +1,14 @@
+/*
 import Foundation
 import UIKit
 
 
 final class AppMainFactory {
-    
-    static let share: AppMainFactory = AppMainFactory()
 
     enum ModuleName {
         case login
         case profile
         case feed
-    }
-    
-    enum TabBarItemType {
-        case feed
-        case profile
-    }
-    
-    private init() {}
-    
-    public func makeAppNavigationController(tabBarItemType: TabBarItemType) -> UINavigationController {
-        let navigationController = UINavigationController()
-        switch tabBarItemType {
-        case .feed:
-            navigationController.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house"), tag: 0)
-            navigationController.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
-        case .profile:
-            navigationController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 0)
-            navigationController.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
-        }
-        return navigationController
     }
     
     private func makeModuleFeed() -> UIViewController  {
@@ -38,7 +17,8 @@ final class AppMainFactory {
     }
     
     private func makeModuleProfile() -> UIViewController   {
-        return UIViewController()
+        let profileViewController = ProfileViewController()
+        return profileViewController
     }
     
     private func makeModuleLogin() -> UIViewController  {
@@ -47,7 +27,7 @@ final class AppMainFactory {
         return loginViewController
     }
     
-    func startModule(module: ModuleName) -> UIViewController {
+    public func startModule(module: ModuleName) -> UIViewController {
         switch module {
         case .feed:
             return makeModuleFeed()
@@ -58,6 +38,7 @@ final class AppMainFactory {
         }
         
     }
-        
+    
 }
 
+ */

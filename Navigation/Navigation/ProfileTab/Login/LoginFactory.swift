@@ -6,7 +6,7 @@ protocol LoginFactoryProtocol {
 
 class LoginFactory: LoginFactoryProtocol{
     
-    static let share: LoginFactory = LoginFactory()
+    static let share: LoginFactoryProtocol = LoginFactory()
     
     private init() {}
 
