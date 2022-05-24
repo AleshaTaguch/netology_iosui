@@ -32,7 +32,6 @@
 		596F6BAA2827E7C400226BE9 /* FeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BA92827E7C400226BE9 /* FeedView.swift */; };
 		596F6BAC28283EBF00226BE9 /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BAB28283EBF00226BE9 /* FeedModel.swift */; };
 		596F6BAF2829BBEA00226BE9 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BAE2829BBEA00226BE9 /* AppCoordinator.swift */; };
-		596F6BB4282C63A100226BE9 /* AppMainFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BB3282C63A100226BE9 /* AppMainFactory.swift */; };
 		596F6BB7282DB10000226BE9 /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BB6282DB10000226BE9 /* FeedCoordinator.swift */; };
 		596F6BB928301EAD00226BE9 /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BB828301EAD00226BE9 /* AppCoordinatorProtocol.swift */; };
 		596F6BBD2835804F00226BE9 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BBC2835804F00226BE9 /* ProfileCoordinator.swift */; };
@@ -103,7 +102,6 @@
 		596F6BA92827E7C400226BE9 /* FeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedView.swift; sourceTree = "<group>"; };
 		596F6BAB28283EBF00226BE9 /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
 		596F6BAE2829BBEA00226BE9 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		596F6BB3282C63A100226BE9 /* AppMainFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppMainFactory.swift; sourceTree = "<group>"; };
 		596F6BB6282DB10000226BE9 /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		596F6BB828301EAD00226BE9 /* AppCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		596F6BBC2835804F00226BE9 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
@@ -227,7 +225,6 @@
 				596F6BB828301EAD00226BE9 /* AppCoordinatorProtocol.swift */,
 				596F6BAE2829BBEA00226BE9 /* AppCoordinator.swift */,
 				59E1554E283C24EC00CCD78D /* AppTabBarFactory.swift */,
-				596F6BB3282C63A100226BE9 /* AppMainFactory.swift */,
 				6528865C27BC1053005A379F /* AppDelegate.swift */,
 			);
 			path = Application;
@@ -533,7 +530,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				596F6BB4282C63A100226BE9 /* AppMainFactory.swift in Sources */,
 				59E1554F283C24EC00CCD78D /* AppTabBarFactory.swift in Sources */,
 				596F6BAA2827E7C400226BE9 /* FeedView.swift in Sources */,
 				596F6BAC28283EBF00226BE9 /* FeedModel.swift in Sources */,
