@@ -63,11 +63,17 @@ class PhotosViewController: UIViewController{
     
     
     func doSubscribeOnProcessedArray() {
+        let colorFilter: ColorFilter = {
+            guard let colorFilter = ColorFilter.allCases.randomElement() else {
+                return .chrome
+            }
+            return colorFilter
+        }()
         var startTime: UInt64 = 0
         var finishTime: UInt64 = 0
         startTime = DispatchTime.now().uptimeNanoseconds
         ImageProcessor().processImagesOnThread(sourceImages: sourcePhotoImageArray,
-                                               filter: .gaussianBlur(radius: 2),
+                                               filter: colorFilter,
                                                qos: .background) { arrayCGImage in
             var arrayUIImage: [UIImage] = []
             arrayCGImage.forEach{
@@ -83,7 +89,7 @@ class PhotosViewController: UIViewController{
                 self.imagePublisherFacade.addImagesWithTimer(time: 0.1, repeat: 30, userImages: arrayUIImage )
                 //печать длительности времени выполнения
                 let elepsedTimePerSecond = Double(finishTime - startTime) / 1000000000
-                print("processImagesOnThread - execution time \(elepsedTimePerSecond) sec")
+                print("processImagesOnThread - filter \(colorFilter), execution time \(elepsedTimePerSecond) sec")
             }
         }
     }
