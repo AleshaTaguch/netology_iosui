@@ -43,12 +43,8 @@ class PhotosViewController: UIViewController{
         self.view.addSubviews(collectionView)
         
         activateConstraints()
-        
-        //подписываемся на получение сообщенй
-        imagePublisherFacade.subscribe(self)
-        //запускаем таймер с публикацией картинок
-        imagePublisherFacade.addImagesWithTimer(time: 0.1, repeat: 30, userImages: sourcePhotoImageArray )
-        
+        //обрабатываем массив фоток в backgraund потоке и подписывваемся на его обновления
+        doSubscribeOnProcessedArray()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -65,6 +61,32 @@ class PhotosViewController: UIViewController{
         imagePublisherFacade.rechargeImageLibrary()
     }
     
+    
+    func doSubscribeOnProcessedArray() {
+        var startTime: UInt64 = 0
+        var finishTime: UInt64 = 0
+        startTime = DispatchTime.now().uptimeNanoseconds
+        ImageProcessor().processImagesOnThread(sourceImages: sourcePhotoImageArray,
+                                               filter: .gaussianBlur(radius: 2),
+                                               qos: .background) { arrayCGImage in
+            var arrayUIImage: [UIImage] = []
+            arrayCGImage.forEach{
+                if let imageCG = $0 {
+                    arrayUIImage.append(UIImage(cgImage: imageCG))
+                }
+            }
+            finishTime = DispatchTime.now().uptimeNanoseconds
+            DispatchQueue.main.async{
+                //подписываемся на получение сообщенй
+                self.imagePublisherFacade.subscribe(self)
+                //запускаем таймер с публикацией картинок
+                self.imagePublisherFacade.addImagesWithTimer(time: 0.1, repeat: 30, userImages: arrayUIImage )
+                //печать длительности времени выполнения
+                let elepsedTimePerSecond = Double(finishTime - startTime) / 1000000000
+                print("processImagesOnThread - execution time \(elepsedTimePerSecond) sec")
+            }
+        }
+    }
 }
 
 extension PhotosViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout  {
