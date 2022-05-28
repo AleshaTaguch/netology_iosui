@@ -31,7 +31,7 @@ class LoginViewController: UIViewController {
         // прячем клавиатуру если тапаем по вьюшке, а не по полю ввода
         let tapGestureeRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapToHideKeyboard))
         view.addGestureRecognizer(tapGestureeRecognizer)
-                
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -93,6 +93,14 @@ class LoginHeaderView: UIView {
         return pickPasswordButton
     }()
     
+    private let activityIndicator: UIActivityIndicatorView = {
+        let activityIndicator = UIActivityIndicatorView(style: .large)
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.stopAnimating()
+        activityIndicator.color = .gray
+        activityIndicator.toAutoLayout()
+        return activityIndicator
+    }()
     
  
     init(deligate: LoginHeaderViewDeligateProtocol?) {
@@ -102,8 +110,13 @@ class LoginHeaderView: UIView {
         self.backgroundColor = .white
                 
         stackView.addArrangedSubviews(loginTextField, pwdTextField)
-        self.addSubviews(logoImageView, stackView, loginButton, pickPasswordButton)
+        self.addSubviews(logoImageView,
+                         stackView,
+                         loginButton,
+                         pickPasswordButton,
+                         activityIndicator)
         activateConstraints()
+        //activityIndicator.frame = CGRect(x: 100, y: 100, width: 50, height: 50)
         
     }
     
@@ -126,22 +139,62 @@ extension LoginHeaderView {
     }
     
     @objc func tapPickPasswordButton() {
-        let lengthPassword: Int = 3
+        
+        let lengthPassword: Int = 5
         let rigthPassword: String = PasswordCreator().randomPassword(length: lengthPassword)
-        print("rigthPassword = \(rigthPassword)")
-
-        let creckPassword = PasswordCreator().bruteForcePassword(length: lengthPassword) { word in
-            return word == rigthPassword
-        }
-
-        if let valueCreckPassword = creckPassword {
-            print("creckPassword = \(valueCreckPassword)")
-        } else {
-            print("не получилось")
+        
+        pwdTextField.text = nil
+        pwdTextField.placeholder = "crack password: \(rigthPassword)"
+        
+        activityIndicator.startAnimating()
+        
+        //Вариант реализации через DispatchWorkItem. Тоже работает
+        
+        var crackPassword: String?
+        
+        let queue = DispatchQueue(label: "crackPasswordQueue")
+        
+        let crackPasswordWorkItem = DispatchWorkItem {
+            print("Запуск crackPasswordWorkItem ",Thread.current)
+            crackPassword = PasswordCreator().bruteForcePassword(length: lengthPassword) { word in
+                return word == rigthPassword
+            }
         }
         
+        let outputResultWorkItem = DispatchWorkItem {
+            print("запуск outputResultWorkItem ",Thread.current)
+            self.pwdTextField.isSecureTextEntry = false
+            if let valueCrackPassword = crackPassword {
+                self.pwdTextField.text = valueCrackPassword
+            } else {
+                self.pwdTextField.text = "не получилось подобрать"
+            }
+            self.activityIndicator.stopAnimating()
+        }
+        
+        crackPasswordWorkItem.notify(queue: .main, execute: outputResultWorkItem)
+        queue.async(execute: crackPasswordWorkItem)
+
+        /*
+        // Вариант через DispatchQueue. Работает. Оставил для примера.
+        DispatchQueue.global().async {
+            let crackPassword = PasswordCreator().bruteForcePassword(length: lengthPassword) { word in
+                return word == rigthPassword
+            }
+            DispatchQueue.main.async {
+                self.pwdTextField.isSecureTextEntry = false
+                if let valueCrackPassword = crackPassword {
+                    print("crackPassword = \(valueCrackPassword)")
+                    self.pwdTextField.text = valueCrackPassword
+                } else {
+                    print("не получилось")
+                    self.pwdTextField.text = "не получилось"
+                }
+                self.activityIndicator.stopAnimating()
+            }
+        }
+        */
     }
-    
     
 }
 
@@ -174,7 +227,11 @@ extension LoginHeaderView {
             pickPasswordButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.LoginView.LoginButton.leftMargin),
             pickPasswordButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.LoginView.LoginButton.leftMargin),
             pickPasswordButton.heightAnchor.constraint(equalToConstant: Constants.LoginView.LoginButton.height),
-            pickPasswordButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            pickPasswordButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            
+            activityIndicator.centerXAnchor.constraint(equalTo: pwdTextField.centerXAnchor),
+            activityIndicator.centerYAnchor.constraint(equalTo: pwdTextField.centerYAnchor)
+
         ])
     }
 }
