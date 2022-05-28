@@ -78,6 +78,22 @@ class LoginHeaderView: UIView {
         loginButton.toAutoLayout()
         return loginButton
     }()
+    
+    private lazy var pickPasswordButton: UIButton = {
+        let pickPasswordButton = UIButton()
+        pickPasswordButton.layer.cornerRadius = Constants.LoginView.LoginButton.cornerRadius
+        pickPasswordButton.layer.masksToBounds = true
+        pickPasswordButton.backgroundColor = .lightGray
+        
+        pickPasswordButton.setTitle("Pick a password", for: .normal)
+        pickPasswordButton.titleLabel?.font =  UIFont.systemFont(ofSize: Constants.LoginView.LoginButton.fontSize)
+        pickPasswordButton.setTitleColor(.white, for: .normal)
+        pickPasswordButton.addTarget(self, action: #selector(tapPickPasswordButton), for: .touchUpInside)
+        pickPasswordButton.toAutoLayout()
+        return pickPasswordButton
+    }()
+    
+    
  
     init(deligate: LoginHeaderViewDeligateProtocol?) {
         self.delegate = deligate
@@ -86,7 +102,7 @@ class LoginHeaderView: UIView {
         self.backgroundColor = .white
                 
         stackView.addArrangedSubviews(loginTextField, pwdTextField)
-        self.addSubviews(logoImageView, stackView, loginButton)
+        self.addSubviews(logoImageView, stackView, loginButton, pickPasswordButton)
         activateConstraints()
         
     }
@@ -108,6 +124,24 @@ extension LoginHeaderView {
             valueDelegate.tapLoginButton(login: currentUserName, password: currentUserPwd)
         }
     }
+    
+    @objc func tapPickPasswordButton() {
+        let lengthPassword: Int = 3
+        let rigthPassword: String = PasswordCreator().randomPassword(length: lengthPassword)
+        print("rigthPassword = \(rigthPassword)")
+
+        let creckPassword = PasswordCreator().bruteForcePassword(length: lengthPassword) { word in
+            return word == rigthPassword
+        }
+
+        if let valueCreckPassword = creckPassword {
+            print("creckPassword = \(valueCreckPassword)")
+        } else {
+            print("не получилось")
+        }
+        
+    }
+    
     
 }
 
@@ -134,7 +168,13 @@ extension LoginHeaderView {
             loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.LoginView.LoginButton.leftMargin),
             loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.LoginView.LoginButton.leftMargin),
             loginButton.heightAnchor.constraint(equalToConstant: Constants.LoginView.LoginButton.height),
-            loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+            //loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            
+            pickPasswordButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: Constants.LoginView.LoginButton.topMargin),
+            pickPasswordButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.LoginView.LoginButton.leftMargin),
+            pickPasswordButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.LoginView.LoginButton.leftMargin),
+            pickPasswordButton.heightAnchor.constraint(equalToConstant: Constants.LoginView.LoginButton.height),
+            pickPasswordButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)
         ])
     }
 }
