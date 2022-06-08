@@ -1,5 +1,9 @@
 import Foundation
 
+enum FeedModelError: Error {
+    case wordIsEmpty(textError: String)
+    case incorrect(textError: String)
+}
 
 class FeedModel {
     
@@ -9,11 +13,13 @@ class FeedModel {
         self.defaultWord = Constants.Users.userReleace.name
     }
     
-    public func check(word: String) -> (isValid: Bool , resultText: String) {
-        if defaultWord == word {
-            return (true, "Все верно!!!")
+    public func doCheck(word: String) throws {
+        if word == "" {
+            throw FeedModelError.wordIsEmpty(textError: "Слово пустое. Заведите что-нибудь")
+        } else if word == defaultWord {
+            return
         } else {
-            return (false, "Слово неверно! Жду \(self.defaultWord)")
+            throw FeedModelError.incorrect(textError: "Слово неверно! Жду \(self.defaultWord)")
         }
         
     }

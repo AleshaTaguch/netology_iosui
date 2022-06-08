@@ -15,8 +15,16 @@ final class FeedViewModel {
         switch action {
         case .checkWord(let word):
             if let valueOnEventCheckWord = onEventCheckWord {
-                let modelCheck = feedModel.check(word: word)
-                valueOnEventCheckWord(modelCheck.isValid,modelCheck.resultText)
+                do {
+                    try feedModel.doCheck(word: word)
+                } catch FeedModelError.wordIsEmpty(let textError),FeedModelError.incorrect(let  textError)  {
+                    valueOnEventCheckWord(false,textError)
+                    return
+                } catch {
+                    valueOnEventCheckWord(false,"Неивестная ошибка")
+                    return
+                }
+                valueOnEventCheckWord(true,"Правильное слово!")
             }
         }
     }

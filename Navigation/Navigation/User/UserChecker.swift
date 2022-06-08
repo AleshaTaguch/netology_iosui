@@ -1,5 +1,10 @@
 import Foundation
 
+enum CheckerError: Error {
+    case loginIsEmpty
+    case passwordIsEmpty
+    case incorrect
+}
 
 class Checker {
     
@@ -18,11 +23,15 @@ class Checker {
 #endif
     }
     
-    func isCorrect(loginEntry: String, passwordEntry: String) -> Bool {
-        if self.login == loginEntry && self.password == passwordEntry {
-            return true
+    func checkCorrect(loginEntry: String, passwordEntry: String) throws {
+        if loginEntry == "" {
+            throw CheckerError.loginIsEmpty
+        } else if passwordEntry == "" {
+            throw CheckerError.passwordIsEmpty
+        } else if loginEntry == self.login && passwordEntry == self.password {
+            return
         } else {
-            return false
+            throw CheckerError.incorrect
         }
     }
     

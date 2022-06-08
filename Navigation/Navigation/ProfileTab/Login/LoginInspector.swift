@@ -1,14 +1,14 @@
 import Foundation
 
 protocol LoginInspectorProtocol: AnyObject {
-    func isCorrectLoginPassword(loginEntry: String, passwordEntry: String)  -> Bool
+    func checkCorrectLoginPassword(loginEntry: String, passwordEntry: String) throws
 }
 
 class LoginInspector: LoginInspectorProtocol {
 
-    func isCorrectLoginPassword(loginEntry: String, passwordEntry: String) -> Bool {
+    func checkCorrectLoginPassword(loginEntry: String, passwordEntry: String) throws {
         print("LoginInspector ",loginEntry, " / ", passwordEntry)
-        return Checker.shared.isCorrect(loginEntry: loginEntry, passwordEntry: passwordEntry)
+        try Checker.shared.checkCorrect(loginEntry: loginEntry, passwordEntry: passwordEntry)
     }
     
 }
