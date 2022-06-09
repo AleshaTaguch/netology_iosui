@@ -66,7 +66,8 @@ extension LoginViewController: LoginHeaderViewDeligateProtocol {
     
     func tapLoginButton(login: String, password: String) {
         
-        guard let valueLoginCheckerDeligate = loginCheckerDeligate else { return }
+        //return заменен на preconditionFailure() для выполнения задания 4 HW11
+        guard let valueLoginCheckerDeligate = loginCheckerDeligate else { preconditionFailure() }
         
         do {
             try
