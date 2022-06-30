@@ -18,6 +18,10 @@ struct Constants {
         static let interitemSpacing: CGFloat = 8
         static let countColumns: Int = 3
         
+        static let countPhotosCollectionMax: Int = 30
+        static let reloadTimerInterval: Int = 5
+        
+        
     }
     struct ProfileView {
         struct AvatarImage {
