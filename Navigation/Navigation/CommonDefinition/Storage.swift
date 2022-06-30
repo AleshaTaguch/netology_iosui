@@ -49,3 +49,40 @@ let sourcePhotoImageArray: [UIImage] = {
     }
     return imageArray
 }()
+
+struct MusicFileName {
+    var name: String
+    var ext: String
+}
+
+let musicFileNameArray: [MusicFileName] = [MusicFileName(name: "Linkin_Park_Faint", ext: "mp3"),
+                                           MusicFileName(name: "Linkin_Park_In_the_End", ext: "mp3"),
+                                           MusicFileName(name: "Linkin_Park_Numb", ext: "mp3"),
+                                           MusicFileName(name: "Linkin_Park_Somewhere_I_Belong", ext: "mp3"),
+                                           MusicFileName(name: "Linkin_Park_What_Ive_Done", ext: "mp3") ] 
+
+struct VideoSource {
+    var title: String
+    var url: String
+}
+
+let videoSourceArray: [VideoSource] = [
+    VideoSource(title: "Video 1 (for AVPlayer)",
+                url: "https://media.istockphoto.com/videos/beautiful-woman-at-the-beach-waves-for-you-to-follow-video-id1191080573"),
+    
+    VideoSource(title: "Video 2 (for AVPlayer)",
+                url: "https://cdn.videvo.net/videvo_files/video/premium/video0307/large_watermarked/601-2_601-7633_preview.mp4"),
+    VideoSource(title: "Понятие ARC (Automatic Reference Counting) (Swift 5)",
+                                                   url: "https://www.youtube.com/embed/0leVGyPplZw"),
+                                       VideoSource(title: "ARC в замыканиях (Swift 5)",
+                                                   url: "https://www.youtube.com/embed/9kk4ZWwN598"),
+                                       VideoSource(title: "Create a Video Player",
+                                                   url: "https://www.youtube.com/embed/O4am8mb1RTs"),
+                                       VideoSource(title: "Создание ячейки с кнопкой «Like» в TableView (Swift 5)",
+                                                   url: "https://www.youtube.com/embed/LzoFm9YaP8Y"),
+                                       VideoSource(title: "Создание ScrollView программно (Swift 5)",
+                                                   url: "https://www.youtube.com/embed/SfcycWTK-mA"),
+                                       VideoSource(title: "Custom TabBar программно (Swift 5)",
+                                                   url: "https://www.youtube.com/embed/n91fDwkrwds"),
+                                       VideoSource(title: "Новая версия IDE от Apple - XCode 14",
+                                                   url: "https://www.youtube.com/embed/VchpcmaetCE")]

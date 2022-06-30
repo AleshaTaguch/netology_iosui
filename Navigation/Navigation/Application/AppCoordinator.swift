@@ -7,6 +7,9 @@ final class AppCoordinator: AppCoordinatorProtocol {
     var feedCoordinator: FeedCoordinatorProtocol?
     var profileCoordinator: ProfileCoordinatorProtocol?
     
+    var audioCoordinator: AudioCoordinatorProtocol?
+    var videoCoordinator: VideoCoordinatorProtocol?
+    
     init(controller: UITabBarController?) {
         self.appTabBarControler = controller
     }
@@ -31,7 +34,25 @@ final class AppCoordinator: AppCoordinatorProtocol {
             // стартуем координатор
             profileCoordinator?.start()
             
-            valueAppTabBarControler.viewControllers = [feedNavController,profileNavController]
+            
+            // создаем контроллер
+            let audioNavController = appTabBarFactory.makeAppNavigationController(tabBarItemType: .audio)
+            //создаем координатор и передаем в него контроллер
+            audioCoordinator = AudioCoordinator(controller: audioNavController)
+            // стартуем координатор
+            audioCoordinator?.start()
+            
+            // создаем контроллер
+            let videoNavController = appTabBarFactory.makeAppNavigationController(tabBarItemType: .video)
+            //создаем координатор и передаем в него контроллер
+            videoCoordinator = VideoCoordinator(controller: videoNavController)
+            // стартуем координатор
+            videoCoordinator?.start()
+            
+            valueAppTabBarControler.viewControllers = [feedNavController,
+                                                       profileNavController,
+                                                       audioNavController,
+                                                       videoNavController]
             
             valueAppTabBarControler.tabBar.backgroundColor = .systemGray6
             valueAppTabBarControler.tabBar.layer.borderWidth = 0.5
