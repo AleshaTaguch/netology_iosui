@@ -28,6 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         statTBController.tabBar.backgroundColor = .systemGray6
         statTBController.tabBar.layer.borderWidth = 0.5
         statTBController.tabBar.layer.borderColor = UIColor.lightGray.cgColor
+        #if DEBUG
+          statTBController.tabBar.layer.borderWidth = 5
+          statTBController.tabBar.layer.borderColor = UIColor.red.cgColor
+        #endif
         return statTBController
     }()
     
