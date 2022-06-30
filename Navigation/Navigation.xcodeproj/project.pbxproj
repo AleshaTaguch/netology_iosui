@@ -12,11 +12,12 @@
 		595FB21B2811D4F700E4E328 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595FB2152811D4F700E4E328 /* StorageService.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		595FB21C2811D4F700E4E328 /* StorageService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 595FB2152811D4F700E4E328 /* StorageService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		595FB2222811D5AE00E4E328 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595FB2212811D5AE00E4E328 /* Post.swift */; };
-		595FB23228188B6600E4E328 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 595FB23128188B6600E4E328 /* iOSIntPackage */; };
 		595FB234281AD94B00E4E328 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595FB233281AD94B00E4E328 /* User.swift */; };
 		595FB236281E70EE00E4E328 /* UserChecker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595FB235281E70EE00E4E328 /* UserChecker.swift */; };
 		595FB238281E90E100E4E328 /* LoginInspector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595FB237281E90E100E4E328 /* LoginInspector.swift */; };
 		595FB23A281EA18200E4E328 /* LoginFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595FB239281EA18200E4E328 /* LoginFactory.swift */; };
+		595FB249282015A200E4E328 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 595FB248282015A200E4E328 /* iOSIntPackage */; };
+		595FB24B282015E600E4E328 /* iOSIntPackage in Frameworks */ = {isa = PBXBuildFile; productRef = 595FB24A282015E600E4E328 /* iOSIntPackage */; };
 		59642B3727CAC29900875F09 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59642B3627CAC29900875F09 /* LogInViewController.swift */; };
 		59642B3927CAD04700875F09 /* LoginHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59642B3827CAD04700875F09 /* LoginHeaderView.swift */; };
 		59642B3C27D15BD500875F09 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59642B3B27D15BD500875F09 /* Extension.swift */; };
@@ -110,7 +111,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A67E3C594106C491FD1342A7 /* Pods_StorageService.framework in Frameworks */,
-				595FB23228188B6600E4E328 /* iOSIntPackage in Frameworks */,
+				595FB24B282015E600E4E328 /* iOSIntPackage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +119,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				595FB249282015A200E4E328 /* iOSIntPackage in Frameworks */,
 				595FB21B2811D4F700E4E328 /* StorageService.framework in Frameworks */,
 				D670772977E101AAAC6D284A /* Pods_Navigation.framework in Frameworks */,
 			);
@@ -270,7 +272,7 @@
 			);
 			name = StorageService;
 			packageProductDependencies = (
-				595FB23128188B6600E4E328 /* iOSIntPackage */,
+				595FB24A282015E600E4E328 /* iOSIntPackage */,
 			);
 			productName = StorageService;
 			productReference = 595FB2152811D4F700E4E328 /* StorageService.framework */;
@@ -294,6 +296,7 @@
 			);
 			name = Navigation;
 			packageProductDependencies = (
+				595FB248282015A200E4E328 /* iOSIntPackage */,
 			);
 			productName = Navigation;
 			productReference = 6528865927BC1053005A379F /* Navigation.app */;
@@ -327,7 +330,7 @@
 			);
 			mainGroup = 6528865027BC1053005A379F;
 			packageReferences = (
-				595FB23028188B6600E4E328 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
+				595FB247282015A200E4E328 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
 			);
 			productRefGroup = 6528865A27BC1053005A379F /* Products */;
 			projectDirPath = "";
@@ -751,20 +754,25 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		595FB23028188B6600E4E328 /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
+		595FB247282015A200E4E328 /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TrueMax/iOSIntPackage.git";
 			requirement = {
-				branch = main;
+				branch = imagepublisher;
 				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		595FB23128188B6600E4E328 /* iOSIntPackage */ = {
+		595FB248282015A200E4E328 /* iOSIntPackage */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 595FB23028188B6600E4E328 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
+			package = 595FB247282015A200E4E328 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
+			productName = iOSIntPackage;
+		};
+		595FB24A282015E600E4E328 /* iOSIntPackage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 595FB247282015A200E4E328 /* XCRemoteSwiftPackageReference "iOSIntPackage" */;
 			productName = iOSIntPackage;
 		};
 /* End XCSwiftPackageProductDependency section */

@@ -1,5 +1,6 @@
 import Foundation
 import StorageService
+import UIKit
 
 let sourcePostsArray: [Post] =
     [Post(title: "1. Композиция в фотографии - это построение и последовательность изобразительных",
@@ -34,7 +35,17 @@ let sourcePostsArray: [Post] =
           views: 150)
     ]
 
-let sourcePhotoArray: [String] = ["foto2-1","foto2-2","foto2-3","foto2-4","foto2-5"
+let sourcePhotoNameArray: [String] = ["foto2-1","foto2-2","foto2-3","foto2-4","foto2-5"
                                  ,"foto2-6","foto2-7","foto2-8","foto2-9","foto2-10"
                                  ,"foto2-11","foto2-12","foto2-13","foto2-14","foto2-15"
                                  ,"foto2-16","foto2-17","foto2-18","foto2-19","foto2-20"]
+
+let sourcePhotoImageArray: [UIImage] = {
+    var imageArray: [UIImage] = []
+    sourcePhotoNameArray.forEach{
+        if let image = UIImage(named: $0) {
+            imageArray.append(image)
+        }
+    }
+    return imageArray
+}()

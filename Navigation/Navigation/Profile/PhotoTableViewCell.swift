@@ -5,7 +5,7 @@ class PhotoTableViewCell: UITableViewCell {
     static let classIdentifier: String = "PhotoTableViewCell"
     static let tapNotificationName: String = "tapImageTapped"
     
-    let photoArray: [String] = sourcePhotoArray
+    let photoArray: [String] = sourcePhotoNameArray
     
     let stackView : UIStackView = {
         let photoStackView = UIStackView()
