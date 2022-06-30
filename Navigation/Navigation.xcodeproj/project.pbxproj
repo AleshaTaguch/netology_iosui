@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		591938B9284292D0008A43A5 /* PasswordCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591938B8284292D0008A43A5 /* PasswordCreator.swift */; };
 		595FB1C427EC800F00E4E328 /* ProfileFullScreenAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595FB1C327EC800F00E4E328 /* ProfileFullScreenAvatarView.swift */; };
 		595FB2182811D4F700E4E328 /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = 595FB2172811D4F700E4E328 /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		595FB21B2811D4F700E4E328 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595FB2152811D4F700E4E328 /* StorageService.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -80,6 +81,7 @@
 
 /* Begin PBXFileReference section */
 		207AAF684D7687102A8171AE /* Pods_StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		591938B8284292D0008A43A5 /* PasswordCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCreator.swift; sourceTree = "<group>"; };
 		595FB1C327EC800F00E4E328 /* ProfileFullScreenAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFullScreenAvatarView.swift; sourceTree = "<group>"; };
 		595FB2152811D4F700E4E328 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		595FB2172811D4F700E4E328 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
@@ -195,6 +197,7 @@
 				652E085B27BD7929007A1526 /* Constants.swift */,
 				59642B3B27D15BD500875F09 /* Extension.swift */,
 				59642B4C27E26A1500875F09 /* Storage.swift */,
+				591938B8284292D0008A43A5 /* PasswordCreator.swift */,
 			);
 			path = CommonDefinition;
 			sourceTree = "<group>";
@@ -553,6 +556,7 @@
 				595FB234281AD94B00E4E328 /* User.swift in Sources */,
 				6528866127BC1053005A379F /* ViewController.swift in Sources */,
 				59642B4027D6A03E00875F09 /* PostTableViewCell.swift in Sources */,
+				591938B9284292D0008A43A5 /* PasswordCreator.swift in Sources */,
 				652BCC6027C263FB003841E3 /* ProfileHeaderView.swift in Sources */,
 				652E085827BD53A5007A1526 /* FeedViewController.swift in Sources */,
 				595FB1C427EC800F00E4E328 /* ProfileFullScreenAvatarView.swift in Sources */,
