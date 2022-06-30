@@ -1,4 +1,5 @@
 import UIKit
+import SnapKit
 
 class ProfileViewController: UIViewController {
     
@@ -15,6 +16,9 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = .systemGray6
+        #if DEBUG
+        self.view.backgroundColor = .red
+        #endif
 
         self.view.addSubviews(profileTableHeaderView)
         activateConstraints()
@@ -91,12 +95,21 @@ extension ProfileViewController {
 
 extension ProfileViewController {
     private func activateConstraints () {
+        
+        profileTableHeaderView.snp.makeConstraints {make in
+            make.top.equalTo(self.view.safeAreaLayoutGuide)
+            make.left.right.bottom.equalTo(self.view)
+        }
+        
+        /*
         NSLayoutConstraint.activate([
-            profileTableHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
-            profileTableHeaderView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-            profileTableHeaderView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
-            profileTableHeaderView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
-      ])
+             profileTableHeaderView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+             profileTableHeaderView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
+             profileTableHeaderView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+             profileTableHeaderView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+        ])
+        */
+        
     }
 
 }
