@@ -17,7 +17,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let profileNavController = UINavigationController()
         profileNavController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 0)
         profileNavController.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
-        profileNavController.setViewControllers([LoginViewController()], animated: true)
+        let loginViewController = LoginViewController()
+        
+        ///код для задачи 1 ДЗ 4 : Паттерны проектирования Delegate + Singleton
+        //let loginInspector = LoginInspector()
+        //loginViewController.loginCheckerDeligate = loginInspector
+        
+        ///код для задачи 2 ДЗ 4 : : Factory
+        loginViewController.loginCheckerDeligate = myLoginFactory.share.makeLoginInpector()
+       
+        profileNavController.setViewControllers([loginViewController], animated: true)
         return profileNavController
     }()
 

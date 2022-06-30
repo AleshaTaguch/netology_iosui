@@ -34,8 +34,6 @@ class ProfileViewController: UIViewController {
         self.view.backgroundColor = .red
         #endif
 
-        print("userService = \(userService)")
-        print("userName = \(userName)")
         self.view.addSubviews(profileTableHeaderView)
         activateConstraints()
         

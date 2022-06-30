@@ -1,9 +1,7 @@
 import UIKit
 
 class LoginViewController: UIViewController {
-    
-    //public var isLogined: Bool = false
-     
+         
      let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
@@ -16,11 +14,12 @@ class LoginViewController: UIViewController {
         contentView.toAutoLayout()
         return contentView
     }()
+    
+    var loginCheckerDeligate: LoginViewControllerDeligate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.isLogined = false
         self.view.backgroundColor = .white
         
         self.view.addSubview(scrollView)
@@ -92,10 +91,28 @@ extension LoginViewController {
             return
         }
         
-        if currentUserName == "" {
-            showAlertOK(title: "User is empty", message: "Enter userName and password!")
+        guard let currentUserPwd = contentView.pwdTextField.text else {
             return
         }
+
+
+        if currentUserName == "" {
+            showAlertOK(title: "User name is empty", message: "Enter correct userName and password!")
+            return
+        }
+        if currentUserPwd == "" {
+            showAlertOK(title: "User password is empty", message: "Enter correct userName and password!")
+            return
+        }
+        
+        guard let isCorrectValue = loginCheckerDeligate?.isCorrectLoginPassword(loginEntry: currentUserName, passwordEntry: currentUserPwd) else { return }
+
+        if !isCorrectValue {
+            showAlertOK(title: "Invalid user name or password", message: "Enter correct userName and password!")
+            return
+        }
+         
+        
         
         var currentUserService: UserService
 #if DEBUG

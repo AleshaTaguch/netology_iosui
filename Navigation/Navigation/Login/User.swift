@@ -1,10 +1,3 @@
-//
-//  User.swift
-//  Navigation
-//
-//  Created by tertyshniy on 28.04.2022.
-//
-
 import Foundation
 import UIKit
 
