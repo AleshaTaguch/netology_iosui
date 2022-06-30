@@ -9,7 +9,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     let avatarImageView: UIImageView = {
         let avatarImageView = UIImageView()
-        //avatarImageView.image = UIImage(named: "UserImage")
         avatarImageView.layer.cornerRadius = Constants.ProfileView.AvatarImage.size / 2
         avatarImageView.layer.masksToBounds = true
         avatarImageView.layer.borderWidth = 3
@@ -21,7 +20,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     let fullNameLabel: UILabel = {
         let fullNameLabel = UILabel()
-        //fullNameLabel.text = "Arthur Fellig (Weegee)"
         fullNameLabel.font = UIFont.boldSystemFont(ofSize: 18)
         fullNameLabel.toAutoLayout()
         return fullNameLabel
@@ -29,7 +27,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     let statusLabel: UILabel = {
         let statusLabel = UILabel()
-        //statusLabel.text = "Waiting for something"
         statusLabel.font = UIFont.systemFont(ofSize: 14)
         statusLabel.textColor = .gray
         statusLabel.toAutoLayout()
@@ -54,7 +51,6 @@ class ProfileHeaderView: UITableViewHeaderFooterView {
     
     lazy var setStatusButton: UIButton = {
         let setStatusButton = UIButton()
-        //setStatusButton.frame = CGRect(x: 16, y: 200, width: 350, height: 50)
         setStatusButton.setTitle("Set status", for: .normal)
         setStatusButton.backgroundColor = UIColor(red:0x00/255.0, green: 122.0/255.0, blue: 0xFF/255.0, alpha: 1)
         setStatusButton.setTitleColor(.white, for: .normal)
@@ -191,45 +187,7 @@ extension ProfileHeaderView {
             make.top.left.equalToSuperview()
             make.height.width.equalTo(Constants.ProfileView.AvatarImage.size +
                                       Constants.ProfileView.AvatarImage.leftMargin * 2)
-        }
-
-        /*
-        NSLayoutConstraint.activate([
-            avatarImageView.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Constants.ProfileView.AvatarImage.topMargin),
-            avatarImageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: Constants.ProfileView.AvatarImage.leftMargin),
-            avatarImageView.widthAnchor.constraint(equalToConstant: Constants.ProfileView.AvatarImage.size),
-            avatarImageView.heightAnchor.constraint(equalToConstant: Constants.ProfileView.AvatarImage.size),
-
-            setStatusButton.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: Constants.ProfileView.StatusButton.topMargin),
-            setStatusButton.leftAnchor.constraint(equalTo: self.contentView.leftAnchor, constant: Constants.ProfileView.StatusButton.leftMargin),
-            setStatusButton.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.ProfileView.StatusButton.rightMargin),
-            setStatusButton.heightAnchor.constraint(equalToConstant: Constants.ProfileView.StatusButton.height),
-            setStatusButton.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -Constants.ProfileView.StatusButton.buttomMargin),
-                        
-            fullNameLabel.topAnchor.constraint(equalTo: self.contentView.topAnchor, constant: Constants.ProfileView.FullName.topMargin),
-            fullNameLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: Constants.ProfileView.FullName.leftMargin),
-            fullNameLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.ProfileView.FullName.rightMargin),
-            fullNameLabel.heightAnchor.constraint(equalToConstant: Constants.ProfileView.FullName.height),
-            
-            statusLabel.bottomAnchor.constraint(equalTo: setStatusButton.topAnchor, constant: -Constants.ProfileView.StatusLabel.buttomMargin
-                                               ),
-            statusLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: Constants.ProfileView.StatusLabel.leftMargin),
-            statusLabel.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.ProfileView.StatusLabel.rightMargin),
-            statusLabel.heightAnchor.constraint(equalToConstant: Constants.ProfileView.StatusLabel.height),
-            
-            statusTextField.topAnchor.constraint(equalTo: statusLabel.bottomAnchor, constant: Constants.ProfileView.StatusField.topMargin),
-            statusTextField.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: Constants.ProfileView.StatusField.leftMargin),
-            statusTextField.rightAnchor.constraint(equalTo: self.contentView.rightAnchor, constant: -Constants.ProfileView.StatusField.rightMargin),
-            statusTextField.heightAnchor.constraint(equalToConstant: Constants.ProfileView.StatusField.height),
-            
-            fullScreenAvatarView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            fullScreenAvatarView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
-            fullScreenAvatarView.widthAnchor.constraint(equalToConstant: Constants.ProfileView.AvatarImage.size + Constants.ProfileView.AvatarImage.leftMargin * 2),
-            fullScreenAvatarView.heightAnchor.constraint(equalToConstant: Constants.ProfileView.AvatarImage.size + Constants.ProfileView.AvatarImage.topMargin * 2)
-            
-        ])
-        */
-        
+        }        
     }
 
 }

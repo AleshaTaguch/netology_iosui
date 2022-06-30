@@ -1,15 +1,21 @@
 import UIKit
 
+protocol LoginHeaderViewDeligate: AnyObject {
+    func tapLoginButton(login: String, password: String)
+}
+
 class LoginHeaderView: UIView {
     
-    let logoImageView: UIImageView = {
+    private weak var delegate: LoginHeaderViewDeligate?
+    
+    private let logoImageView: UIImageView = {
         let logoImageView = UIImageView()
         logoImageView.image = UIImage(named: Constants.LoginView.Logo.imageName)
         logoImageView.toAutoLayout()
         return logoImageView
     }()
     
-    let loginTextField: UITextField = {
+    private let loginTextField: UITextField = {
         let loginTextField = UITextField()
         loginTextField.font = UIFont.systemFont(ofSize: Constants.LoginView.TextField.fontSize, weight: .regular)
         loginTextField.backgroundColor = .systemGray6
@@ -23,7 +29,7 @@ class LoginHeaderView: UIView {
         return loginTextField
     }()
 
-    let pwdTextField: UITextField = {
+    private let pwdTextField: UITextField = {
         let pwdTextField = UITextField()
         pwdTextField.font = UIFont.systemFont(ofSize: Constants.LoginView.TextField.fontSize, weight: .regular)
         pwdTextField.backgroundColor = .systemGray6
@@ -39,7 +45,7 @@ class LoginHeaderView: UIView {
         return pwdTextField
     }()
     
-    let stackView: UIStackView = {
+    private let stackView: UIStackView = {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.spacing = 0
@@ -53,7 +59,7 @@ class LoginHeaderView: UIView {
         return stackView
     }()
     
-    let loginButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let loginButton = UIButton()
         loginButton.layer.cornerRadius = Constants.LoginView.LoginButton.cornerRadius
         loginButton.layer.masksToBounds = true
@@ -68,15 +74,17 @@ class LoginHeaderView: UIView {
         loginButton.setTitle(Constants.LoginView.LoginButton.titleText, for: .normal)
         loginButton.titleLabel?.font =  UIFont.systemFont(ofSize: Constants.LoginView.LoginButton.fontSize)
         loginButton.setTitleColor(.white, for: .normal)
+        loginButton.addTarget(self, action: #selector(tapLoginButton), for: .touchUpInside)
         loginButton.toAutoLayout()
         return loginButton
     }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+ 
+    init(deligate: LoginHeaderViewDeligate?) {
+        self.delegate = deligate
+        super.init(frame: .zero)
         
         self.backgroundColor = .white
-        
+                
         stackView.addArrangedSubviews(loginTextField, pwdTextField)
         self.addSubviews(logoImageView, stackView, loginButton)
         activateConstraints()
@@ -88,7 +96,22 @@ class LoginHeaderView: UIView {
     }
 }
 
-// MARK: Extensions
+
+extension LoginHeaderView {
+    
+    @objc func tapLoginButton() {
+        
+        guard let currentUserName = loginTextField.text else { return }
+        guard let currentUserPwd = pwdTextField.text else { return }
+        
+        if let valueDelegate = delegate {
+            valueDelegate.tapLoginButton(login: currentUserName, password: currentUserPwd)
+        }
+    }
+    
+}
+
+// MARK: extension
 
 extension LoginHeaderView {
     

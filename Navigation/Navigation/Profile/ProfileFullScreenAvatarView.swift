@@ -58,7 +58,7 @@ class ProfileFullScreenAvatarView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        //avatarImageView.layer.cornerRadius = (self.frame.size.width - Constants.ProfileView.AvatarImage.leftMargin * 2) / 2
+
     }
     
 }
@@ -87,20 +87,7 @@ extension ProfileFullScreenAvatarView {
             make.width.equalTo(self.snp.width).multipliedBy(0.1)
             make.height.equalTo(self.snp.width).multipliedBy(0.1)
         }
-
-        /*
-        NSLayoutConstraint.activate([
-            avatarImageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            avatarImageView.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            avatarImageView.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -Constants.ProfileView.AvatarImage.leftMargin * 2 ),
-            avatarImageView.heightAnchor.constraint(equalTo: self.widthAnchor, constant: -Constants.ProfileView.AvatarImage.topMargin * 2),
-
-            closeImage.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor,constant:  Constants.ProfileView.AvatarImage.topMargin),
-            closeImage.trailingAnchor.constraint(equalTo: self.trailingAnchor,constant: -Constants.ProfileView.AvatarImage.leftMargin),
-            closeImage.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.1),
-            closeImage.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.1)
-        ])
-        */
+        
     }
 }
 

@@ -9,8 +9,8 @@ class LoginViewController: UIViewController {
         return scrollView
     }()
     
-    let contentView: LoginHeaderView = {
-        let contentView = LoginHeaderView()
+    lazy var contentView: LoginHeaderView = {
+        let contentView = LoginHeaderView(deligate: self)
         contentView.toAutoLayout()
         return contentView
     }()
@@ -30,10 +30,7 @@ class LoginViewController: UIViewController {
         // прячем клавиатуру если тапаем по вьюшке, а не по полю ввода
         let tapGestureeRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapToHideKeyboard))
         view.addGestureRecognizer(tapGestureeRecognizer)
-        
-        contentView.loginButton.isUserInteractionEnabled = true
-        contentView.loginButton.addTarget(self, action: #selector(pressButtonLogin), for: .touchUpInside)
-        
+                
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,12 +45,8 @@ class LoginViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        scrollView.contentSize = CGSize(width: self.view.safeAreaLayoutGuide.layoutFrame.size.width
-                                       ,height: self.contentView.loginButton.frame.origin.y +
-                                                self.contentView.loginButton.frame.size.height )
-        
-        
+        scrollView.contentSize = CGSize(width: self.contentView.frame.size.width
+                                       ,height: self.contentView.frame.size.height)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -67,6 +60,48 @@ class LoginViewController: UIViewController {
 
 
 // MARK: Extensions
+
+extension LoginViewController: LoginHeaderViewDeligate {
+    
+    func tapLoginButton(login: String, password: String) {
+        
+        if login == "" {
+            showAlertOK(title: "User name is empty", message: "Enter correct userName and password!")
+            return
+        }
+        if password == "" {
+            showAlertOK(title: "User password is empty", message: "Enter correct userName and password!")
+            return
+        }
+        
+        guard let isCorrectValue = loginCheckerDeligate?.isCorrectLoginPassword(loginEntry: login,
+                                                                                passwordEntry: password) else { return }
+        
+        if !isCorrectValue {
+            showAlertOK(title: "Invalid user name or password", message: "Enter correct userName and password!")
+            return
+        }
+        
+        var currentUserService: UserService
+#if DEBUG
+        currentUserService = TestUserService()
+#else
+        currentUserService = CurrentUserService()
+#endif
+        
+        let profileViewController = ProfileViewController(currentUser: currentUserService, currentUserName: login)
+        navigationController?.setNavigationBarHidden(true, animated: true)
+        navigationController?.setViewControllers([profileViewController], animated: true)
+    }
+    
+    func showAlertOK(title: String, message: String) {
+        let alertOkViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let actionOk = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertOkViewController.addAction(actionOk)
+        self.present(alertOkViewController, animated: true, completion: nil)
+    }
+
+}
 
 extension LoginViewController {
 
@@ -84,53 +119,6 @@ extension LoginViewController {
     
     @objc private func tapToHideKeyboard() {
         contentView.endEditing(false)
-    }
-    
-    @objc func pressButtonLogin() {
-        guard let currentUserName = contentView.loginTextField.text else {
-            return
-        }
-        
-        guard let currentUserPwd = contentView.pwdTextField.text else {
-            return
-        }
-
-
-        if currentUserName == "" {
-            showAlertOK(title: "User name is empty", message: "Enter correct userName and password!")
-            return
-        }
-        if currentUserPwd == "" {
-            showAlertOK(title: "User password is empty", message: "Enter correct userName and password!")
-            return
-        }
-        
-        guard let isCorrectValue = loginCheckerDeligate?.isCorrectLoginPassword(loginEntry: currentUserName, passwordEntry: currentUserPwd) else { return }
-
-        if !isCorrectValue {
-            showAlertOK(title: "Invalid user name or password", message: "Enter correct userName and password!")
-            return
-        }
-         
-        
-        
-        var currentUserService: UserService
-#if DEBUG
-        currentUserService = TestUserService()
-#else
-        currentUserService = CurrentUserService()
-#endif
-        
-        let profileViewController = ProfileViewController(currentUser: currentUserService, currentUserName: currentUserName)
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        navigationController?.setViewControllers([profileViewController], animated: true)
-    }
-    
-    func showAlertOK(title: String, message: String) {
-        let alertOkViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let actionOk = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alertOkViewController.addAction(actionOk)
-        self.present(alertOkViewController, animated: true, completion: nil)
     }
     
 }
