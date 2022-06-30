@@ -1,5 +1,10 @@
 import Foundation
 
+enum PasswordCreatorError: Error {
+    case failed(String)
+    case randomErrorTry
+}
+
 struct PasswordCreator {
     private let passwordCharSet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
    
@@ -27,6 +32,20 @@ struct PasswordCreator {
     
     public func bruteForcePassword(length: Int, cheker: ((String) -> Bool) ) -> String? {
         return enumerationPassword(prefix: "", level: 1, maxLavel: length, checker: cheker )
+    }
+    
+    public func bruteForcePassword(length: Int,
+                                   cheker: ((String) -> Bool),
+                                   complition: @escaping (Result<String, Error>) -> Void ) {
+        if Bool.random() {
+            complition(.failure(PasswordCreatorError.randomErrorTry))
+        } else {
+            if let word = enumerationPassword(prefix: "", level: 1, maxLavel: length, checker: cheker ) {
+                complition(.success(word))
+            } else {
+                complition(.failure(PasswordCreatorError.failed("не получилось!")))
+            }
+        }
     }
     
 }

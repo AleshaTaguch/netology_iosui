@@ -66,23 +66,26 @@ extension LoginViewController: LoginHeaderViewDeligateProtocol {
     
     func tapLoginButton(login: String, password: String) {
         
-        if login == "" {
+        //return заменен на preconditionFailure() для выполнения задания 4 HW11
+        guard let valueLoginCheckerDeligate = loginCheckerDeligate else { preconditionFailure() }
+        
+        do {
+            try
+            valueLoginCheckerDeligate.checkCorrectLoginPassword(loginEntry: login, passwordEntry: password)
+        } catch CheckerError.loginIsEmpty {
             showAlertOK(title: "User name is empty", message: "Enter correct userName and password!")
             return
-        }
-        if password == "" {
+        } catch CheckerError.passwordIsEmpty {
             showAlertOK(title: "User password is empty", message: "Enter correct userName and password!")
             return
-        }
-        
-        guard let isCorrectValue = loginCheckerDeligate?.isCorrectLoginPassword(loginEntry: login,
-                                                                                passwordEntry: password) else { return }
-        
-        if !isCorrectValue {
+        } catch CheckerError.incorrect {
             showAlertOK(title: "Invalid user name or password", message: "Enter correct userName and password!")
             return
+        } catch {
+            showAlertOK(title: "Checking user name or password", message: "Error unhandled! Please contact with me!")
+            return
         }
-        
+  
         var currentUserService: UserService
 #if DEBUG
         currentUserService = TestUserService()

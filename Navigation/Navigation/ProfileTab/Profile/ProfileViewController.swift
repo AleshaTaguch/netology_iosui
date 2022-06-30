@@ -121,7 +121,7 @@ extension ProfileViewController {
 
 extension ProfileViewController: UserServiceDeligate {
     func getUserObject() -> User? {
-        return userService.getUserObjectbyName(userName)
+        return try? userService.getUserObjectbyName(userName)
     }
     
     

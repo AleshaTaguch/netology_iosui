@@ -22,8 +22,13 @@ class User {
     }
 }
 
+enum UserServiceError: Error {
+    case notEqualName
+    case nameIsNil
+}
+
 protocol UserService {
-    func getUserObjectbyName(_ name: String) -> User?
+    func getUserObjectbyName(_ name: String) throws -> User?
 }
 
 protocol UserServiceDeligate: AnyObject {
@@ -34,17 +39,17 @@ protocol UserServiceDeligate: AnyObject {
 class CurrentUserService: UserService {
     
     private let user: User?
-    
+
     init() {
         self.user = Constants.Users.userReleace
     }
 
-    func getUserObjectbyName(_ name: String) -> User? {
-        guard let valueUserName = user?.name else { return nil }
+    func getUserObjectbyName(_ name: String) throws -> User? {
+        guard let valueUserName = user?.name else { throw UserServiceError.nameIsNil }
         if valueUserName == name {
             return user
         } else {
-            return nil
+            throw UserServiceError.notEqualName
         }
     }
 }
@@ -57,12 +62,12 @@ class TestUserService: UserService {
         self.user = Constants.Users.userDebug
     }
 
-    func getUserObjectbyName(_ name: String) -> User? {
-        guard let valueUserName = user?.name else { return nil }
+    func getUserObjectbyName(_ name: String) throws -> User? {
+        guard let valueUserName = user?.name else { throw UserServiceError.nameIsNil }
         if valueUserName == name {
             return user
         } else {
-            return nil
+            throw UserServiceError.notEqualName
         }
     }
 }

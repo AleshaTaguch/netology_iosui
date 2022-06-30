@@ -148,7 +148,40 @@ extension LoginHeaderView {
         
         activityIndicator.startAnimating()
         
-        //Вариант реализации через DispatchWorkItem. Тоже работает
+        //Вариант реализации через DispatchWorkItem + Result. 
+        
+        let queue = DispatchQueue(label: "crackPasswordQueue")
+        let crackPasswordWorkItem = DispatchWorkItem {
+            print("Запуск crackPasswordWorkItem ",Thread.current)
+            PasswordCreator().bruteForcePassword(length: lengthPassword,
+                                                 cheker: { word in return word == rigthPassword}) { [weak self] result in
+                var resultString: String = ""
+                print("запуск outputResultWorkItem ",Thread.current)
+                switch result {
+                case .success(let crackPassword):
+                    resultString = crackPassword
+                case .failure(let error):
+                    switch error as? PasswordCreatorError {
+                    case .failed(let errorDescription):
+                        resultString = errorDescription
+                    case .randomErrorTry:
+                        resultString = "Случайная попытка с ошибкой"
+                    case .none:
+                        resultString = "unknow eror"
+                    }
+                }
+                
+                DispatchQueue.main.async {
+                    self?.pwdTextField.isSecureTextEntry = false
+                    self?.pwdTextField.text = resultString
+                    self?.activityIndicator.stopAnimating()
+                }
+            }
+        }
+        queue.async(execute: crackPasswordWorkItem)
+        
+        /*
+        //Вариант реализации через DispatchWorkItem. Оставил для примера.
         
         var crackPassword: String?
         
@@ -174,9 +207,11 @@ extension LoginHeaderView {
         
         crackPasswordWorkItem.notify(queue: .main, execute: outputResultWorkItem)
         queue.async(execute: crackPasswordWorkItem)
+        
+        */
 
         /*
-        // Вариант через DispatchQueue. Работает. Оставил для примера.
+        // Вариант через DispatchQueue. Оставил для примера.
         DispatchQueue.global().async {
             let crackPassword = PasswordCreator().bruteForcePassword(length: lengthPassword) { word in
                 return word == rigthPassword
