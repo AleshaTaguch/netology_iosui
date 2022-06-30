@@ -1,12 +1,12 @@
 import UIKit
 
-protocol LoginHeaderViewDeligate: AnyObject {
+protocol LoginHeaderViewDeligateProtocol: AnyObject {
     func tapLoginButton(login: String, password: String)
 }
 
 class LoginHeaderView: UIView {
     
-    private weak var delegate: LoginHeaderViewDeligate?
+    private weak var delegate: LoginHeaderViewDeligateProtocol?
     
     private let logoImageView: UIImageView = {
         let logoImageView = UIImageView()
@@ -79,7 +79,7 @@ class LoginHeaderView: UIView {
         return loginButton
     }()
  
-    init(deligate: LoginHeaderViewDeligate?) {
+    init(deligate: LoginHeaderViewDeligateProtocol?) {
         self.delegate = deligate
         super.init(frame: .zero)
         

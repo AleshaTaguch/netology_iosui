@@ -3,6 +3,8 @@ import StorageService
 
 class PostViewController: UIViewController {
     
+    weak var coordinatorDeligate: FeedCoordinatorProtocol?
+    
     var post: Post?
 
     override func viewDidLoad() {
@@ -20,8 +22,9 @@ class PostViewController: UIViewController {
     }
     
     @objc func showInfo () {
-        let infoViewController = InfoViewController()
-        present(infoViewController, animated: true, completion: nil)
+        if let cordinator = coordinatorDeligate {
+            cordinator.doEventHandle(with: .showInfo)
+        }
     }
     
     

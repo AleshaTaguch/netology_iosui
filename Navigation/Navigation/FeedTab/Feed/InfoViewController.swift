@@ -2,6 +2,7 @@ import UIKit
 
 class InfoViewController: UIViewController {
     
+    weak var coordinatorDeligate: FeedCoordinatorProtocol?
     
     lazy var button: CustomButton = CustomButton(frame: .zero, title: "Go Alert") { self.showAlert() }
 

@@ -1,12 +1,12 @@
 import Foundation
 
-protocol LoginFactory {
+protocol LoginFactoryProtocol {
     func makeLoginInpector() -> LoginInspector
 }
 
-class myLoginFactory: LoginFactory{
+class LoginFactory: LoginFactoryProtocol{
     
-    static let share: myLoginFactory = myLoginFactory()
+    static let share: LoginFactoryProtocol = LoginFactory()
     
     private init() {}
 

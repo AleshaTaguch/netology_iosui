@@ -1,10 +1,10 @@
 import Foundation
 
-protocol LoginViewControllerDeligate {
+protocol LoginInspectorProtocol: AnyObject {
     func isCorrectLoginPassword(loginEntry: String, passwordEntry: String)  -> Bool
 }
 
-class LoginInspector: LoginViewControllerDeligate {
+class LoginInspector: LoginInspectorProtocol {
 
     func isCorrectLoginPassword(loginEntry: String, passwordEntry: String) -> Bool {
         print("LoginInspector ",loginEntry, " / ", passwordEntry)

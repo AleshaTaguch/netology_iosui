@@ -1,8 +1,11 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    var loginCheckerDeligate: LoginInspectorProtocol?
+    var doEventWhenSuccess: ((UserService, String) -> Void)?
          
-     let scrollView: UIScrollView = {
+    let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.backgroundColor = .white
         scrollView.toAutoLayout()
@@ -15,8 +18,6 @@ class LoginViewController: UIViewController {
         return contentView
     }()
     
-    var loginCheckerDeligate: LoginViewControllerDeligate?
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -61,7 +62,7 @@ class LoginViewController: UIViewController {
 
 // MARK: Extensions
 
-extension LoginViewController: LoginHeaderViewDeligate {
+extension LoginViewController: LoginHeaderViewDeligateProtocol {
     
     func tapLoginButton(login: String, password: String) {
         
@@ -88,10 +89,10 @@ extension LoginViewController: LoginHeaderViewDeligate {
 #else
         currentUserService = CurrentUserService()
 #endif
+        if let valueDoEventWhenSuccess = doEventWhenSuccess {
+            valueDoEventWhenSuccess(currentUserService,login)
+        }
         
-        let profileViewController = ProfileViewController(currentUser: currentUserService, currentUserName: login)
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        navigationController?.setViewControllers([profileViewController], animated: true)
     }
     
     func showAlertOK(title: String, message: String) {
