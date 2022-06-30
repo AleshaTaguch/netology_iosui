@@ -88,10 +88,34 @@ extension LoginViewController {
     }
     
     @objc func pressButtonLogin() {
-        let profileViewController = ProfileViewController()
+        guard let currentUserName = contentView.loginTextField.text else {
+            return
+        }
+        
+        if currentUserName == "" {
+            showAlertOK(title: "User is empty", message: "Enter userName and password!")
+            return
+        }
+        
+        var currentUserService: UserService
+#if DEBUG
+        currentUserService = TestUserService()
+#else
+        currentUserService = CurrentUserService()
+#endif
+        
+        let profileViewController = ProfileViewController(currentUser: currentUserService, currentUserName: currentUserName)
         navigationController?.setNavigationBarHidden(true, animated: true)
         navigationController?.setViewControllers([profileViewController], animated: true)
     }
+    
+    func showAlertOK(title: String, message: String) {
+        let alertOkViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let actionOk = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+        alertOkViewController.addAction(actionOk)
+        self.present(alertOkViewController, animated: true, completion: nil)
+    }
+    
 }
 
 extension LoginViewController {

@@ -4,7 +4,9 @@ import StorageService
 class ProfileTableHeaderView: UIView {
     
     let postsArray: [Post] = sourcePostsArray
-
+    
+    weak var userServiceDeligate: UserServiceDeligate?
+    
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.isScrollEnabled = true
@@ -51,7 +53,6 @@ extension ProfileTableHeaderView: UITableViewDataSource ,UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: PhotoTableViewCell.classIdentifier, for: indexPath) as! PhotoTableViewCell
-            //cell.setCellFromDataSet(postsArray[indexPath.row])
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: PostTableViewCell.classIdentifier, for: indexPath) as! PostTableViewCell
@@ -76,6 +77,9 @@ extension ProfileTableHeaderView: UITableViewDataSource ,UITableViewDelegate {
         
         if section == 0 {
             let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: ProfileHeaderView.classIdentifier) as! ProfileHeaderView
+            if let valueUser = userServiceDeligate?.getUserObject() {
+                header.setProfileFromUser(valueUser)
+            }
             return header
         } else {
             return nil
