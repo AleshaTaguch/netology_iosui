@@ -16,6 +16,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         appCoordinator?.startApplication()
+                
+        let appConfiguration: AppConfiguration = AppConfiguration.randomElement()
+        NetworkManager.URLSessionDataTask(appConfig: appConfiguration)
         
         return true
     }

@@ -52,6 +52,7 @@
 		59B411452864ECFD006D4463 /* ProfileCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B411442864ECFD006D4463 /* ProfileCoordinatorProtocol.swift */; };
 		59B411472864F0AF006D4463 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B411462864F0AF006D4463 /* VideoTableViewCell.swift */; };
 		59B41149286B9D85006D4463 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B41148286B9D85006D4463 /* WebViewController.swift */; };
+		59B4114B287CA940006D4463 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4114A287CA940006D4463 /* NetworkService.swift */; };
 		59D7630D282727BE00F28FDA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D7630C282727BE00F28FDA /* CustomTextField.swift */; };
 		59E1554D2839858B00CCD78D /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E1554C2839858B00CCD78D /* FeedViewModel.swift */; };
 		59E1554F283C24EC00CCD78D /* AppTabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E1554E283C24EC00CCD78D /* AppTabBarFactory.swift */; };
@@ -139,6 +140,7 @@
 		59B411442864ECFD006D4463 /* ProfileCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		59B411462864F0AF006D4463 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		59B41148286B9D85006D4463 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		59B4114A287CA940006D4463 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		59D7630C282727BE00F28FDA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		59E1554C2839858B00CCD78D /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		59E1554E283C24EC00CCD78D /* AppTabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarFactory.swift; sourceTree = "<group>"; };
@@ -351,6 +353,14 @@
 			path = Video;
 			sourceTree = "<group>";
 		};
+		59B4114C2880C17F006D4463 /* NetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				59B4114A287CA940006D4463 /* NetworkService.swift */,
+			);
+			path = NetworkService;
+			sourceTree = "<group>";
+		};
 		59E15550283C286000CCD78D /* ProfileTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -406,6 +416,7 @@
 				59E15550283C286000CCD78D /* ProfileTab */,
 				595FB24F2822FA3800E4E328 /* CustomUI */,
 				59642B3A27D15AD100875F09 /* CommonDefinition */,
+				59B4114C2880C17F006D4463 /* NetworkService */,
 				6528865E27BC1053005A379F /* SceneDelegate.swift */,
 				6528866027BC1053005A379F /* ViewController.swift */,
 				6528866527BC105C005A379F /* Assets.xcassets */,
@@ -652,6 +663,7 @@
 				59642B3E27D65A1A00875F09 /* ProfileTableHeaderView.swift in Sources */,
 				652E085A27BD5502007A1526 /* ProfileViewController.swift in Sources */,
 				59B411432864E4BD006D4463 /* VideoView.swift in Sources */,
+				59B4114B287CA940006D4463 /* NetworkService.swift in Sources */,
 				596F6BB7282DB10000226BE9 /* FeedCoordinator.swift in Sources */,
 				59B4113D2864E3F1006D4463 /* VideoCoordinatorProtocol.swift in Sources */,
 				652E085627BD529A007A1526 /* PostViewController.swift in Sources */,
