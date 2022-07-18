@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         appCoordinator?.startApplication()
                 
-        let appConfiguration: AppConfiguration = AppConfiguration.randomElement()
-        NetworkManager.URLSessionDataTask(appConfig: appConfiguration)
+        let appConfiguration: AppConfiguration = AppConfiguration.randomURL
+        NetworkManager.URLSessionDataTask(appConfig: appConfiguration, completion: nil)
         
         return true
     }

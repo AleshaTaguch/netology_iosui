@@ -53,6 +53,9 @@
 		59B411472864F0AF006D4463 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B411462864F0AF006D4463 /* VideoTableViewCell.swift */; };
 		59B41149286B9D85006D4463 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B41148286B9D85006D4463 /* WebViewController.swift */; };
 		59B4114B287CA940006D4463 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4114A287CA940006D4463 /* NetworkService.swift */; };
+		59B4114E2883337B006D4463 /* NetworkServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4114D2883337B006D4463 /* NetworkServiceModel.swift */; };
+		59B4115028840AE0006D4463 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4114F28840AE0006D4463 /* AppConfiguration.swift */; };
+		59B411542885E573006D4463 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B411532885E573006D4463 /* InfoTableViewCell.swift */; };
 		59D7630D282727BE00F28FDA /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59D7630C282727BE00F28FDA /* CustomTextField.swift */; };
 		59E1554D2839858B00CCD78D /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E1554C2839858B00CCD78D /* FeedViewModel.swift */; };
 		59E1554F283C24EC00CCD78D /* AppTabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E1554E283C24EC00CCD78D /* AppTabBarFactory.swift */; };
@@ -141,6 +144,9 @@
 		59B411462864F0AF006D4463 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
 		59B41148286B9D85006D4463 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		59B4114A287CA940006D4463 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		59B4114D2883337B006D4463 /* NetworkServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceModel.swift; sourceTree = "<group>"; };
+		59B4114F28840AE0006D4463 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
+		59B411532885E573006D4463 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		59D7630C282727BE00F28FDA /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		59E1554C2839858B00CCD78D /* FeedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		59E1554E283C24EC00CCD78D /* AppTabBarFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTabBarFactory.swift; sourceTree = "<group>"; };
@@ -252,6 +258,8 @@
 			children = (
 				596F6BB5282DB0BF00226BE9 /* Coordinator */,
 				59E15553283C308B00CCD78D /* Feed */,
+				59B411512885E521006D4463 /* Post */,
+				59B411522885E53C006D4463 /* Info */,
 			);
 			path = FeedTab;
 			sourceTree = "<group>";
@@ -356,9 +364,28 @@
 		59B4114C2880C17F006D4463 /* NetworkService */ = {
 			isa = PBXGroup;
 			children = (
+				59B4114F28840AE0006D4463 /* AppConfiguration.swift */,
+				59B4114D2883337B006D4463 /* NetworkServiceModel.swift */,
 				59B4114A287CA940006D4463 /* NetworkService.swift */,
 			);
 			path = NetworkService;
+			sourceTree = "<group>";
+		};
+		59B411512885E521006D4463 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				652E085527BD529A007A1526 /* PostViewController.swift */,
+			);
+			path = Post;
+			sourceTree = "<group>";
+		};
+		59B411522885E53C006D4463 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				652E085D27BD8077007A1526 /* InfoViewController.swift */,
+				59B411532885E573006D4463 /* InfoTableViewCell.swift */,
+			);
+			path = Info;
 			sourceTree = "<group>";
 		};
 		59E15550283C286000CCD78D /* ProfileTab */ = {
@@ -378,8 +405,6 @@
 				596F6BA92827E7C400226BE9 /* FeedView.swift */,
 				59E1554C2839858B00CCD78D /* FeedViewModel.swift */,
 				596F6BAB28283EBF00226BE9 /* FeedModel.swift */,
-				652E085527BD529A007A1526 /* PostViewController.swift */,
-				652E085D27BD8077007A1526 /* InfoViewController.swift */,
 			);
 			path = Feed;
 			sourceTree = "<group>";
@@ -659,6 +684,7 @@
 				59D7630D282727BE00F28FDA /* CustomTextField.swift in Sources */,
 				596F6BA828278F9E00226BE9 /* CustomLabel.swift in Sources */,
 				59E15552283C302800CCD78D /* FeedCoordinatorProtocol.swift in Sources */,
+				59B411542885E573006D4463 /* InfoTableViewCell.swift in Sources */,
 				59642B3C27D15BD500875F09 /* Extension.swift in Sources */,
 				59642B3E27D65A1A00875F09 /* ProfileTableHeaderView.swift in Sources */,
 				652E085A27BD5502007A1526 /* ProfileViewController.swift in Sources */,
@@ -689,7 +715,9 @@
 				652BCC6027C263FB003841E3 /* ProfileHeaderView.swift in Sources */,
 				652E085827BD53A5007A1526 /* FeedViewController.swift in Sources */,
 				595FB1C427EC800F00E4E328 /* ProfileFullScreenAvatarView.swift in Sources */,
+				59B4115028840AE0006D4463 /* AppConfiguration.swift in Sources */,
 				6528865D27BC1053005A379F /* AppDelegate.swift in Sources */,
+				59B4114E2883337B006D4463 /* NetworkServiceModel.swift in Sources */,
 				595FB23A281EA18200E4E328 /* LoginFactory.swift in Sources */,
 				59B411232853E82A006D4463 /* AudioView.swift in Sources */,
 				652E085E27BD8077007A1526 /* InfoViewController.swift in Sources */,
