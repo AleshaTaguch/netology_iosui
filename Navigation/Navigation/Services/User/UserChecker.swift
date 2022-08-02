@@ -15,11 +15,11 @@ class Checker {
     
     private init() {
 #if DEBUG
-        self.login = Constants.Users.userDebug.name
-        self.password = Constants.Users.userDebug.password
+        self.login = Constants.Users.userDebug.profile.name
+        self.password = Constants.Users.userDebug.profile.password
 #else
-        self.login = Constants.Users.userReleace.name
-        self.password = Constants.Users.userReleace.password
+        self.login = Constants.Users.userReleace.profile.name
+        self.password = Constants.Users.userReleace.profile.password
 #endif
     }
     

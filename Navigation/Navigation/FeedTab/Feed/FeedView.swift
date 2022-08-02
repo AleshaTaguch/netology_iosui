@@ -15,7 +15,7 @@ class FeedView: UIView {
     }()
     
     
-    private lazy var textField: CustomTextField = CustomTextField(frame: .zero, placeholder: "Введете слово \(Constants.Users.userReleace.name)") {
+    private lazy var textField: CustomTextField = CustomTextField(frame: .zero, placeholder: "Введете слово \(Constants.Users.userReleace.profile.name)") {
          self.textLabel.status = .unknown
          self.textLabel.text = nil
     }

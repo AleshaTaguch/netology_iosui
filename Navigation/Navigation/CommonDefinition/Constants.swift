@@ -106,16 +106,22 @@ struct Constants {
     }
     
     struct Users {
-        static let userReleace: User = User(name: "Authur",
+        static let userReleace: User = User(profile: UserProfile(name: "Authur",
                                             password: "123",
                                             fullName: "Arthur Fellig (Weegee)",
                                             avatarImage: UIImage(named: "UserImage"),
-                                            status: .active)
-        static let userDebug: User = User(name: "Test",
+                                            status: .active,
+                                            email: nil,
+                                            uid:  nil,
+                                            photoURL:  nil))
+        static let userDebug: User = User(profile: UserProfile(name: "Test",
                                             password: "123",
                                             fullName: "Test Testov (DEBUG)",
                                             avatarImage: UIImage(named: "UserImageDebug"),
-                                            status: .active)
+                                            status: .active,
+                                            email: nil,
+                                            uid:  nil,
+                                            photoURL:  nil))
     }
 }
 

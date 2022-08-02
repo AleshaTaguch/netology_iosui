@@ -138,9 +138,9 @@ extension ProfileHeaderView {
 extension ProfileHeaderView {
     
     public func setProfileFromUser(_ user: User) {
-        avatarImageView.image = user.avatarImage
-        fullNameLabel.text = user.fullName
-        statusLabel.text = user.status.rawValue
+        avatarImageView.image = user.profile.avatarImage
+        fullNameLabel.text = user.profile.fullName
+        statusLabel.text = user.profile.status.rawValue
     }
 }
 

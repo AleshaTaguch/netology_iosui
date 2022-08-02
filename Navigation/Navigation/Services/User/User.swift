@@ -6,21 +6,31 @@ enum StatusUser: String {
     case bloked = "Заблокированный"
 }
 
+struct UserProfile {
+    var name: String
+    var password: String
+    var fullName: String
+    var avatarImage: UIImage?
+    var status: StatusUser
+    var email: String?
+    var uid: String?
+    var photoURL: URL?
+}
+
 class User {
-    let name: String
-    let password: String
-    let fullName: String
-    let avatarImage: UIImage?
-    let status: StatusUser
+    var profile: UserProfile
     
-    init(name: String, password: String, fullName: String, avatarImage: UIImage?, status: StatusUser ) {
-        self.name = name
-        self.password = password
-        self.fullName = fullName
-        self.avatarImage = avatarImage
-        self.status = status
+    init(profile : UserProfile) {
+        self.profile =  profile
+        if self.profile.fullName == "" {
+            self.profile.fullName = self.profile.name
+        }
+        if self.profile.avatarImage == nil {
+            self.profile.avatarImage = UIImage(named: "UserImageDefault")
+        }
     }
 }
+
 
 enum UserServiceError: Error {
     case notEqualName
@@ -36,16 +46,20 @@ protocol UserServiceDeligate: AnyObject {
 }
 
 
-class CurrentUserService: UserService {
+final class CurrentUserService: UserService {
     
     private let user: User?
 
     init() {
         self.user = Constants.Users.userReleace
     }
+    
+    init(user: User?) {
+        self.user = user
+    }
 
     func getUserObjectbyName(_ name: String) throws -> User? {
-        guard let valueUserName = user?.name else { throw UserServiceError.nameIsNil }
+        guard let valueUserName = user?.profile.name else { throw UserServiceError.nameIsNil }
         if valueUserName == name {
             return user
         } else {
@@ -54,16 +68,20 @@ class CurrentUserService: UserService {
     }
 }
 
-class TestUserService: UserService {
+final class TestUserService: UserService {
     
     private let user: User?
     
     init() {
         self.user = Constants.Users.userDebug
     }
+    
+    init(user: User?) {
+        self.user = user
+    }
 
     func getUserObjectbyName(_ name: String) throws -> User? {
-        guard let valueUserName = user?.name else { throw UserServiceError.nameIsNil }
+        guard let valueUserName = user?.profile.name else { throw UserServiceError.nameIsNil }
         if valueUserName == name {
             return user
         } else {

@@ -10,7 +10,7 @@ class FeedModel {
     var defaultWord: String
     
     init() {
-        self.defaultWord = Constants.Users.userReleace.name
+        self.defaultWord = Constants.Users.userReleace.profile.name
     }
     
     public func doCheck(word: String) throws {

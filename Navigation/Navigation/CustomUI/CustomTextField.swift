@@ -12,7 +12,7 @@ class CustomTextField: UITextField {
         self.backgroundColor = .systemGray6
         self.textColor = .black
         self.tintColor = UIColor(named: "accentColor")
-        self.placeholder = "Введете слово \(Constants.Users.userReleace.name)"
+        self.placeholder = "Введете слово \(Constants.Users.userReleace.profile.name)"
         self.layer.borderColor = UIColor.lightGray.cgColor
         self.setLeftRigthTextMargin()
         self.addTarget(self, action:  #selector(editTextFiedl), for: .editingChanged)

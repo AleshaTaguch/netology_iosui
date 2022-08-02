@@ -2,9 +2,10 @@ import UIKit
 
 protocol LoginHeaderViewDeligateProtocol: AnyObject {
     func tapLoginButton(login: String, password: String)
+    func tapSignUpButton(login: String, password: String, completion: @escaping (() -> Void ))
 }
 
-class LoginHeaderView: UIView {
+final class LoginHeaderView: UIView {
     
     private weak var delegate: LoginHeaderViewDeligateProtocol?
     
@@ -83,14 +84,28 @@ class LoginHeaderView: UIView {
         let pickPasswordButton = UIButton()
         pickPasswordButton.layer.cornerRadius = Constants.LoginView.LoginButton.cornerRadius
         pickPasswordButton.layer.masksToBounds = true
-        pickPasswordButton.backgroundColor = .lightGray
+        pickPasswordButton.backgroundColor = .systemGray3
         
         pickPasswordButton.setTitle("Pick a password", for: .normal)
         pickPasswordButton.titleLabel?.font =  UIFont.systemFont(ofSize: Constants.LoginView.LoginButton.fontSize)
-        pickPasswordButton.setTitleColor(.white, for: .normal)
+        pickPasswordButton.setTitleColor(.black, for: .normal)
         pickPasswordButton.addTarget(self, action: #selector(tapPickPasswordButton), for: .touchUpInside)
         pickPasswordButton.toAutoLayout()
         return pickPasswordButton
+    }()
+    
+    private lazy var singUpButton: UIButton = {
+        let singUpButton = UIButton()
+        singUpButton.layer.cornerRadius = Constants.LoginView.LoginButton.cornerRadius
+        singUpButton.layer.masksToBounds = true
+        singUpButton.backgroundColor = .systemGray6
+        
+        singUpButton.setTitle("Sing Up", for: .normal)
+        singUpButton.titleLabel?.font =  UIFont.systemFont(ofSize: Constants.LoginView.LoginButton.fontSize)
+        singUpButton.setTitleColor(.black, for: .normal)
+        singUpButton.addTarget(self, action: #selector(tapSingUpButton), for: .touchUpInside)
+        singUpButton.toAutoLayout()
+        return singUpButton
     }()
     
     private let activityIndicator: UIActivityIndicatorView = {
@@ -114,10 +129,9 @@ class LoginHeaderView: UIView {
                          stackView,
                          loginButton,
                          pickPasswordButton,
+                         singUpButton,
                          activityIndicator)
         activateConstraints()
-        //activityIndicator.frame = CGRect(x: 100, y: 100, width: 50, height: 50)
-        
     }
     
     required init?(coder: NSCoder) {
@@ -135,6 +149,20 @@ extension LoginHeaderView {
         
         if let valueDelegate = delegate {
             valueDelegate.tapLoginButton(login: currentUserName, password: currentUserPwd)
+        }
+    }
+    
+    @objc func tapSingUpButton() {
+        
+        guard let currentUserName = loginTextField.text else { return }
+        guard let currentUserPwd = pwdTextField.text else { return }
+        
+        if let valueDelegate = delegate {
+            valueDelegate.tapSignUpButton(login: currentUserName, password: currentUserPwd) { [weak self] () in
+                guard let self = self else {return}
+                self.loginTextField.text = ""
+                self.pwdTextField.text = ""
+            }
         }
     }
     
@@ -258,15 +286,24 @@ extension LoginHeaderView {
             loginButton.heightAnchor.constraint(equalToConstant: Constants.LoginView.LoginButton.height),
             //loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            pickPasswordButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: Constants.LoginView.LoginButton.topMargin),
+            
+            singUpButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: Constants.LoginView.LoginButton.topMargin),
+            singUpButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.LoginView.LoginButton.leftMargin),
+            singUpButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.LoginView.LoginButton.leftMargin),
+            singUpButton.heightAnchor.constraint(equalToConstant: Constants.LoginView.LoginButton.height),
+            //singUpButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
+            
+            
+            
+            pickPasswordButton.topAnchor.constraint(equalTo: singUpButton.bottomAnchor, constant: Constants.LoginView.LoginButton.topMargin * 3 ),
             pickPasswordButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.LoginView.LoginButton.leftMargin),
             pickPasswordButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.LoginView.LoginButton.leftMargin),
-            pickPasswordButton.heightAnchor.constraint(equalToConstant: Constants.LoginView.LoginButton.height),
+            pickPasswordButton.heightAnchor.constraint(equalToConstant: Constants.LoginView.LoginButton.height * 0.75),
             pickPasswordButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
             activityIndicator.centerXAnchor.constraint(equalTo: pwdTextField.centerXAnchor),
-            activityIndicator.centerYAnchor.constraint(equalTo: pwdTextField.centerYAnchor)
-
+            activityIndicator.centerYAnchor.constraint(equalTo: pwdTextField.centerYAnchor),
+        
         ])
     }
 }

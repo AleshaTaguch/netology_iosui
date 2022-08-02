@@ -1,6 +1,6 @@
 import UIKit
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
     var loginCheckerDeligate: LoginInspectorProtocol?
     var doEventWhenSuccess: ((UserService, String) -> Void)?
@@ -69,31 +69,43 @@ extension LoginViewController: LoginHeaderViewDeligateProtocol {
         //return заменен на preconditionFailure() для выполнения задания 4 HW11
         guard let valueLoginCheckerDeligate = loginCheckerDeligate else { preconditionFailure() }
         
-        do {
-            try
-            valueLoginCheckerDeligate.checkCorrectLoginPassword(loginEntry: login, passwordEntry: password)
-        } catch CheckerError.loginIsEmpty {
-            showAlertOK(title: "User name is empty", message: "Enter correct userName and password!")
-            return
-        } catch CheckerError.passwordIsEmpty {
-            showAlertOK(title: "User password is empty", message: "Enter correct userName and password!")
-            return
-        } catch CheckerError.incorrect {
-            showAlertOK(title: "Invalid user name or password", message: "Enter correct userName and password!")
-            return
-        } catch {
-            showAlertOK(title: "Checking user name or password", message: "Error unhandled! Please contact with me!")
-            return
+        valueLoginCheckerDeligate.checkCredentials(loginEntry: login, passwordEntry: password) { [weak self] userService, error in
+            guard let self = self else {return}
+            
+            if let error = error {
+                self.showAlertOK(title: "Checking user name or password", message: error.localizedDescription)
+                return
+            }
+            
+            var currentUserService: UserService
+    
+    #if DEBUG
+            currentUserService = TestUserService()
+    #else
+            if let unwraperUserService = userService {
+                currentUserService = unwraperUserService
+                if let valueDoEventWhenSuccess = self.doEventWhenSuccess {
+                    valueDoEventWhenSuccess(currentUserService,login)
+                }
+            }
+    #endif
         }
-  
-        var currentUserService: UserService
-#if DEBUG
-        currentUserService = TestUserService()
-#else
-        currentUserService = CurrentUserService()
-#endif
-        if let valueDoEventWhenSuccess = doEventWhenSuccess {
-            valueDoEventWhenSuccess(currentUserService,login)
+        
+    }
+    
+    func tapSignUpButton(login: String, password: String, completion: @escaping (() -> Void )) {
+        print("login = \(login)")
+        print("password = \(password)")
+        guard let valueLoginCheckerDeligate = loginCheckerDeligate else { preconditionFailure() }
+        valueLoginCheckerDeligate.SignUp(loginEntry: login, passwordEntry: password) { [weak self] error in
+            guard let self = self else {return}
+            if let error = error {
+                self.showAlertOK(title: "SignUp Error", message: error.localizedDescription)
+                return
+            } else {
+                self.showAlertOK(title: "SignUp Result", message: "User \(login) registered successfully ")
+                completion()
+            }
         }
         
     }
