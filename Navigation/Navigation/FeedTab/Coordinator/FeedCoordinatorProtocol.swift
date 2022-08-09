@@ -5,6 +5,7 @@ import StorageService
 enum EventFeed {
     case showPost(Post)
     case showInfo
+    case showDirDocuments
 }
 
 protocol FeedCoordinatorProtocol: AnyObject {

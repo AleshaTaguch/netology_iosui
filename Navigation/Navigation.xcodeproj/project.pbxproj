@@ -10,6 +10,8 @@
 		591938B9284292D0008A43A5 /* PasswordCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591938B8284292D0008A43A5 /* PasswordCreator.swift */; };
 		591C26D52893391100432013 /* LoginInspectorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26D42893391100432013 /* LoginInspectorError.swift */; };
 		591C26D728933A1000432013 /* LoginInspectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26D628933A1000432013 /* LoginInspectorProtocol.swift */; };
+		591C26DA289B0E3300432013 /* DirDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26D9289B0E3300432013 /* DirDocumentsViewController.swift */; };
+		591C26DE289B12C500432013 /* DirDocumentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26DD289B12C500432013 /* DirDocumentsTableViewCell.swift */; };
 		595FB1C427EC800F00E4E328 /* ProfileFullScreenAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595FB1C327EC800F00E4E328 /* ProfileFullScreenAvatarView.swift */; };
 		595FB2182811D4F700E4E328 /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = 595FB2172811D4F700E4E328 /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		595FB21B2811D4F700E4E328 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595FB2152811D4F700E4E328 /* StorageService.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -111,6 +113,8 @@
 		591938B8284292D0008A43A5 /* PasswordCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCreator.swift; sourceTree = "<group>"; };
 		591C26D42893391100432013 /* LoginInspectorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspectorError.swift; sourceTree = "<group>"; };
 		591C26D628933A1000432013 /* LoginInspectorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspectorProtocol.swift; sourceTree = "<group>"; };
+		591C26D9289B0E3300432013 /* DirDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirDocumentsViewController.swift; sourceTree = "<group>"; };
+		591C26DD289B12C500432013 /* DirDocumentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirDocumentsTableViewCell.swift; sourceTree = "<group>"; };
 		595FB1C327EC800F00E4E328 /* ProfileFullScreenAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFullScreenAvatarView.swift; sourceTree = "<group>"; };
 		595FB2152811D4F700E4E328 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		595FB2172811D4F700E4E328 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
@@ -208,6 +212,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		591C26D8289B0CBC00432013 /* DirDocuments */ = {
+			isa = PBXGroup;
+			children = (
+				591C26D9289B0E3300432013 /* DirDocumentsViewController.swift */,
+				591C26DD289B12C500432013 /* DirDocumentsTableViewCell.swift */,
+			);
+			path = DirDocuments;
+			sourceTree = "<group>";
+		};
 		595FB2162811D4F700E4E328 /* StorageService */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +288,7 @@
 				596F6BB5282DB0BF00226BE9 /* Coordinator */,
 				59E15553283C308B00CCD78D /* Feed */,
 				59B411512885E521006D4463 /* Post */,
+				591C26D8289B0CBC00432013 /* DirDocuments */,
 				59B411522885E53C006D4463 /* Info */,
 			);
 			path = FeedTab;
@@ -746,6 +760,7 @@
 				59B41149286B9D85006D4463 /* WebViewController.swift in Sources */,
 				596F6BBD2835804F00226BE9 /* ProfileCoordinator.swift in Sources */,
 				596F6BAF2829BBEA00226BE9 /* AppCoordinator.swift in Sources */,
+				591C26DE289B12C500432013 /* DirDocumentsTableViewCell.swift in Sources */,
 				59642B3927CAD04700875F09 /* LoginHeaderView.swift in Sources */,
 				59B411452864ECFD006D4463 /* ProfileCoordinatorProtocol.swift in Sources */,
 				595FB234281AD94B00E4E328 /* User.swift in Sources */,
@@ -772,6 +787,7 @@
 				59B4115B288B2839006D4463 /* CheckerServiceProtocol.swift in Sources */,
 				59B4115D288B2991006D4463 /* CheckerService.swift in Sources */,
 				59642B4727DD47EB00875F09 /* PhotosViewController.swift in Sources */,
+				591C26DA289B0E3300432013 /* DirDocumentsViewController.swift in Sources */,
 				59B411212853E7A1006D4463 /* AudioViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
