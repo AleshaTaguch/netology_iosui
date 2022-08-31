@@ -1,8 +1,7 @@
 import Foundation
 import UIKit
-import StorageService
 
-final class FeedCoordinator: FeedCoordinatorProtocol {
+final class FilesCoordinator: FilesCoordinatorProtocol {
     weak var navigationController: UINavigationController?
     
     init(controller: UINavigationController?) {
@@ -10,13 +9,13 @@ final class FeedCoordinator: FeedCoordinatorProtocol {
     }
     
     func start() {
-        let feedViewController = FeedViewController()
-        feedViewController.coordinatorDeligate = self
-        navigationController?.setViewControllers([feedViewController], animated: true)
-        //doEventHandle(with: .showDirDocuments)
+        let dirDocumentsViewController = DirDocumentsViewController()
+        dirDocumentsViewController.coordinatorDeligate = self
+        navigationController?.setViewControllers([dirDocumentsViewController], animated: true)
     }
     
     func doEventHandle(with typeEvent: EventFeed) {
+        /*
         switch typeEvent {
         case .showInfo:
             let infoViewController = InfoViewController()
@@ -29,14 +28,13 @@ final class FeedCoordinator: FeedCoordinatorProtocol {
             postViewController.coordinatorDeligate = self
             navigationController?.pushViewController(postViewController, animated: true)
             
-       /*
         case .showDirDocuments:
             let dirDocumentsViewController = DirDocumentsViewController()
             dirDocumentsViewController.coordinatorDeligate = self
             navigationController?.pushViewController(dirDocumentsViewController, animated: true)
-        */
+
         }
-    
+        */
     }
 }
 

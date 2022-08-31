@@ -1,32 +1,44 @@
 import Foundation
 import UIKit
 
+struct TabBarItemTypeConfig {
+    var titleTabBar: String
+    var defaultImage: String
+    var selectedImage: String
+}
+
+enum TabBarItemType {
+    case feed
+    case files
+    case settings
+    case profile
+    case audio
+    case video
+    
+    var config: TabBarItemTypeConfig {
+        switch self {
+        case .feed:
+            return TabBarItemTypeConfig(titleTabBar: "Feed", defaultImage: "house", selectedImage: "house.fill")
+        case .profile:
+            return TabBarItemTypeConfig(titleTabBar: "Profile", defaultImage: "person", selectedImage: "person.fill")
+        case .audio:
+            return TabBarItemTypeConfig(titleTabBar: "Audio", defaultImage: "music.note", selectedImage: "music.note")
+        case .video:
+            return TabBarItemTypeConfig(titleTabBar:  "Video", defaultImage: "video", selectedImage: "video.fill")
+        case .files:
+            return TabBarItemTypeConfig(titleTabBar:  "Files", defaultImage: "folder", selectedImage: "folder.fill")
+        case .settings:
+            return TabBarItemTypeConfig(titleTabBar:  "Settings", defaultImage: "gearshape", selectedImage: "gearshape.fill")
+        }
+    }
+}
 
 final class AppTabBarFactory {
-
-    enum TabBarItemType {
-        case feed
-        case profile
-        case audio
-        case video
-    }
     
     public func makeAppNavigationController(tabBarItemType: TabBarItemType) -> UINavigationController {
         let navigationController = UINavigationController()
-        switch tabBarItemType {
-        case .feed:
-            navigationController.tabBarItem = UITabBarItem(title: "Feed", image: UIImage(systemName: "house"), tag: 0)
-            navigationController.tabBarItem.selectedImage = UIImage(systemName: "house.fill")
-        case .profile:
-            navigationController.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person"), tag: 0)
-            navigationController.tabBarItem.selectedImage = UIImage(systemName: "person.fill")
-        case .audio:
-            navigationController.tabBarItem = UITabBarItem(title: "Audio", image: UIImage(systemName: "music.note"), tag: 0)
-            navigationController.tabBarItem.selectedImage = UIImage(systemName: "music.note")
-        case .video:
-            navigationController.tabBarItem = UITabBarItem(title: "Video", image: UIImage(systemName: "video"), tag: 0)
-            navigationController.tabBarItem.selectedImage = UIImage(systemName: "video.fill")
-        }
+        navigationController.tabBarItem = UITabBarItem(title: tabBarItemType.config.titleTabBar, image: UIImage(systemName: tabBarItemType.config.defaultImage), tag: 0)
+        navigationController.tabBarItem.selectedImage = UIImage(systemName: tabBarItemType.config.selectedImage)
         return navigationController
     }
     

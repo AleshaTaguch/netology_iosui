@@ -1,14 +1,13 @@
 import Foundation
 import UIKit
-import StorageService
 
-enum EventFeed {
-    case showPost(Post)
+enum EventFiles {
+    case showPost
     case showInfo
-    //case showDirDocuments
+    case showDirDocuments
 }
 
-protocol FeedCoordinatorProtocol: AnyObject {
+protocol FilesCoordinatorProtocol: AnyObject {
     var navigationController: UINavigationController? {get set}
     func start()
     func doEventHandle(with typeEvent: EventFeed)

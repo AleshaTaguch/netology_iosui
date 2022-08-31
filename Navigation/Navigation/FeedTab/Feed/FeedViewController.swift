@@ -55,7 +55,7 @@ final class FeedViewController: UIViewController, FeedViewDeligateProtocol {
     
     @objc func showDirDocuments() {
         if let coordinator = coordinatorDeligate {
-            coordinator.doEventHandle(with: .showDirDocuments)
+            //coordinator.doEventHandle(with: .showDirDocuments)
         }
     }
     

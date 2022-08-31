@@ -2,7 +2,7 @@ import UIKit
 
 final class DirDocumentsViewController: UIViewController {
     
-    weak var coordinatorDeligate: FeedCoordinatorProtocol?
+    weak var coordinatorDeligate: FilesCoordinatorProtocol?
     
     var fileArray: [String] = []
     
@@ -23,10 +23,9 @@ final class DirDocumentsViewController: UIViewController {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
-        self.title = "Dir Documents"
-
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain ,target: self, action: #selector(addPhotoFromGelary))
         
+        self.navigationItem.title = "Dir Documents"
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain ,target: self, action: #selector(addPhotoFromGelary))
         
         view.addSubviews(tableView)
         
@@ -37,8 +36,11 @@ final class DirDocumentsViewController: UIViewController {
         
         tableView.register(DirDocumentsTableViewCell.self, forCellReuseIdentifier: DirDocumentsTableViewCell.classIdentifier)
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         refreshDirDocuments()
-        
     }
     
     func refreshDirDocuments() {
@@ -51,6 +53,11 @@ final class DirDocumentsViewController: UIViewController {
             let contentDocumentDirectory = try fileManager.contentsOfDirectory(at: documentDirectoryUrl, includingPropertiesForKeys: nil, options: .skipsHiddenFiles)
             for elementContent in contentDocumentDirectory {
                 self.fileArray.append(elementContent.lastPathComponent)
+            }
+            if UserDefaults.standard.bool(forKey: SettingsKey.sortFileKey) {
+                fileArray.sort(by: { $0 > $1 })
+            } else {
+                fileArray.sort(by: { $0 < $1 })
             }
             
         } catch {
