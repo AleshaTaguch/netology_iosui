@@ -93,23 +93,6 @@ extension LoginViewController: LoginHeaderViewDeligateProtocol {
         
     }
     
-    func tapSignUpButton(login: String, password: String, completion: @escaping (() -> Void )) {
-        print("login = \(login)")
-        print("password = \(password)")
-        guard let valueLoginCheckerDeligate = loginCheckerDeligate else { preconditionFailure() }
-        valueLoginCheckerDeligate.SignUp(loginEntry: login, passwordEntry: password) { [weak self] error in
-            guard let self = self else {return}
-            if let error = error {
-                self.showAlertOK(title: "SignUp Error", message: error.localizedDescription)
-                return
-            } else {
-                self.showAlertOK(title: "SignUp Result", message: "User \(login) registered successfully ")
-                completion()
-            }
-        }
-        
-    }
-    
     func showAlertOK(title: String, message: String) {
         let alertOkViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let actionOk = UIAlertAction(title: "OK", style: .cancel, handler: nil)

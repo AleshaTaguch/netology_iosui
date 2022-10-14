@@ -2,7 +2,6 @@ import UIKit
 
 protocol LoginHeaderViewDeligateProtocol: AnyObject {
     func tapLoginButton(login: String, password: String)
-    func tapSignUpButton(login: String, password: String, completion: @escaping (() -> Void ))
 }
 
 final class LoginHeaderView: UIView {
@@ -94,20 +93,6 @@ final class LoginHeaderView: UIView {
         return pickPasswordButton
     }()
     
-    private lazy var singUpButton: UIButton = {
-        let singUpButton = UIButton()
-        singUpButton.layer.cornerRadius = Constants.LoginView.LoginButton.cornerRadius
-        singUpButton.layer.masksToBounds = true
-        singUpButton.backgroundColor = .systemGray6
-        
-        singUpButton.setTitle("Sing Up", for: .normal)
-        singUpButton.titleLabel?.font =  UIFont.systemFont(ofSize: Constants.LoginView.LoginButton.fontSize)
-        singUpButton.setTitleColor(.black, for: .normal)
-        singUpButton.addTarget(self, action: #selector(tapSingUpButton), for: .touchUpInside)
-        singUpButton.toAutoLayout()
-        return singUpButton
-    }()
-    
     private let activityIndicator: UIActivityIndicatorView = {
         let activityIndicator = UIActivityIndicatorView(style: .large)
         activityIndicator.hidesWhenStopped = true
@@ -129,7 +114,6 @@ final class LoginHeaderView: UIView {
                          stackView,
                          loginButton,
                          pickPasswordButton,
-                         singUpButton,
                          activityIndicator)
         activateConstraints()
     }
@@ -149,20 +133,6 @@ extension LoginHeaderView {
         
         if let valueDelegate = delegate {
             valueDelegate.tapLoginButton(login: currentUserName, password: currentUserPwd)
-        }
-    }
-    
-    @objc func tapSingUpButton() {
-        
-        guard let currentUserName = loginTextField.text else { return }
-        guard let currentUserPwd = pwdTextField.text else { return }
-        
-        if let valueDelegate = delegate {
-            valueDelegate.tapSignUpButton(login: currentUserName, password: currentUserPwd) { [weak self] () in
-                guard let self = self else {return}
-                self.loginTextField.text = ""
-                self.pwdTextField.text = ""
-            }
         }
     }
     
@@ -208,55 +178,6 @@ extension LoginHeaderView {
         }
         queue.async(execute: crackPasswordWorkItem)
         
-        /*
-        //Вариант реализации через DispatchWorkItem. Оставил для примера.
-        
-        var crackPassword: String?
-        
-        let queue = DispatchQueue(label: "crackPasswordQueue")
-        
-        let crackPasswordWorkItem = DispatchWorkItem {
-            print("Запуск crackPasswordWorkItem ",Thread.current)
-            crackPassword = PasswordCreator().bruteForcePassword(length: lengthPassword) { word in
-                return word == rigthPassword
-            }
-        }
-        
-        let outputResultWorkItem = DispatchWorkItem {
-            print("запуск outputResultWorkItem ",Thread.current)
-            self.pwdTextField.isSecureTextEntry = false
-            if let valueCrackPassword = crackPassword {
-                self.pwdTextField.text = valueCrackPassword
-            } else {
-                self.pwdTextField.text = "не получилось подобрать"
-            }
-            self.activityIndicator.stopAnimating()
-        }
-        
-        crackPasswordWorkItem.notify(queue: .main, execute: outputResultWorkItem)
-        queue.async(execute: crackPasswordWorkItem)
-        
-        */
-
-        /*
-        // Вариант через DispatchQueue. Оставил для примера.
-        DispatchQueue.global().async {
-            let crackPassword = PasswordCreator().bruteForcePassword(length: lengthPassword) { word in
-                return word == rigthPassword
-            }
-            DispatchQueue.main.async {
-                self.pwdTextField.isSecureTextEntry = false
-                if let valueCrackPassword = crackPassword {
-                    print("crackPassword = \(valueCrackPassword)")
-                    self.pwdTextField.text = valueCrackPassword
-                } else {
-                    print("не получилось")
-                    self.pwdTextField.text = "не получилось"
-                }
-                self.activityIndicator.stopAnimating()
-            }
-        }
-        */
     }
     
 }
@@ -284,18 +205,8 @@ extension LoginHeaderView {
             loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.LoginView.LoginButton.leftMargin),
             loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.LoginView.LoginButton.leftMargin),
             loginButton.heightAnchor.constraint(equalToConstant: Constants.LoginView.LoginButton.height),
-            //loginButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            
-            singUpButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: Constants.LoginView.LoginButton.topMargin),
-            singUpButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.LoginView.LoginButton.leftMargin),
-            singUpButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.LoginView.LoginButton.leftMargin),
-            singUpButton.heightAnchor.constraint(equalToConstant: Constants.LoginView.LoginButton.height),
-            //singUpButton.bottomAnchor.constraint(equalTo: self.bottomAnchor),
-            
-            
-            
-            pickPasswordButton.topAnchor.constraint(equalTo: singUpButton.bottomAnchor, constant: Constants.LoginView.LoginButton.topMargin * 3 ),
+            pickPasswordButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: Constants.LoginView.LoginButton.topMargin * 3 ),
             pickPasswordButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: Constants.LoginView.LoginButton.leftMargin),
             pickPasswordButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -Constants.LoginView.LoginButton.leftMargin),
             pickPasswordButton.heightAnchor.constraint(equalToConstant: Constants.LoginView.LoginButton.height * 0.75),

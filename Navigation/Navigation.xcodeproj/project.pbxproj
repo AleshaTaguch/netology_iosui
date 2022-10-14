@@ -7,26 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5906689628BBE08A00469D4A /* PinCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5906689528BBE08A00469D4A /* PinCodeViewController.swift */; };
-		5906689A28BBE57F00469D4A /* PinCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5906689928BBE57F00469D4A /* PinCodeView.swift */; };
-		5906689C28BBE90300469D4A /* PinCodeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5906689B28BBE90300469D4A /* PinCodeService.swift */; };
 		5906689F28BBEB8200469D4A /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 5906689E28BBEB8200469D4A /* KeychainAccess */; };
-		590668A128BD384A00469D4A /* PinCodeViewDelegateProtocoll.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590668A028BD384A00469D4A /* PinCodeViewDelegateProtocoll.swift */; };
-		590668A328BE9EEF00469D4A /* PinCodeCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590668A228BE9EEF00469D4A /* PinCodeCoordinatorProtocol.swift */; };
-		590668A528BEA00100469D4A /* PinCodeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590668A428BEA00100469D4A /* PinCodeCoordinator.swift */; };
-		590668A728BEAAD300469D4A /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590668A628BEAAD300469D4A /* SettingsService.swift */; };
-		590668A928BFE76300469D4A /* SettingsViewDelegateProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590668A828BFE76300469D4A /* SettingsViewDelegateProtocol.swift */; };
+		590668B028CFCE3900469D4A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590668AF28CFCE3900469D4A /* SceneDelegate.swift */; };
+		590668B328CFD16800469D4A /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 590668B228CFD16800469D4A /* Realm */; };
+		590668B528CFD16800469D4A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 590668B428CFD16800469D4A /* RealmSwift */; };
+		590668B928D110FD00469D4A /* DatabaseCoordinatableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590668B828D110FD00469D4A /* DatabaseCoordinatableProtocol.swift */; };
+		590668BB28D1124600469D4A /* RealmCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590668BA28D1124600469D4A /* RealmCoordinator.swift */; };
+		590668BD28D1133B00469D4A /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590668BC28D1133B00469D4A /* File.swift */; };
 		591938B9284292D0008A43A5 /* PasswordCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591938B8284292D0008A43A5 /* PasswordCreator.swift */; };
 		591C26D52893391100432013 /* LoginInspectorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26D42893391100432013 /* LoginInspectorError.swift */; };
 		591C26D728933A1000432013 /* LoginInspectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26D628933A1000432013 /* LoginInspectorProtocol.swift */; };
-		591C26DA289B0E3300432013 /* DirDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26D9289B0E3300432013 /* DirDocumentsViewController.swift */; };
-		591C26DE289B12C500432013 /* DirDocumentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26DD289B12C500432013 /* DirDocumentsTableViewCell.swift */; };
-		591C26E528A4478400432013 /* FilesCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26E428A4478400432013 /* FilesCoordinatorProtocol.swift */; };
-		591C26E728A447E600432013 /* FilesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26E628A447E600432013 /* FilesCoordinator.swift */; };
-		591C26EC28A57EFF00432013 /* SettingsCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26EB28A57EFF00432013 /* SettingsCoordinatorProtocol.swift */; };
-		591C26EE28A57F5800432013 /* SettingsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26ED28A57F5800432013 /* SettingsCoordinator.swift */; };
-		591C26F028A57FB700432013 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26EF28A57FB700432013 /* SettingsViewController.swift */; };
-		591C26F228A5811B00432013 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26F128A5811B00432013 /* SettingsView.swift */; };
 		595FB1C427EC800F00E4E328 /* ProfileFullScreenAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595FB1C327EC800F00E4E328 /* ProfileFullScreenAvatarView.swift */; };
 		595FB2182811D4F700E4E328 /* StorageService.h in Headers */ = {isa = PBXBuildFile; fileRef = 595FB2172811D4F700E4E328 /* StorageService.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		595FB21B2811D4F700E4E328 /* StorageService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 595FB2152811D4F700E4E328 /* StorageService.framework */; settings = {ATTRIBUTES = (Required, ); }; };
@@ -55,26 +45,12 @@
 		596F6BB7282DB10000226BE9 /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BB6282DB10000226BE9 /* FeedCoordinator.swift */; };
 		596F6BB928301EAD00226BE9 /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BB828301EAD00226BE9 /* AppCoordinatorProtocol.swift */; };
 		596F6BBD2835804F00226BE9 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BBC2835804F00226BE9 /* ProfileCoordinator.swift */; };
-		59B4111C2853E72F006D4463 /* AudioCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4111B2853E72F006D4463 /* AudioCoordinatorProtocol.swift */; };
-		59B4111E2853E75D006D4463 /* AudioCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4111D2853E75D006D4463 /* AudioCoordinator.swift */; };
-		59B411212853E7A1006D4463 /* AudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B411202853E7A1006D4463 /* AudioViewController.swift */; };
-		59B411232853E82A006D4463 /* AudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B411222853E82A006D4463 /* AudioView.swift */; };
 		59B4113428624405006D4463 /* Linkin_Park_What_Ive_Done.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59B4112F28624404006D4463 /* Linkin_Park_What_Ive_Done.mp3 */; };
 		59B4113528624405006D4463 /* Linkin_Park_Somewhere_I_Belong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59B4113028624404006D4463 /* Linkin_Park_Somewhere_I_Belong.mp3 */; };
 		59B4113628624405006D4463 /* Linkin_Park_In_the_End.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59B4113128624405006D4463 /* Linkin_Park_In_the_End.mp3 */; };
 		59B4113728624405006D4463 /* Linkin_Park_Faint.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59B4113228624405006D4463 /* Linkin_Park_Faint.mp3 */; };
 		59B4113828624405006D4463 /* Linkin_Park_Numb.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59B4113328624405006D4463 /* Linkin_Park_Numb.mp3 */; };
-		59B4113D2864E3F1006D4463 /* VideoCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4113C2864E3F1006D4463 /* VideoCoordinatorProtocol.swift */; };
-		59B4113F2864E400006D4463 /* VideoCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4113E2864E400006D4463 /* VideoCoordinator.swift */; };
-		59B411412864E48F006D4463 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B411402864E48F006D4463 /* VideoViewController.swift */; };
-		59B411432864E4BD006D4463 /* VideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B411422864E4BD006D4463 /* VideoView.swift */; };
 		59B411452864ECFD006D4463 /* ProfileCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B411442864ECFD006D4463 /* ProfileCoordinatorProtocol.swift */; };
-		59B411472864F0AF006D4463 /* VideoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B411462864F0AF006D4463 /* VideoTableViewCell.swift */; };
-		59B41149286B9D85006D4463 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B41148286B9D85006D4463 /* WebViewController.swift */; };
-		59B4114B287CA940006D4463 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4114A287CA940006D4463 /* NetworkService.swift */; };
-		59B4114E2883337B006D4463 /* NetworkServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4114D2883337B006D4463 /* NetworkServiceModel.swift */; };
-		59B4115028840AE0006D4463 /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4114F28840AE0006D4463 /* AppConfiguration.swift */; };
-		59B411542885E573006D4463 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B411532885E573006D4463 /* InfoTableViewCell.swift */; };
 		59B4115628874692006D4463 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 59B4115528874692006D4463 /* GoogleService-Info.plist */; };
 		59B41159288749AA006D4463 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 59B41158288749AA006D4463 /* FirebaseAuth */; };
 		59B4115B288B2839006D4463 /* CheckerServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B4115A288B2839006D4463 /* CheckerServiceProtocol.swift */; };
@@ -85,7 +61,6 @@
 		59E1554F283C24EC00CCD78D /* AppTabBarFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E1554E283C24EC00CCD78D /* AppTabBarFactory.swift */; };
 		59E15552283C302800CCD78D /* FeedCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E15551283C302800CCD78D /* FeedCoordinatorProtocol.swift */; };
 		6528865D27BC1053005A379F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6528865C27BC1053005A379F /* AppDelegate.swift */; };
-		6528865F27BC1053005A379F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6528865E27BC1053005A379F /* SceneDelegate.swift */; };
 		6528866127BC1053005A379F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6528866027BC1053005A379F /* ViewController.swift */; };
 		6528866627BC105C005A379F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6528866527BC105C005A379F /* Assets.xcassets */; };
 		6528866927BC105C005A379F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6528866727BC105C005A379F /* LaunchScreen.storyboard */; };
@@ -125,25 +100,13 @@
 
 /* Begin PBXFileReference section */
 		207AAF684D7687102A8171AE /* Pods_StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5906689528BBE08A00469D4A /* PinCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCodeViewController.swift; sourceTree = "<group>"; };
-		5906689928BBE57F00469D4A /* PinCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCodeView.swift; sourceTree = "<group>"; };
-		5906689B28BBE90300469D4A /* PinCodeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCodeService.swift; sourceTree = "<group>"; };
-		590668A028BD384A00469D4A /* PinCodeViewDelegateProtocoll.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCodeViewDelegateProtocoll.swift; sourceTree = "<group>"; };
-		590668A228BE9EEF00469D4A /* PinCodeCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCodeCoordinatorProtocol.swift; sourceTree = "<group>"; };
-		590668A428BEA00100469D4A /* PinCodeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinCodeCoordinator.swift; sourceTree = "<group>"; };
-		590668A628BEAAD300469D4A /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
-		590668A828BFE76300469D4A /* SettingsViewDelegateProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewDelegateProtocol.swift; sourceTree = "<group>"; };
+		590668AF28CFCE3900469D4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		590668B828D110FD00469D4A /* DatabaseCoordinatableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCoordinatableProtocol.swift; sourceTree = "<group>"; };
+		590668BA28D1124600469D4A /* RealmCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoordinator.swift; sourceTree = "<group>"; };
+		590668BC28D1133B00469D4A /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		591938B8284292D0008A43A5 /* PasswordCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCreator.swift; sourceTree = "<group>"; };
 		591C26D42893391100432013 /* LoginInspectorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspectorError.swift; sourceTree = "<group>"; };
 		591C26D628933A1000432013 /* LoginInspectorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspectorProtocol.swift; sourceTree = "<group>"; };
-		591C26D9289B0E3300432013 /* DirDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirDocumentsViewController.swift; sourceTree = "<group>"; };
-		591C26DD289B12C500432013 /* DirDocumentsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirDocumentsTableViewCell.swift; sourceTree = "<group>"; };
-		591C26E428A4478400432013 /* FilesCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesCoordinatorProtocol.swift; sourceTree = "<group>"; };
-		591C26E628A447E600432013 /* FilesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilesCoordinator.swift; sourceTree = "<group>"; };
-		591C26EB28A57EFF00432013 /* SettingsCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinatorProtocol.swift; sourceTree = "<group>"; };
-		591C26ED28A57F5800432013 /* SettingsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCoordinator.swift; sourceTree = "<group>"; };
-		591C26EF28A57FB700432013 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		591C26F128A5811B00432013 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		595FB1C327EC800F00E4E328 /* ProfileFullScreenAvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileFullScreenAvatarView.swift; sourceTree = "<group>"; };
 		595FB2152811D4F700E4E328 /* StorageService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StorageService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		595FB2172811D4F700E4E328 /* StorageService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StorageService.h; sourceTree = "<group>"; };
@@ -169,26 +132,12 @@
 		596F6BB6282DB10000226BE9 /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		596F6BB828301EAD00226BE9 /* AppCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		596F6BBC2835804F00226BE9 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
-		59B4111B2853E72F006D4463 /* AudioCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCoordinatorProtocol.swift; sourceTree = "<group>"; };
-		59B4111D2853E75D006D4463 /* AudioCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioCoordinator.swift; sourceTree = "<group>"; };
-		59B411202853E7A1006D4463 /* AudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioViewController.swift; sourceTree = "<group>"; };
-		59B411222853E82A006D4463 /* AudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AudioView.swift; sourceTree = "<group>"; };
 		59B4112F28624404006D4463 /* Linkin_Park_What_Ive_Done.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Linkin_Park_What_Ive_Done.mp3; sourceTree = "<group>"; };
 		59B4113028624404006D4463 /* Linkin_Park_Somewhere_I_Belong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Linkin_Park_Somewhere_I_Belong.mp3; sourceTree = "<group>"; };
 		59B4113128624405006D4463 /* Linkin_Park_In_the_End.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Linkin_Park_In_the_End.mp3; sourceTree = "<group>"; };
 		59B4113228624405006D4463 /* Linkin_Park_Faint.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Linkin_Park_Faint.mp3; sourceTree = "<group>"; };
 		59B4113328624405006D4463 /* Linkin_Park_Numb.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Linkin_Park_Numb.mp3; sourceTree = "<group>"; };
-		59B4113C2864E3F1006D4463 /* VideoCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCoordinatorProtocol.swift; sourceTree = "<group>"; };
-		59B4113E2864E400006D4463 /* VideoCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCoordinator.swift; sourceTree = "<group>"; };
-		59B411402864E48F006D4463 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
-		59B411422864E4BD006D4463 /* VideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoView.swift; sourceTree = "<group>"; };
 		59B411442864ECFD006D4463 /* ProfileCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinatorProtocol.swift; sourceTree = "<group>"; };
-		59B411462864F0AF006D4463 /* VideoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoTableViewCell.swift; sourceTree = "<group>"; };
-		59B41148286B9D85006D4463 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		59B4114A287CA940006D4463 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		59B4114D2883337B006D4463 /* NetworkServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServiceModel.swift; sourceTree = "<group>"; };
-		59B4114F28840AE0006D4463 /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
-		59B411532885E573006D4463 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		59B4115528874692006D4463 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		59B4115A288B2839006D4463 /* CheckerServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerServiceProtocol.swift; sourceTree = "<group>"; };
 		59B4115C288B2991006D4463 /* CheckerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckerService.swift; sourceTree = "<group>"; };
@@ -199,7 +148,6 @@
 		59E15551283C302800CCD78D /* FeedCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		6528865927BC1053005A379F /* Navigation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Navigation.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6528865C27BC1053005A379F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		6528865E27BC1053005A379F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		6528866027BC1053005A379F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		6528866527BC105C005A379F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6528866827BC105C005A379F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -231,7 +179,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				590668B328CFD16800469D4A /* Realm in Frameworks */,
 				595FB249282015A200E4E328 /* iOSIntPackage in Frameworks */,
+				590668B528CFD16800469D4A /* RealmSwift in Frameworks */,
 				595FB21B2811D4F700E4E328 /* StorageService.framework in Frameworks */,
 				D670772977E101AAAC6D284A /* Pods_Navigation.framework in Frameworks */,
 				59B41159288749AA006D4463 /* FirebaseAuth in Frameworks */,
@@ -242,89 +192,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5906689428BBE02800469D4A /* PinCodeSingleView */ = {
+		590668B628D10F9400469D4A /* RealmDatabase */ = {
 			isa = PBXGroup;
 			children = (
-				5906689728BBE3D600469D4A /* Coordinator */,
-				5906689828BBE3E900469D4A /* PinCode */,
+				590668B828D110FD00469D4A /* DatabaseCoordinatableProtocol.swift */,
+				590668BA28D1124600469D4A /* RealmCoordinator.swift */,
+				590668BC28D1133B00469D4A /* File.swift */,
 			);
-			path = PinCodeSingleView;
-			sourceTree = "<group>";
-		};
-		5906689728BBE3D600469D4A /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				590668A228BE9EEF00469D4A /* PinCodeCoordinatorProtocol.swift */,
-				590668A428BEA00100469D4A /* PinCodeCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		5906689828BBE3E900469D4A /* PinCode */ = {
-			isa = PBXGroup;
-			children = (
-				590668A028BD384A00469D4A /* PinCodeViewDelegateProtocoll.swift */,
-				5906689928BBE57F00469D4A /* PinCodeView.swift */,
-				5906689B28BBE90300469D4A /* PinCodeService.swift */,
-			);
-			path = PinCode;
-			sourceTree = "<group>";
-		};
-		591C26E128A4471800432013 /* FilesTab */ = {
-			isa = PBXGroup;
-			children = (
-				591C26E228A4473A00432013 /* Coordinator */,
-				591C26E328A4474F00432013 /* Files */,
-			);
-			path = FilesTab;
-			sourceTree = "<group>";
-		};
-		591C26E228A4473A00432013 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				591C26E428A4478400432013 /* FilesCoordinatorProtocol.swift */,
-				591C26E628A447E600432013 /* FilesCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		591C26E328A4474F00432013 /* Files */ = {
-			isa = PBXGroup;
-			children = (
-				591C26D9289B0E3300432013 /* DirDocumentsViewController.swift */,
-				591C26DD289B12C500432013 /* DirDocumentsTableViewCell.swift */,
-			);
-			path = Files;
-			sourceTree = "<group>";
-		};
-		591C26E828A57E9A00432013 /* SettingsTab */ = {
-			isa = PBXGroup;
-			children = (
-				591C26E928A57E9F00432013 /* Coordinator */,
-				591C26EA28A57EA300432013 /* Settings */,
-			);
-			path = SettingsTab;
-			sourceTree = "<group>";
-		};
-		591C26E928A57E9F00432013 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				5906689528BBE08A00469D4A /* PinCodeViewController.swift */,
-				591C26EB28A57EFF00432013 /* SettingsCoordinatorProtocol.swift */,
-				591C26ED28A57F5800432013 /* SettingsCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		591C26EA28A57EA300432013 /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				591C26EF28A57FB700432013 /* SettingsViewController.swift */,
-				590668A828BFE76300469D4A /* SettingsViewDelegateProtocol.swift */,
-				591C26F128A5811B00432013 /* SettingsView.swift */,
-				590668A628BEAAD300469D4A /* SettingsService.swift */,
-			);
-			path = Settings;
+			path = RealmDatabase;
 			sourceTree = "<group>";
 		};
 		595FB2162811D4F700E4E328 /* StorageService */ = {
@@ -428,33 +303,6 @@
 			path = Coordinator;
 			sourceTree = "<group>";
 		};
-		59B411192853E6EE006D4463 /* AudioTab */ = {
-			isa = PBXGroup;
-			children = (
-				59B4111A2853E70B006D4463 /* Coordinator */,
-				59B4111F2853E774006D4463 /* Audio */,
-			);
-			path = AudioTab;
-			sourceTree = "<group>";
-		};
-		59B4111A2853E70B006D4463 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				59B4111B2853E72F006D4463 /* AudioCoordinatorProtocol.swift */,
-				59B4111D2853E75D006D4463 /* AudioCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		59B4111F2853E774006D4463 /* Audio */ = {
-			isa = PBXGroup;
-			children = (
-				59B411202853E7A1006D4463 /* AudioViewController.swift */,
-				59B411222853E82A006D4463 /* AudioView.swift */,
-			);
-			path = Audio;
-			sourceTree = "<group>";
-		};
 		59B411242862426A006D4463 /* Music */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,45 +313,6 @@
 				59B4112F28624404006D4463 /* Linkin_Park_What_Ive_Done.mp3 */,
 			);
 			path = Music;
-			sourceTree = "<group>";
-		};
-		59B411392864E387006D4463 /* VideoTab */ = {
-			isa = PBXGroup;
-			children = (
-				59B4113A2864E39F006D4463 /* Coordinator */,
-				59B4113B2864E3D1006D4463 /* Video */,
-			);
-			path = VideoTab;
-			sourceTree = "<group>";
-		};
-		59B4113A2864E39F006D4463 /* Coordinator */ = {
-			isa = PBXGroup;
-			children = (
-				59B4113C2864E3F1006D4463 /* VideoCoordinatorProtocol.swift */,
-				59B4113E2864E400006D4463 /* VideoCoordinator.swift */,
-			);
-			path = Coordinator;
-			sourceTree = "<group>";
-		};
-		59B4113B2864E3D1006D4463 /* Video */ = {
-			isa = PBXGroup;
-			children = (
-				59B411402864E48F006D4463 /* VideoViewController.swift */,
-				59B411422864E4BD006D4463 /* VideoView.swift */,
-				59B411462864F0AF006D4463 /* VideoTableViewCell.swift */,
-				59B41148286B9D85006D4463 /* WebViewController.swift */,
-			);
-			path = Video;
-			sourceTree = "<group>";
-		};
-		59B4114C2880C17F006D4463 /* NetworkService */ = {
-			isa = PBXGroup;
-			children = (
-				59B4114F28840AE0006D4463 /* AppConfiguration.swift */,
-				59B4114D2883337B006D4463 /* NetworkServiceModel.swift */,
-				59B4114A287CA940006D4463 /* NetworkService.swift */,
-			);
-			path = NetworkService;
 			sourceTree = "<group>";
 		};
 		59B411512885E521006D4463 /* Post */ = {
@@ -518,7 +327,6 @@
 			isa = PBXGroup;
 			children = (
 				652E085D27BD8077007A1526 /* InfoViewController.swift */,
-				59B411532885E573006D4463 /* InfoTableViewCell.swift */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -526,9 +334,9 @@
 		59B4115E288B2F39006D4463 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				590668B628D10F9400469D4A /* RealmDatabase */,
 				59B4115F288C814B006D4463 /* CheckerService */,
 				595FB2162811D4F700E4E328 /* StorageService */,
-				59B4114C2880C17F006D4463 /* NetworkService */,
 				595FB24E2822DBFC00E4E328 /* User */,
 			);
 			path = Services;
@@ -589,17 +397,12 @@
 			isa = PBXGroup;
 			children = (
 				596F6BAD2829B8C500226BE9 /* Application */,
-				5906689428BBE02800469D4A /* PinCodeSingleView */,
-				591C26E128A4471800432013 /* FilesTab */,
-				591C26E828A57E9A00432013 /* SettingsTab */,
 				59642B4327D7F9CF00875F09 /* FeedTab */,
 				59E15550283C286000CCD78D /* ProfileTab */,
-				59B411192853E6EE006D4463 /* AudioTab */,
-				59B411392864E387006D4463 /* VideoTab */,
 				59B4115E288B2F39006D4463 /* Services */,
 				595FB24F2822FA3800E4E328 /* CustomUI */,
 				59642B3A27D15AD100875F09 /* CommonDefinition */,
-				6528865E27BC1053005A379F /* SceneDelegate.swift */,
+				590668AF28CFCE3900469D4A /* SceneDelegate.swift */,
 				6528866027BC1053005A379F /* ViewController.swift */,
 				6528866527BC105C005A379F /* Assets.xcassets */,
 				6528866727BC105C005A379F /* LaunchScreen.storyboard */,
@@ -692,6 +495,8 @@
 				595FB248282015A200E4E328 /* iOSIntPackage */,
 				59B41158288749AA006D4463 /* FirebaseAuth */,
 				5906689E28BBEB8200469D4A /* KeychainAccess */,
+				590668B228CFD16800469D4A /* Realm */,
+				590668B428CFD16800469D4A /* RealmSwift */,
 			);
 			productName = Navigation;
 			productReference = 6528865927BC1053005A379F /* Navigation.app */;
@@ -728,6 +533,7 @@
 				595FB247282015A200E4E328 /* XCRemoteSwiftPackageReference "iOSIntPackage" */,
 				59B41157288749AA006D4463 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				5906689D28BBEB8200469D4A /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				590668B128CFD16800469D4A /* XCRemoteSwiftPackageReference "realm-swift" */,
 			);
 			productRefGroup = 6528865A27BC1053005A379F /* Products */;
 			projectDirPath = "";
@@ -848,71 +654,44 @@
 				596F6BA828278F9E00226BE9 /* CustomLabel.swift in Sources */,
 				591C26D52893391100432013 /* LoginInspectorError.swift in Sources */,
 				59E15552283C302800CCD78D /* FeedCoordinatorProtocol.swift in Sources */,
-				59B411542885E573006D4463 /* InfoTableViewCell.swift in Sources */,
 				59642B3C27D15BD500875F09 /* Extension.swift in Sources */,
+				590668B928D110FD00469D4A /* DatabaseCoordinatableProtocol.swift in Sources */,
+				590668B028CFCE3900469D4A /* SceneDelegate.swift in Sources */,
+				590668BB28D1124600469D4A /* RealmCoordinator.swift in Sources */,
 				59642B3E27D65A1A00875F09 /* ProfileTableHeaderView.swift in Sources */,
 				652E085A27BD5502007A1526 /* ProfileViewController.swift in Sources */,
-				59B411432864E4BD006D4463 /* VideoView.swift in Sources */,
-				590668A128BD384A00469D4A /* PinCodeViewDelegateProtocoll.swift in Sources */,
-				59B4114B287CA940006D4463 /* NetworkService.swift in Sources */,
 				596F6BB7282DB10000226BE9 /* FeedCoordinator.swift in Sources */,
-				591C26EC28A57EFF00432013 /* SettingsCoordinatorProtocol.swift in Sources */,
-				59B4113D2864E3F1006D4463 /* VideoCoordinatorProtocol.swift in Sources */,
-				591C26F028A57FB700432013 /* SettingsViewController.swift in Sources */,
 				652E085627BD529A007A1526 /* PostViewController.swift in Sources */,
-				59B4111C2853E72F006D4463 /* AudioCoordinatorProtocol.swift in Sources */,
 				59B41161288C817E006D4463 /* CheckerServiceModel.swift in Sources */,
 				652E085C27BD7929007A1526 /* Constants.swift in Sources */,
+				590668BD28D1133B00469D4A /* File.swift in Sources */,
 				59E1554D2839858B00CCD78D /* FeedViewModel.swift in Sources */,
 				596F6BB928301EAD00226BE9 /* AppCoordinatorProtocol.swift in Sources */,
 				595FB236281E70EE00E4E328 /* UserChecker.swift in Sources */,
 				59642B4D27E26A1500875F09 /* Storage.swift in Sources */,
-				59B4111E2853E75D006D4463 /* AudioCoordinator.swift in Sources */,
-				59B4113F2864E400006D4463 /* VideoCoordinator.swift in Sources */,
-				591C26E728A447E600432013 /* FilesCoordinator.swift in Sources */,
 				59642B4527DCE55F00875F09 /* PhotoTableViewCell.swift in Sources */,
-				59B41149286B9D85006D4463 /* WebViewController.swift in Sources */,
 				596F6BBD2835804F00226BE9 /* ProfileCoordinator.swift in Sources */,
 				596F6BAF2829BBEA00226BE9 /* AppCoordinator.swift in Sources */,
-				591C26DE289B12C500432013 /* DirDocumentsTableViewCell.swift in Sources */,
 				59642B3927CAD04700875F09 /* LoginHeaderView.swift in Sources */,
-				590668A728BEAAD300469D4A /* SettingsService.swift in Sources */,
 				59B411452864ECFD006D4463 /* ProfileCoordinatorProtocol.swift in Sources */,
-				5906689A28BBE57F00469D4A /* PinCodeView.swift in Sources */,
 				595FB234281AD94B00E4E328 /* User.swift in Sources */,
 				6528866127BC1053005A379F /* ViewController.swift in Sources */,
-				591C26F228A5811B00432013 /* SettingsView.swift in Sources */,
 				59642B4027D6A03E00875F09 /* PostTableViewCell.swift in Sources */,
-				59B411472864F0AF006D4463 /* VideoTableViewCell.swift in Sources */,
 				591938B9284292D0008A43A5 /* PasswordCreator.swift in Sources */,
-				591C26EE28A57F5800432013 /* SettingsCoordinator.swift in Sources */,
 				652BCC6027C263FB003841E3 /* ProfileHeaderView.swift in Sources */,
 				591C26D728933A1000432013 /* LoginInspectorProtocol.swift in Sources */,
 				652E085827BD53A5007A1526 /* FeedViewController.swift in Sources */,
 				595FB1C427EC800F00E4E328 /* ProfileFullScreenAvatarView.swift in Sources */,
-				59B4115028840AE0006D4463 /* AppConfiguration.swift in Sources */,
 				6528865D27BC1053005A379F /* AppDelegate.swift in Sources */,
-				59B4114E2883337B006D4463 /* NetworkServiceModel.swift in Sources */,
 				595FB23A281EA18200E4E328 /* LoginFactory.swift in Sources */,
-				590668A328BE9EEF00469D4A /* PinCodeCoordinatorProtocol.swift in Sources */,
-				59B411232853E82A006D4463 /* AudioView.swift in Sources */,
 				652E085E27BD8077007A1526 /* InfoViewController.swift in Sources */,
 				595FB238281E90E100E4E328 /* LoginInspector.swift in Sources */,
 				59642B3727CAC29900875F09 /* LogInViewController.swift in Sources */,
-				59B411412864E48F006D4463 /* VideoViewController.swift in Sources */,
 				595FB24D2822DBE600E4E328 /* CustomButton.swift in Sources */,
-				5906689C28BBE90300469D4A /* PinCodeService.swift in Sources */,
-				590668A928BFE76300469D4A /* SettingsViewDelegateProtocol.swift in Sources */,
 				59642B4927DD4DB600875F09 /* PhotosCollectionViewCell.swift in Sources */,
-				6528865F27BC1053005A379F /* SceneDelegate.swift in Sources */,
 				59B4115B288B2839006D4463 /* CheckerServiceProtocol.swift in Sources */,
 				59B4115D288B2991006D4463 /* CheckerService.swift in Sources */,
 				59642B4727DD47EB00875F09 /* PhotosViewController.swift in Sources */,
-				590668A528BEA00100469D4A /* PinCodeCoordinator.swift in Sources */,
-				591C26E528A4478400432013 /* FilesCoordinatorProtocol.swift in Sources */,
-				591C26DA289B0E3300432013 /* DirDocumentsViewController.swift in Sources */,
-				5906689628BBE08A00469D4A /* PinCodeViewController.swift in Sources */,
-				59B411212853E7A1006D4463 /* AudioViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1214,6 +993,14 @@
 				kind = branch;
 			};
 		};
+		590668B128CFD16800469D4A /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		595FB247282015A200E4E328 /* XCRemoteSwiftPackageReference "iOSIntPackage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TrueMax/iOSIntPackage.git";
@@ -1237,6 +1024,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5906689D28BBEB8200469D4A /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
+		};
+		590668B228CFD16800469D4A /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 590668B128CFD16800469D4A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		590668B428CFD16800469D4A /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 590668B128CFD16800469D4A /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
 		};
 		595FB248282015A200E4E328 /* iOSIntPackage */ = {
 			isa = XCSwiftPackageProductDependency;

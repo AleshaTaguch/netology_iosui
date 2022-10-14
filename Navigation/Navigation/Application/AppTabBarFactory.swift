@@ -9,11 +9,7 @@ struct TabBarItemTypeConfig {
 
 enum TabBarItemType {
     case feed
-    case files
-    case settings
     case profile
-    case audio
-    case video
     
     var config: TabBarItemTypeConfig {
         switch self {
@@ -21,14 +17,6 @@ enum TabBarItemType {
             return TabBarItemTypeConfig(titleTabBar: "Feed", defaultImage: "house", selectedImage: "house.fill")
         case .profile:
             return TabBarItemTypeConfig(titleTabBar: "Profile", defaultImage: "person", selectedImage: "person.fill")
-        case .audio:
-            return TabBarItemTypeConfig(titleTabBar: "Audio", defaultImage: "music.note", selectedImage: "music.note")
-        case .video:
-            return TabBarItemTypeConfig(titleTabBar:  "Video", defaultImage: "video", selectedImage: "video.fill")
-        case .files:
-            return TabBarItemTypeConfig(titleTabBar:  "Files", defaultImage: "folder", selectedImage: "folder.fill")
-        case .settings:
-            return TabBarItemTypeConfig(titleTabBar:  "Settings", defaultImage: "gearshape", selectedImage: "gearshape.fill")
         }
     }
 }

@@ -1,6 +1,6 @@
 import UIKit
-import FirebaseCore
-import FirebaseAuth
+//import FirebaseCore
+//import FirebaseAuth
 
 
 @main
@@ -19,23 +19,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
         appCoordinator?.startApplication()
-                
-        let appConfiguration: AppConfiguration = AppConfiguration.randomURL
-        NetworkManager.URLSessionDataTask(appConfig: appConfiguration, completion: nil)
-        
-        FirebaseApp.configure()
         
         return true
     }
-    
-    func applicationWillTerminate(_ application: UIApplication) {
-        do {
-            try FirebaseAuth.Auth.auth().signOut()
-        } catch {
-            print("Erorr when FirebaseAuth.Auth.auth().signOut(): \(error.localizedDescription)")
-        }
-    }
-    
 
     // MARK: UISceneSession Lifecycle
 /*
