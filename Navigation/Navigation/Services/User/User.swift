@@ -38,6 +38,7 @@ enum UserServiceError: Error {
 }
 
 protocol UserService {
+    var keyedValues: [String: Any] { get }
     func getUserObjectbyName(_ name: String) throws -> User?
 }
 
@@ -49,6 +50,16 @@ protocol UserServiceDeligate: AnyObject {
 final class CurrentUserService: UserService {
     
     private let user: User?
+    
+    var keyedValues: [String: Any] {
+        get {
+            return [
+                "name": self.user?.profile.name ?? "",
+                "password": self.user?.profile.password ?? "",
+                "fullName": self.user?.profile.fullName ?? ""
+            ]
+        }
+    }
 
     init() {
         self.user = Constants.Users.userReleace
@@ -66,11 +77,22 @@ final class CurrentUserService: UserService {
             throw UserServiceError.notEqualName
         }
     }
+    
 }
 
 final class TestUserService: UserService {
     
     private let user: User?
+    
+    var keyedValues: [String: Any] {
+        get {
+            return [
+                "name": self.user?.profile.name ?? "",
+                "password": self.user?.profile.password ?? "",
+                "fullName": self.user?.profile.fullName ?? ""
+            ]
+        }
+    }
     
     init() {
         self.user = Constants.Users.userDebug

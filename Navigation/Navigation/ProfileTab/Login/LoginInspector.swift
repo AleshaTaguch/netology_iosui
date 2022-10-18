@@ -6,7 +6,7 @@ final class LoginInspector: LoginInspectorProtocol {
         case login =  "^([a-z0-9!#$%&'*+-/=?^_`{|}~]){1,64}@([a-z0-9!#$%&'*+-/=?^_`{|}~]){1,64}\\.([a-z0-9]){2,64}$"
         case password = "^([a-z0-9!#$%^&*-_+=]){6,}$"
     }
-    
+        
     private func validatedString(_ stringEntry: String, pattern: RegexCheracterSet) -> Bool {
         let regex =  pattern as! CVarArg
         let predicate = NSPredicate(format:"SELF MATCHES %@",regex)

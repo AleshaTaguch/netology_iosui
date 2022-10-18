@@ -121,10 +121,7 @@ final class LoginHeaderView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-}
 
-
-extension LoginHeaderView {
     
     @objc func tapLoginButton() {
         
@@ -179,13 +176,7 @@ extension LoginHeaderView {
         queue.async(execute: crackPasswordWorkItem)
         
     }
-    
-}
-
-// MARK: extension
-
-extension LoginHeaderView {
-    
+        
     private func activateConstraints () {
         NSLayoutConstraint.activate([
             logoImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: Constants.LoginView.Logo.topMargin),
@@ -217,4 +208,5 @@ extension LoginHeaderView {
         
         ])
     }
+    
 }

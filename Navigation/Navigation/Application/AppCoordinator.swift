@@ -7,12 +7,16 @@ final class AppCoordinator: AppCoordinatorProtocol {
     var feedCoordinator: FeedCoordinatorProtocol?
     var profileCoordinator: ProfileCoordinatorProtocol?
     
+    var realmCoordinator: RealmCoordinator?
+    
     init(controller: UITabBarController?) {
         self.appTabBarControler = controller
     }
     
     func startApplication() {
         if let valueAppTabBarControler = appTabBarControler {
+            
+            realmCoordinator = RealmCoordinator()
             
             //создаем фабрику
             let appTabBarFactory = AppTabBarFactory()
@@ -30,7 +34,8 @@ final class AppCoordinator: AppCoordinatorProtocol {
             // создаем контрроллер
             let profileNavController = appTabBarFactory.makeAppNavigationController(tabBarItemType: .profile)
             //создаем координатор и передаем в него контроллер
-            profileCoordinator = ProfileCoordinator(controller: profileNavController)
+            profileCoordinator = ProfileCoordinator(controller: profileNavController,
+                                                    databaseCoordinator: realmCoordinator)
             // стартуем координатор
             profileCoordinator?.start()
             navContrillersArray.append(profileNavController)

@@ -13,7 +13,7 @@
 		590668B528CFD16800469D4A /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 590668B428CFD16800469D4A /* RealmSwift */; };
 		590668B928D110FD00469D4A /* DatabaseCoordinatableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590668B828D110FD00469D4A /* DatabaseCoordinatableProtocol.swift */; };
 		590668BB28D1124600469D4A /* RealmCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590668BA28D1124600469D4A /* RealmCoordinator.swift */; };
-		590668BD28D1133B00469D4A /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590668BC28D1133B00469D4A /* File.swift */; };
+		590668BD28D1133B00469D4A /* UserRealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590668BC28D1133B00469D4A /* UserRealmModel.swift */; };
 		591938B9284292D0008A43A5 /* PasswordCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591938B8284292D0008A43A5 /* PasswordCreator.swift */; };
 		591C26D52893391100432013 /* LoginInspectorError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26D42893391100432013 /* LoginInspectorError.swift */; };
 		591C26D728933A1000432013 /* LoginInspectorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 591C26D628933A1000432013 /* LoginInspectorProtocol.swift */; };
@@ -45,6 +45,7 @@
 		596F6BB7282DB10000226BE9 /* FeedCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BB6282DB10000226BE9 /* FeedCoordinator.swift */; };
 		596F6BB928301EAD00226BE9 /* AppCoordinatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BB828301EAD00226BE9 /* AppCoordinatorProtocol.swift */; };
 		596F6BBD2835804F00226BE9 /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596F6BBC2835804F00226BE9 /* ProfileCoordinator.swift */; };
+		5991288D28FC8BA2006672C3 /* StorableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5991288C28FC8BA2006672C3 /* StorableProtocol.swift */; };
 		59B4113428624405006D4463 /* Linkin_Park_What_Ive_Done.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59B4112F28624404006D4463 /* Linkin_Park_What_Ive_Done.mp3 */; };
 		59B4113528624405006D4463 /* Linkin_Park_Somewhere_I_Belong.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59B4113028624404006D4463 /* Linkin_Park_Somewhere_I_Belong.mp3 */; };
 		59B4113628624405006D4463 /* Linkin_Park_In_the_End.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 59B4113128624405006D4463 /* Linkin_Park_In_the_End.mp3 */; };
@@ -103,7 +104,7 @@
 		590668AF28CFCE3900469D4A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		590668B828D110FD00469D4A /* DatabaseCoordinatableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCoordinatableProtocol.swift; sourceTree = "<group>"; };
 		590668BA28D1124600469D4A /* RealmCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCoordinator.swift; sourceTree = "<group>"; };
-		590668BC28D1133B00469D4A /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		590668BC28D1133B00469D4A /* UserRealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRealmModel.swift; sourceTree = "<group>"; };
 		591938B8284292D0008A43A5 /* PasswordCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordCreator.swift; sourceTree = "<group>"; };
 		591C26D42893391100432013 /* LoginInspectorError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspectorError.swift; sourceTree = "<group>"; };
 		591C26D628933A1000432013 /* LoginInspectorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInspectorProtocol.swift; sourceTree = "<group>"; };
@@ -132,6 +133,7 @@
 		596F6BB6282DB10000226BE9 /* FeedCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCoordinator.swift; sourceTree = "<group>"; };
 		596F6BB828301EAD00226BE9 /* AppCoordinatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorProtocol.swift; sourceTree = "<group>"; };
 		596F6BBC2835804F00226BE9 /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		5991288C28FC8BA2006672C3 /* StorableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorableProtocol.swift; sourceTree = "<group>"; };
 		59B4112F28624404006D4463 /* Linkin_Park_What_Ive_Done.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Linkin_Park_What_Ive_Done.mp3; sourceTree = "<group>"; };
 		59B4113028624404006D4463 /* Linkin_Park_Somewhere_I_Belong.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Linkin_Park_Somewhere_I_Belong.mp3; sourceTree = "<group>"; };
 		59B4113128624405006D4463 /* Linkin_Park_In_the_End.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Linkin_Park_In_the_End.mp3; sourceTree = "<group>"; };
@@ -197,7 +199,8 @@
 			children = (
 				590668B828D110FD00469D4A /* DatabaseCoordinatableProtocol.swift */,
 				590668BA28D1124600469D4A /* RealmCoordinator.swift */,
-				590668BC28D1133B00469D4A /* File.swift */,
+				5991288C28FC8BA2006672C3 /* StorableProtocol.swift */,
+				590668BC28D1133B00469D4A /* UserRealmModel.swift */,
 			);
 			path = RealmDatabase;
 			sourceTree = "<group>";
@@ -664,7 +667,7 @@
 				652E085627BD529A007A1526 /* PostViewController.swift in Sources */,
 				59B41161288C817E006D4463 /* CheckerServiceModel.swift in Sources */,
 				652E085C27BD7929007A1526 /* Constants.swift in Sources */,
-				590668BD28D1133B00469D4A /* File.swift in Sources */,
+				590668BD28D1133B00469D4A /* UserRealmModel.swift in Sources */,
 				59E1554D2839858B00CCD78D /* FeedViewModel.swift in Sources */,
 				596F6BB928301EAD00226BE9 /* AppCoordinatorProtocol.swift in Sources */,
 				595FB236281E70EE00E4E328 /* UserChecker.swift in Sources */,
@@ -679,6 +682,7 @@
 				59642B4027D6A03E00875F09 /* PostTableViewCell.swift in Sources */,
 				591938B9284292D0008A43A5 /* PasswordCreator.swift in Sources */,
 				652BCC6027C263FB003841E3 /* ProfileHeaderView.swift in Sources */,
+				5991288D28FC8BA2006672C3 /* StorableProtocol.swift in Sources */,
 				591C26D728933A1000432013 /* LoginInspectorProtocol.swift in Sources */,
 				652E085827BD53A5007A1526 /* FeedViewController.swift in Sources */,
 				595FB1C427EC800F00E4E328 /* ProfileFullScreenAvatarView.swift in Sources */,

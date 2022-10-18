@@ -1,29 +1,25 @@
-//
-//  LoginCoordinator.swift
-//  Navigation
-//
-//  Created by tertyshniy on 19.05.2022.
-//
-
 import Foundation
 import UIKit
 
 final class ProfileCoordinator: ProfileCoordinatorProtocol {
     weak var navigationController: UINavigationController?
+    weak var databaseCoordinator: DatabaseCoordinatorProtocol?
     
-    init(controller: UINavigationController?) {
+    init(controller: UINavigationController?, databaseCoordinator: DatabaseCoordinatorProtocol?) {
         self.navigationController = controller
+        self.databaseCoordinator = databaseCoordinator
     }
     
     func start() {
         let loginViewController = LoginViewController()
+        loginViewController.databaseCoordinator = self.databaseCoordinator
         loginViewController.loginCheckerDeligate = LoginFactory.share.makeLoginInpector()
         loginViewController.doEventWhenSuccess = { [weak self] (UserService, userName) in
             guard let self = self else {return}
             self.doEventSuccessLogin(currentUser: UserService,  currentUserName: userName)
         }
         
-        navigationController?.setViewControllers([loginViewController], animated: true)
+     navigationController?.setViewControllers([loginViewController], animated: true)
     }
 
     func doEventSuccessLogin(currentUser currentUserService: UserService, currentUserName: String) {
