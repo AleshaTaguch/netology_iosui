@@ -118,6 +118,7 @@ final class LoginViewController: UIViewController {
                     
                 case .failure(let error):
                     print("🍋 \(error)")
+                    self.showAlertOK(title: "Error in Realm create metod", message: error.localizedDescription)
                 }
             }
         }
@@ -143,10 +144,6 @@ final class LoginViewController: UIViewController {
         }
         
         dispatchGroup.notify(queue: .main) {
-            print("-------------------------")
-            print(obtainedUserRealmModels.first!)
-            print(obtainedUserRealmModels)
-            print("-------------------------")
             if let uwObtainedUserRealmModel = obtainedUserRealmModels.first {
                 guard let obtainedLogin = uwObtainedUserRealmModel.name,
                       let obtainedPassword = uwObtainedUserRealmModel.password else {return}
